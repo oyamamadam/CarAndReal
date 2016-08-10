@@ -1,0 +1,1898 @@
+@charset "utf-8";
+/* CSS Document */
+@media (max-width:1300px) {
+@import url ("layout.css");
+}
+ @media (max-width:1280px) {
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+	 .for_adds img {
+	width:98% !important;
+}
+#owl-demo2 .item img{
+   display: block;
+   width: 90%;
+   height: auto;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:1200px) {
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.add img {
+	width:100%;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:1130px) {
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:1024px) {
+.txt {
+    float: left;
+    padding: 0 0 0 41%;
+}
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+	 .for_adds img {
+	width:94% !important;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 85%;
+}
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 8px 10px 0;
+    width: 24%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 25px;
+    margin: 0 12px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31.7%;
+}
+.for_adds img {
+    width: 97% !important;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:980px) {
+	 .txt {
+    float: left;
+    padding: 0 0 0 41%;
+}
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.for_lable {
+	width: 40%;
+	float: left;
+	margin: 2px 0;
+}
+.for_field {
+	width: 60%;
+	float: left;
+	margin: 2px 0;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+.for_adds img {
+	width:92% !important;
+}
+
+.f_right {
+	float:right !important;
+	margin:0 !important;
+	text-align:right !important;
+}
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 23.5%;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 48%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 70%;
+	float: left;
+	margin: 5px 0;
+}
+.home_menu ul li {
+	width:32%;
+	display:inline-block;
+	text-align:center;
+	padding:15px 0;
+	font-size:17px;
+	margin:0 5px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:900px) {
+	 .txt {
+    float: left;
+    padding: 0 0 0 40%;
+}
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 23.5%;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+}
+ @media (max-width:768px) {
+	 .txt {
+    float: left;
+    padding: 0 0 0 38%;
+}
+	 .for_field_small select {
+	width: 48%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 23%;
+}
+.content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}	 
+
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 70%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+.for_adds img {
+	width:92% !important;
+}
+.prod ul li {
+	width:24%;
+	float:left;
+	display:inline-block;
+	margin:0 6px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:32%;
+	display:inline-block;
+	text-align:center;
+	padding:15px 0;
+	font-size:17px;
+	margin:0 5px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 65%;
+}
+.for_adds img {
+    width: 96% !important;
+}
+#owl-demo3 .item img{
+   display: block;
+   width: 95%;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+ }
+ 
+  @media (max-width:736px) {
+.for_adds img {
+    width: 100% !important;
+}
+.txt {
+    float: left;
+    padding: 0 0 0 38%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 23%;
+}
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 70%;
+}
+.popup_my {
+    width: 100%;
+	float:left;
+	margin:10px 0 0 0;
+}
+ }
+ 
+   @media (max-width:720px) {
+.for_adds img {
+    width: 100% !important;
+}
+.txt {
+    float: left;
+    padding: 0 0 0 38%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 23%;
+}
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 70%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+ }
+ @media (max-width:667px) {
+.for_adds img {
+    width: 100% !important;
+}
+.txt {
+    float: left;
+    padding: 0 0 0 37%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 23%;
+}
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 70%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+ }
+
+ @media (max-width:640px) {
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.txt {
+    float: left;
+    padding: 0 0 0 37%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 23%;
+}
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 70%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+
+}
+ @media (max-width:600px) {
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 6px 10px 0;
+    width: 23.9%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 17px;
+    margin: 0 5px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31.8%;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 75%;
+}
+.for_adds img {
+    width: 100% !important;
+}
+.txt {
+	float:left;
+	padding:0 0 0 35%;
+}
+.for_lable {
+    float: left;
+    margin: 5px 0 0 15px;
+    width: 37%;
+}
+.for_field {
+    float: left;
+    margin: 5px 0;
+    width: 57%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 45%;
+}
+
+ }
+ @media (max-width:568px) {
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 6px 10px 0;
+    width: 23.8%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 17px;
+    margin: 0 5px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31.7%;
+}	 
+.for_field_small select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 47%;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 75%;
+}
+.for_adds img {
+    width: 100% !important;
+} 
+.right_side img {
+	width:100%;
+}
+.txt {
+	float:left;
+	padding:0 0 0 35%;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+}
+ @media (min-width:481px) and (max-width:568px){
+	 .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+	 .content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.txt {
+	float:left;
+	padding:0 0 0 33%;
+}
+.logo_login img {
+    width: 90% !important;
+}
+.logo {
+	width:180px;
+	height:70px;
+	float:left;
+}
+.content_left {
+	float:left;
+	width:100%;
+	font-size:15px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:left;
+	width:100%;
+	font-size:15px;
+}
+
+
+
+.for_lable {
+    float: left;
+    margin: 2px 0 0 5px;
+
+}
+.for_field {
+    float: left;
+    margin:2px 0;
+    width: 60%;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+.for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:12px;
+	text-align:center;
+}
+.prod ul li {
+	width:22.5%;
+	float:left;
+	display:inline-block;
+	margin:0 6px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:5px 0;
+	font-size:17px;
+	margin:0 12px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.for_listing_img {
+	width:100%;
+	float:left;
+}
+.for_listing_txt {
+    float: left;
+    width: 100%;
+}
+.left_side {
+    float: left;
+    width: 100%;
+}
+.right_side {
+    float: left;
+    width: 100%;
+
+}
+.right_side p {
+	padding:0;
+	margin:0;
+	line-height:20px;
+	text-align:left;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 44%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 45%;
+	float: left;
+	margin: 5px 0;
+}
+
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 42%;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 70%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+}
+.nego {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 0 0 0px;
+}
+.for_listing_txt h4 {
+	margin:0;
+	padding:10px 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+
+.txt {
+	float:left;
+	padding:0 0 0 20%;
+}
+.for_search {
+	float:left !important;
+	width:80% !important;
+}
+.for_search_btn {
+	width:18% !important;
+	float:right !important;
+	padding:3px 5px 0 0;
+	text-align:right;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    width: 80% !important;
+				text-align:left;
+}
+.add_sub {
+	width:25% !important;
+	float:left;
+}
+.filter {
+	float:right !important;
+	width:6% !important;
+}
+.logo_home img {
+    padding: 10px 0;
+    width: 240px;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+}
+ @media (max-width:480px) {
+	 .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+.content_left {
+	float:left;
+	width:49%;
+	font-size:16px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:right;
+	width:49%;
+	font-size:16px;
+}
+.for_lable {
+	width: 35%;
+	float: left;
+	margin: 5px 0;
+}
+.for_field {
+	width: 65%;
+	float: left;
+	margin: 5px 0;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+	 .for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:14px;
+	text-align:center;
+}
+.prod ul li {
+	width:23%;
+	float:left;
+	display:inline-block;
+	margin:0 8px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:31%;
+	display:inline-block;
+	text-align:center;
+	padding:15px 0;
+	font-size:17px;
+	margin:0 5px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 47%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 48% !important;
+	float: left;
+	margin: 5px 0;
+}
+.ui-input-text input, .ui-input-search input, textarea.ui-input-text {
+    box-sizing: border-box;
+    display: block;
+    line-height: 1.4em;
+    outline: 0 none;
+    padding: 0.4em;
+    width: 100% !important;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+	font-size:17px;
+}
+.right_side p img {
+	width:100%;
+}
+#owl-demo3 .item img{
+   display: block;
+   width: 100%;
+}
+.txt {
+	float:left;
+	padding:0 0 0 31%;
+}
+.logo_login img {
+    width: 90% !important;
+}
+.logo {
+	width:180px;
+	height:70px;
+	float:left;
+}
+.content_left {
+	float:left;
+	width:100%;
+	font-size:15px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:left;
+	width:100%;
+	font-size:15px;
+}
+.for_lable {
+	width: 50%;
+	float: left;
+	margin: 5px 0;
+
+}
+.for_field {
+	width: 50%;
+	float: left;
+	margin: 5px 0px;
+}
+.for_field.new-field {
+    width: 100%!important;
+    float: left;
+    margin: 2px 0 !important;
+}
+	 .for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:12px;
+	text-align:center;
+}
+.prod ul li {
+	width:22.5%;
+	float:left;
+	display:inline-block;
+	margin:0 6px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:5px 0;
+	font-size:17px;
+	margin:0 12px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.for_listing_img {
+	width:100%;
+	float:left;
+}
+.for_listing_txt {
+    float: left;
+    width: 100%;
+}
+.left_side {
+    float: left;
+    width: 100%;
+}
+.right_side {
+    float: left;
+    width: 100%;
+
+}
+.right_side p {
+	padding:0;
+	margin:0;
+	line-height:20px;
+	text-align:left;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 44%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 60%;
+	float: left;
+	margin: 5px 0;
+}
+
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 42%;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 70%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+}
+.nego {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 0 0 0px;
+}
+.for_listing_txt h4 {
+	margin:0;
+	padding:10px 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+
+.txt {
+	float:left;
+	padding:0 0 0 20%;
+}
+.for_search {
+	float:left !important;
+	width:80% !important;
+}
+.for_search_btn {
+	width:18% !important;
+	float:right !important;
+	padding:3px 5px 0 0;
+	text-align:right;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    width: 70% !important;
+				text-align:left;
+}
+.add_sub {
+	width:25% !important;
+	float:left;
+}
+.filter {
+	float:right !important;
+	width:6% !important;
+}
+.logo_home img {
+    padding: 10px 0;
+    width: 240px;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+}
+ @media (max-width:414px) {
+	 .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+	 .txt {
+	float:left;
+	padding:0 0 0 28%;
+}
+	 .prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 8px 10px 0;
+    width: 22.9%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 15px;
+    margin: 0 5px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31%;
+}
+.for_field_small select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 46%;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 50%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 48% !important;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    text-align: left;
+    width: 60% !important;
+}
+.add_sub {
+	width:50% !important;
+	float:left;
+}
+.filter {
+	margin-right:0px !important;
+	float: right !important;
+    width: 10% !important;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+ }
+  @media (max-width:384px) {
+	  .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+	  .txt {
+	float:left;
+	padding:0 0 0 31%;
+}
+	.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 8px 10px 0;
+    width: 22.7%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 15px;
+    margin: 0 5px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 48% !important;
+}
+.for_field_small select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 46%;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 50%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}  
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    text-align: left;
+    width: 65% !important;
+}
+.add_sub {
+	width:50% !important;
+	float:left;
+}
+.filter {
+	margin-right:0px !important;
+	float: right !important;
+    width: 10% !important;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+  }
+ @media (max-width:375px) {
+	 .prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 8px 10px 0;
+    width: 22%;
+}
+.home_menu ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 5px 10px 0;
+    padding: 15px 0;
+    text-align: center;
+    width: 31%;
+}
+.for_field_small {
+    float: left;
+    margin: 5px 0;
+    width: 48% !important;
+}
+.for_field_small select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 46%;
+}
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 50%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 75%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.txt {
+	float:left;
+	padding:0 0 0 31%;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    text-align: left;
+    width: 65% !important;
+}
+.add_sub {
+	width:50% !important;
+	float:left;
+}
+.filter {
+	margin-right:0px !important;
+	float: right !important;
+    width: 8% !important;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+ }
+
+ @media (max-width:360px) {
+	 .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+.logo {
+	width:180px;
+	height:70px;
+	float:left;
+}
+.content_left {
+	float:left;
+	width:100%;
+	font-size:15px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:left;
+	width:100%;
+	font-size:15px;
+}
+.for_lable {
+	width: 50%;
+	float: left;
+	margin: 5px 0;
+	padding-left:0px;
+}
+.for_field {
+	width: 45%;
+	float: left;
+	margin: 5px 2% 5px 0;
+}
+	 .for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:12px;
+	text-align:center;
+}
+.prod ul li {
+	width:22.5%;
+	float:left;
+	display:inline-block;
+	margin:0 6px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:5px 0;
+	font-size:17px;
+	margin:0 12px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.for_listing_img {
+	width:100%;
+	float:left;
+}
+.for_listing_txt {
+    float: left;
+    width: 100%;
+}
+.left_side {
+    float: left;
+    width: 100%;
+}
+.right_side {
+    float: left;
+    width: 100%;
+
+}
+.right_side p {
+	padding:0;
+	margin:0;
+	line-height:20px;
+	text-align:left;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 44%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 48%;
+	float: left;
+	margin: 5px 0;
+}
+
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 42%;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 70%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+}
+.nego {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 0 0 0px;
+}
+.for_listing_txt h4 {
+	margin:0;
+	padding:10px 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+
+.txt {
+	float:left;
+	padding:0 0 0 20%;
+}
+.for_search {
+	float:left !important;
+	width:80% !important;
+}
+.for_search_btn {
+	width:18% !important;
+	float:right !important;
+	padding:3px 5px 0 0;
+	text-align:right;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    width: 60% !important;
+}
+.add_sub {
+	width:70% !important;
+	float:left;
+}
+.filter {
+	float:right !important;
+	width:10% !important;
+}
+.logo_home img {
+    padding: 10px 0;
+    width: 215px;
+}
+.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+ }
+ @media (max-width:320px) {
+	.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+} 
+.ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}	 
+.logo {
+	width:180px;
+	height:70px;
+	float:left;
+}
+.content_left {
+	float:left;
+	width:100%;
+	font-size:15px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:left;
+	width:100%;
+	font-size:15px;
+}
+.for_lable {
+	width: 50%;
+	float: left;
+	margin: 5px 0;
+	padding-left:10px;
+}
+.for_field {
+	width: 45%;
+	float: left;
+	margin: 5px 2% 5px 0;
+}
+	 .for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:12px;
+	text-align:center;
+}
+.prod ul li {
+	width:22.5%;
+	float:left;
+	display:inline-block;
+	margin:0 6px 10px 0;
+	border:1px solid #a0a0a0;
+}
+.home_menu ul li {
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:5px 0;
+	font-size:17px;
+	margin:0 12px 10px 0;
+		background:#fff;
+	border:1px solid #a0a0a0;
+}
+.for_listing_img {
+	width:100%;
+	float:left;
+}
+.for_listing_txt {
+    float: left;
+    width: 100%;
+}
+.left_side {
+    float: left;
+    width: 100%;
+}
+.right_side {
+    float: left;
+    width: 100%;
+
+}
+.right_side p {
+	padding:0;
+	margin:0;
+	line-height:20px;
+	text-align:left;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.for_field_small select {
+	width: 44%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 48%;
+	float: left;
+	margin: 5px 0;
+}
+
+.for_field_new {
+    float: left;
+    margin: 5px 0;
+    width: 42%;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 70%;
+}
+.for_field_new_button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: medium none;
+    float: left;
+    width: 15%;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+}
+.nego {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 0 0 0px;
+}
+.for_listing_txt h4 {
+	margin:0;
+	padding:10px 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
+}
+.new_inp {
+    float: left;
+    width: 45%;
+}
+.y {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    width: 10%;
+}
+
+.txt {
+	float:left;
+	padding:0 0 0 20%;
+}
+.for_search {
+	float:left !important;
+	width:80% !important;
+}
+.for_search_btn {
+	width:18% !important;
+	float:right !important;
+	padding:3px 5px 0 0;
+	text-align:right;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+
+    width: 60% !important;
+}
+.add_sub {
+	width:50% !important;
+	float:left;
+}
+.filter {
+	margin-right:0px !important;
+	float: right !important;
+    width: 10% !important;
+}
+
+.logo_home img {
+    padding: 10px 0;
+    width: 175px;
+}
+}
+ @media (max-width:240px) {
+		.popup_my {
+    float: left;
+    margin: 10px 0 0 8%;
+    width: 90%;
+}
+	 .ui-input-text input {
+    background: transparent none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    border-radius: inherit;
+    margin: 0;
+    min-height: 2em;
+    padding: 0 0 0 7px;
+    text-align: left;
+    width: 100% !important;
+}
+.txt {
+	float:left;
+	padding:0 0 0 9%;
+}
+.content_left {
+	float:left;
+	width:100%;
+	font-size:14px;
+	padding:0 0 15px 0;
+}
+.content_right {
+	float:left;
+	width:100%;
+	font-size:14px;
+}
+.for_lable {
+	width: 50%;
+	float: left;
+	margin: 5px 0;
+	padding-left:10px;
+}
+.for_field {
+	width: 45%;
+	float: left;
+	margin: 5px 2% 5px 0;
+}
+.for_lable label {
+	font-size: 12px;
+	margin: 5px 0;
+	color: #666565;
+	font-weight: normal;
+}
+	 .for_adds img {
+	width:100% !important;
+}
+.for_txt_tabs {
+	width:100%;
+	float:left;
+	padding:5px 0 15px 0;
+	color:#333;
+	font-weight:normal;
+	font-size:9px;
+	text-align:center;
+}
+.prod ul li {
+    border: 1px solid #a0a0a0;
+    display: inline-block;
+    float: left;
+    margin: 0 6px 10px 0;
+    width: 46.8%;
+}
+.home_menu {
+	width:100%;
+	float:left;
+	padding:10px 0 0 0;
+}
+.home_menu ul li {
+	width:100%;
+	display:inline-block;
+	text-align:center;
+	padding:0px 0;
+	background:#fff;
+	border:1px solid #a0a0a0;
+	font-size:17px;
+	margin:0 12px 5px 0;
+}
+.for_listing_img {
+	width:100%;
+	float:left;
+}
+.for_listing_txt {
+    float: left;
+    width: 100%;
+}
+.left_side {
+    float: left;
+    width: 100%;
+}
+.right_side {
+    float: left;
+    width: 100%;
+
+}
+.right_side p {
+	padding:0;
+	margin:0;
+	line-height:20px;
+	text-align:left;
+}
+.ui-mobile label, div.ui-controlgroup-label {
+    font-size: 13px !important;
+    font-weight: 400;
+}
+.for_field_small select {
+	width: 42%;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+.for_field_small {
+	width: 50%;
+	float: right;
+	margin: 5px 0;
+}
+.for_field_new select {
+    border: 1px solid #ccc;
+    height: 30px;
+    width: 75%;
+}
+.sub_btn {
+    background: #00b258 none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin: 10px 0;
+    padding: 5px 15px;
+    text-align: center;
+    width: 100%;
+}
+.nego {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 0 0 0px;
+}
+.for_listing_txt h4 {
+	margin:0;
+	padding:10px 0 5px 0;
+	font-size:16px;
+	font-weight:bold;
+}
+.for_search {
+	float:left !important;
+	width:80% !important;
+}
+.for_search_btn {
+	width:18% !important;
+	float:right !important;
+	padding:3px 5px 0 0;
+	text-align:right;
+}
+.all_result {
+    float: left;
+    margin: 0 0 0px;
+    text-align: center;
+    width: 60% !important;
+}
+.add_sub {
+	width:50% !important;
+	float:left;
+}
+.filter {
+	margin-right:0px !important;
+	float: right !important;
+    width: 15% !important;
+}
+.logo_home img {
+    padding: 10px 0;
+    width: 145px;
+}
+}

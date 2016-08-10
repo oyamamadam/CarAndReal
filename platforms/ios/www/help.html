@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/help.js"></script>
+    <style>
+        #owl-demo .item img {
+            display: block;
+            width: 98%;
+            height: auto;
+        }
+
+        #owl-demo2 .item img {
+            display: block;
+            width: 95%;
+            height: auto;
+        }
+
+    </style>
+</head>
+
+<body class="for_main_bg">
+
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();">
+                <a data-rel="close">
+                    <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                    <h4 id="profilename"><b id="profile">Profile</b></h4>
+                </a>
+            </div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a></li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span id="setting">Setting</span></a>
+            </li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a></li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+                FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+    </div>
+
+
+    <div data-role="main" class="ui-content">
+        <div class="container">
+            <h3><span id="helpspan">Help/FAQ</span></h3>
+
+            <p><span id="helpTitle">If you can't find the answer to your question please contact us.</span></p>
+
+            <div class="container1" id="helpdata">
+
+                <!--<h2 class="bg-col-a padtblr10">Dummy text of the printing and typesetting industry</h2>-->
+
+                <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+                    <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type-->
+                    <!--and text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard-->
+                    <!--dummy. Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem-->
+                    <!--Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took-->
+                    <!--a galley of type. </p>-->
+
+                <!--<p>Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since-->
+                    <!--the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has-->
+                    <!--been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley-->
+                    <!--of type. </p>-->
+
+                <!--<p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's-->
+                    <!--standard dummy text ever since the 1500s, when an unknown printer took a galley of type and text of-->
+                    <!--the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. Printing-->
+                    <!--and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the-->
+                    <!--1500s, when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has been-->
+                    <!--the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of-->
+                    <!--type. </p>-->
+
+                <!--<h2 class="bg-col-a padtblr10">Non vehicula libero pulvinar in Nullam blandit sodales dictum</h2>-->
+
+                <!--<p>Duis rhoncus dui purus, non vehicula libero pulvinar in. Nullam blandit sodales dictum. Nulla-->
+                    <!--facilisi. Pellentesque vulputate massa ac dignissim pulvinar. Aliquam erat volutpat.Lorem Ipsum is-->
+                    <!--simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's-->
+                    <!--standard dummy text ever since the 1500s, when an unknown printer took a galley of type and text of-->
+                    <!--the printing and typesetting industry.</p>-->
+
+                <!--<p> Lorem Ipsum has been the industry's standard dummy. Printing and typesetting industry. Lorem Ipsum-->
+                    <!--has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a-->
+                    <!--galley printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley of type. </p>-->
+
+                <!--<h2 class="bg-col-a padtblr10">Ut nec tellus eget urna placerat venenatis vitae et felis</h2>-->
+
+                <!--<p>Ut nec tellus eget urna placerat venenatis vitae et felis. Vivamus vitae suscipit nunc, ac-->
+                    <!--sollicitudin justo. Nulla facilisi. Ut tempus lectus quis mi auctor pretium. Nulla facilisi.</p>-->
+
+                <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+                    <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type-->
+                    <!--and text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard-->
+                    <!--dummy. Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem-->
+                    <!--Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took-->
+                    <!--a galley of type. </p>-->
+
+                <!--<h2 class="bg-col-a padtblr10">Praesent aliquam massa id euismod adipiscing</h2>-->
+
+                <!--<p>Vivamus sit amet nisi risus. Quisque sed pretium lorem. Praesent aliquam massa id euismod adipiscing.-->
+                    <!--Integer dignissim felis id volutpat mollis.Lorem Ipsum is simply dummy text of the printing and-->
+                    <!--typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,-->
+                    <!--when an unknown printer took a galley of type and text of the printing and typesetting industry.-->
+                    <!--Lorem Ipsum has been the industry's standard dummy. Printing and typesetting industry. Lorem Ipsum-->
+                    <!--has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a-->
+                    <!--galley printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley of type. </p>-->
+
+                <!--<h2 class="bg-col-a padtblr10">When an unknown printer took a galley of type</h2>-->
+
+                <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the-->
+                    <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type-->
+                    <!--and text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard-->
+                    <!--dummy. Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem-->
+                    <!--Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took-->
+                    <!--a galley of type. </p>-->
+
+                <!--<p>Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since-->
+                    <!--the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has-->
+                    <!--been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley-->
+                    <!--of type. </p>-->
+
+                <!--<p>Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's-->
+                    <!--standard dummy text ever since the 1500s, when an unknown printer took a galley of type and text of-->
+                    <!--the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. Printing-->
+                    <!--and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the-->
+                    <!--1500s, when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has been-->
+                    <!--the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of-->
+                    <!--type. </p>-->
+
+
+                <!--<h2 class="bg-col-a padtblr10">Standard dummy text ever since the 1500s</h2>-->
+
+                <!--<p>Industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type-->
+                    <!--and text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard-->
+                    <!--dummy. Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text-->
+                    <!--ever since the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem-->
+                    <!--Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took-->
+                    <!--a galley of type. </p>-->
+
+
+                <!--<h2 class="bg-col-a padtblr10">Printer took a galley of type and text of the printing and-->
+                    <!--typesetting</h2>-->
+
+                <!--<p>Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard-->
+                    <!--dummy text ever since the 1500s, when an unknown printer took a galley of type and text of the-->
+                    <!--printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy. Printing and-->
+                    <!--typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,-->
+                    <!--when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has been the-->
+                    <!--industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of-->
+                    <!--type. </p>-->
+
+                <!--<p>Printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since-->
+                    <!--the 1500s, when an unknown printer took a galley printing and typesetting industry. Lorem Ipsum has-->
+                    <!--been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley-->
+                    <!--of type. </p>-->
+
+
+            </div>
+
+        </div>
+
+
+        <div class="container">
+            <div class="for_adds">
+
+
+                <div id="demo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div id="owl-demo" class="owl-carousel">
+
+                                    <div class="item"><img src="images/adds-img.png"></div>
+                                    <div class="item"><img src="images/adds-img.png"></div>
+                                    <div class="item"><img src="images/adds-img.png"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+<div class="clear"> </div>
+
+            <div class="add"><img src="images/cocacola-img.png"></div>
+      
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span id="sundries"> Sundries</span></a>
+                </li>
+                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#owl-demo").owlCarousel({
+
+            navigation: false,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true
+
+            // "singleItem:true" is a shortcut for:
+            // items : 1,
+            // itemsDesktop : false,
+            // itemsDesktopSmall : false,
+            // itemsTablet: false,
+            // itemsMobile : false
+
+        });
+
+        $("#owl-demo2").owlCarousel({
+
+            navigation: false,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true
+
+            // "singleItem:true" is a shortcut for:
+            // items : 1,
+            // itemsDesktop : false,
+            // itemsDesktopSmall : false,
+            // itemsTablet: false,
+            // itemsMobile : false
+
+        });
+    });
+</script>
+
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="js/expandy.min.js"></script>
+<script>
+    $('.container1').makeExpander({
+        toggleElement: 'h2',
+        jqAnim: true,
+        showFirst: false,
+        accordion: true,
+        speed: 700,
+        indicator: 'triangle'
+    });
+
+    $('.container2').makeExpander({
+        toggleElement: 'h2',
+        jqAnim: true,
+        showFirst: true,
+        accordion: false,
+        speed: 700,
+        indicator: 'plusminus'
+    });
+
+    $('.container3').makeExpander({
+        toggleElement: 'h2',
+        jqAnim: true,
+        showFirst: true,
+        accordion: false,
+        speed: 1400,
+        indicator: 'arrow'
+    });
+</script>
+
+<script src="js/switchery.min.js"></script>
+<script src="js/pages.min.js"></script>
+</body>
+</html>

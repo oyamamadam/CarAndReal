@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/radio.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/advancerealsearch.js"></script>
+    <link rel="stylesheet" href="css/kc.fab.css"/>
+    /head>
+
+<body class="for_main_bg">
+
+<div class="kc_fab_wrapper"></div>
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();">
+                <a data-rel="close">
+                    <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                    <h4 id="profilename"><b id="profile">Profile</b></h4>
+                </a>
+            </div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
+            </li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                    id="setting">Setting</span></a>
+            </li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+            </li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+                FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <!--<div class="for_back_btn"><a href="#.html"><img src="images/search.png"></a></div>-->
+        </div>
+    </div>
+
+
+    <div data-role="main" class="ui-content">
+        <!------open here-------->
+        <div class="container" style="padding-top:10px;">
+            <div class="for_car_adv_sch">
+                <h4 id="realsearch">Real Estate Search</h4>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="clear"></div>
+                        <div align="center" id="errfn" style="color: #ff0a1b;"></div>
+                        <div class="clear"></div>
+                        <div class="for_field new-field">
+                            <select name="proType" id="proType" onChange="selectClear('errfn');">
+                                <option value="">Select Type</option>
+                                <option value="Old">Old</option>
+                                <option value="New">New</option>
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="clear"></div>
+                        <div align="center" id="errfn1" style="color: #ff0a1b;"></div>
+                        <div class="clear"></div>
+                        <div class="for_field new-field">
+                            <select name="propertyType" id="propertyType" onChange="selectClear('errfn1');">
+                                <option selected="" value="">Select Category</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="clear"></div>
+                        <div align="center" id="errfn6" style="color: #ff0a1b;"></div>
+                        <div class="clear"></div>
+                        <div class="for_field new-field">
+                            <select name="selectCountry" id="selectCountry"
+                                    onChange="selectState12(this.value);" onclick="selectClear('errfn6');">
+                                <option selected="" value="">Select Country</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="div5">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="clear"></div>
+                            <div align="center" id="errfn7" style="color: #ff0a1b;"></div>
+                            <div class="clear"></div>
+                            <div class="for_field new-field">
+                                <select onchange="selectCity12(this.value);"
+                                        id="selectState" name="selectState" onclick="selectClear('errfn7');">
+                                    <option value="">Select State</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div id="div6">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="clear"></div>
+                            <div align="center" id="errfn8" style="color: #ff0a1b;"></div>
+                            <div class="clear"></div>
+                            <div class="for_field new-field">
+                                <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
+                                    <option value="">Select City</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="for_field new-field">
+
+                            <input type="number" placeholder="Rooms" id="real_room" name="real_room"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="setPlaceHolderRoom();"
+                                    />
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="for_field new-field">
+
+
+                            <input type="number" placeholder="Bathrooms" id="real_baths" name="real_baths"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="setPlaceHolderBath();"
+                                    />
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="for_lable">
+                            <label for="real_loan" id="loan">Loan</label>
+                        </div>
+                        <div class="for_field">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="real_loan" class="onoffswitch-checkbox"
+                                       id="real_loan" checked>
+                                <label class="onoffswitch-label" for="real_loan">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="for_lable">
+                            <label for="real_rec" id="exchange">Exchange</label>
+                        </div>
+                        <div class="for_field">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="real_rec" class="onoffswitch-checkbox"
+                                       id="real_rec" checked>
+                                <label class="onoffswitch-label" for="real_rec">
+                                    <span class="onoffswitch-inner"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="for_lable">
+                            <label for="real_pri_type" id="pricetype">Price Type</label>
+                        </div>
+                        <div class="for_field">
+                            <div class="onoffswitch">
+                                <input type="checkbox" name="real_pri_type" class="onoffswitch-checkbox"
+                                       id="real_pri_type" checked>
+                                <label class="onoffswitch-label" for="real_pri_type">
+                                    <span class="onoffswitch-inner price"></span>
+                                    <span class="onoffswitch-switch price"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+                <div class="clearfix"></div>
+                <br/>
+
+               <!-- <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+                        <div class="for_lable">
+                            <label id="price">Price</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+                        <div class="for_field new-field">
+                            <div class="for_field_adv">
+                                <input type="text" placeholder="Price" id="real_price_to" name="real_price_to"
+                                       onfocus="this.placeholder = ''"
+                                       onblur="setPlaceHolderPrice();"
+                                        />
+
+                            </div>
+                            <span style="float:left; width:26px; height:30px; line-height:30px; text-align:center; padding-top:7px;">to</span>
+
+                            <div class="for_field_adv">
+                                <input type="text" placeholder="Price" id="real_price_from" name="real_price_from"
+                                       onfocus="this.placeholder = ''"
+                                       onblur="setPlaceHolderPrice();"
+                                        />
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="clear"></div>
+
+                <div align="center">
+                    <button class="my_login ui-btn ui-btn-inline" onclick="return goToSerachReal();" type="submit"><span
+                            id="search">Submit</span>
+                    </button>
+                </div>
+                <div class="clear"></div>
+
+            </div>
+        </div>
+
+    </div>
+    <!------close here-------->
+    <div class="clearfix"></div>
+    <!------close here-------->
+    <div class="add"><img src="images/cocacola-img.png"></div>
+    <div class="clear"></div>
+
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
+                        id="sundries"> Sundries</span></a>
+                </li>
+                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#owl-demo").owlCarousel({
+
+            navigation: false,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true
+        });
+    });
+</script>
+<script src="js/switchery.min.js"></script>
+<script src="js/pages.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script src="js/kc.fab.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var links = [
+            {
+                "bgcolor": "red",
+                "icon": "+",
+            },
+            {
+                "url": "car-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-car.png'></i>",
+            },
+            {
+                "url": "realestate-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "white",
+                "icon": "<i class='fa fa-music'><img src='images/mini-real.png'></i>"
+            },
+            {
+                "url": "othersupload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-others.png'></i>",
+            }
+        ]
+        $('.kc_fab_wrapper').kc_fab(links);
+    })
+</script>
+</body>
+</html>

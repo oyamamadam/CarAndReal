@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="css/kc.fab.css"/>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/cardetail.js"></script>
+    <style>
+
+        /*#owl-demo .item img {
+            display: block;
+            width: 98%;
+            height: auto;
+        }*/
+
+        #owl-demo2 .item img {
+            display: block;
+            width: 95%;
+            height: auto;
+        }
+
+    </style>
+</head>
+
+<body class="for_main_bg">
+
+
+<div class="kc_fab_wrapper"></div>
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();">
+                <a data-rel="close">
+                    <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                    <h4 id="profilename"><b id="profile">Profile</b></h4>
+                </a>
+            </div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a></li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                    id="setting">Setting</span></a>
+            </li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+            </li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+                FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+    </div>
+
+
+    <div data-role="main" class="ui-content">
+
+        <div class="container">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="home_bg">
+                    <div class="container">
+                        <div class="for_adds">
+
+
+                            <div id="demos">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="span12">
+                                            <div id="owl-demo2" class="owl-carousel">
+
+
+                                                <!--<div class="item"><img src="images/cars.png"></div>
+                                                  <div class="item"><img src="images/best-car-01.jpg"></div>
+                                                  <div class="item"><img src="images/best-car.jpg"></div>-->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="container" style="padding-top:15px;">
+            <!---------->
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#menu1"><span
+                        id="basicinfo">Basic Info</span></a></li>
+                <li><a data-toggle="pill" href="#menu2"><span id="extraInfo"> Info & Extras</span></a></li>
+
+            </ul>
+            <div class="tab-content">
+
+                <div id="menu1" class="tab-pane fade in active">
+                    <div class="panel-body">
+                        <div class="all_details">
+                            <h3 id="carName"></h3>
+                            <ul>
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Model:</span>-->
+                                <!--<span id="carModel"></span>-->
+                                <!--</li>-->
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="ptype">Type:</span>
+                                    <span id="carType"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="filstyle">Style:</span>
+                                    <span id="carStyle"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="engine">Motor:</span>
+                                    <span id="carMoter"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="transmission">Transmision:</span>
+                                    <span id="carTransmission"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="fuel">Fuel:</span>
+                                    <span id="carFuel"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="icolor">Interior Color:</span>
+                                    <span id="carInteriorColor"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="ecolor">Exterior Color:</span>
+                                    <span id="carExteriorColor"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="clocation">Location:</span>
+                                    <span id="carLocation"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="doors">Doors:</span>
+                                    <span id="carDoors"></span>
+                                </li>
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Condition:</span>-->
+                                <!--<span id="carCondition"></span>-->
+                                <!--</li>-->
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Col. Exterior:</span>-->
+                                <!--Gris-->
+                                <!--</li>-->
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Col. Interior:</span>-->
+                                <!--Beige-->
+                                <!--</li>-->
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Provincia:</span> Cartago-->
+                                <!--</li>-->
+
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Puertas:</span> 5</li>-->
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;">Telephone:</span>
+                                    <span id="carMob"></span>
+                                </li>-->
+                                <li>
+                                    <span style="font-weight:bold; width:40%; float:left;" id="cCondition">Condition:</span>
+                                    <span class="nego" id="carCondition"></span>
+                                </li>
+                                <li>
+                                    <span style="font-weight:bold; width:40%; float:left;" id="cRating">Rating:</span>
+                                    <span class="nego" id="carRating"></span>
+                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="kilometar">KM:</span>
+                                    <span class="nego" id="carKm"></span></li>
+
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="price">Price:</span>
+                                    <span id="carPrice"></span>
+                                    <span class="nego">NEGOTIABLE</span></li>
+
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="vCount">Visitor Count:</span>
+                                    <span id="carVisitorCount"></span>
+                                </li>
+                                <li>
+                                    <span style="font-weight:bold; width:40%; float:left;" id="cPublishOn">Publish On:</span>
+                                    <span id="carPublish"></span>
+                                </li>
+                                <li>
+                                    <span style="font-weight:bold; width:40%; float:left;" id="cPublishBy">Publish By:</span>
+                                    <span id="carPublishUname"></span>
+                                </li>
+                                <!--<li>-->
+                                <!--<span style="font-weight:bold; width:40%; float:left;">Email:</span>-->
+                                <!--<span id="carPublishUemail"></span>-->
+                                <!--</li>-->
+                                <li id="callPerson">
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu2" class="tab-pane fade in">
+                    <div class="panel-body">
+                        <ul class="all_details">
+                            <ul class="ul-left">
+                                <li><img src="images/wrong-icon.png" id="carPlate"><span id="carPlateNumber"></span>
+                                </li>
+                                <li><img src="images/wrong-icon.png" id="carLoan"><span id="loan"></span></li>
+                                <li><img src="images/right-icon.png" id="carExchange"><span id="exchange"></span></li>
+                                <li><img src="images/right-icon.png" id="carPowerLock"><span id="cPowerLock"></span>
+                                </li>
+                                <li><img src="images/right-icon.png" id="carTintWin"><span id="cTintWin"></span></li>
+                                <li><img src="images/right-icon.png" id="carpowerWin"><span id="cPowerWin"></span></li>
+                                <li><img src="images/right-icon.png" id="carAlarm"><span id="cAlarm"></span></li>
+                                <li><img src="images/right-icon.png" id="carACClimatized"><span id="cAClim"></span></li>
+                                <li><img src="images/right-icon.png" id="carSunRoof"><span id="cSunRoof"></span></li>
+                                <li><img src="images/right-icon.png" id="carTurbo"><span id="cTurbo"></span></li>
+                                <li><img src="images/right-icon.png" id="carHalogen"><span id="cHalogan"></span></li>
+                                <li><img src="images/right-icon.png" id="carDisco"><span id="cDisco"></span></li>
+                                <li><img src="images/right-icon.png" id="carDescentControl"><span id="cDescent"></span>
+                                </li>
+                                <li><img src="images/wrong-icon.png" id="carElecAdSeat"><span id="cElectricAdj"></span>
+                                </li>
+                                <li><img src="images/right-icon.png" id="carAirBag"><span id="cAir"></span></li>
+                                <li><img src="images/right-icon.png" id="carElecMir"><span id="cElectricMir"></span>
+                                </li>
+                                <li><img src="images/right-icon.png" id="carABS"><span id="cAbs"></span></li>
+                                <li><img src="images/right-icon.png" id="carAC">A/C</li>
+                                <li><img src="images/right-icon.png" id="carWinDff"><span id="cWinDff"></span></li>
+                                <li><img src="images/right-icon.png" id="carRims"><span id="cRims"></span></li>
+                                <li><img src="images/right-icon.png" id="carLeatherSeat"><span id="cLeaSeat"></span>
+                                </li>
+                                <li><img src="images/right-icon.png" id="carCassette"><span id="cCassette"></span></li>
+                                <li><img src="images/right-icon.png" id="carCruise"><span id="cCruise"></span></li>
+                                <li><img src="images/right-icon.png" id="carRTV">RTV</li>
+                                <li><img src="images/right-icon.png" id="carControl"><span id="cElectronic"></span></li>
+
+                            </ul>
+                            <ul class="ul-right">
+
+                                <li><img src="images/right-icon.png" id="carRearViewCam"><span id="cRear"></span></li>
+                                <li><img src="images/right-icon.png" id="carFrontSensor"><span id="cFront"></span></li>
+                                <li><img src="images/right-icon.png" id="carMulStrWheel"><span
+                                        id="cMultifunctional"></span></li>
+                                <li><img src="images/right-icon.png" id="carRearSensor"><span id="cRearSen"></span></li>
+                                <li><img src="images/right-icon.png" id="carChangesDual"><span id="cChangeDual"></span></li>
+                                <li><img src="images/right-icon.png" id="carRadio"><span id="cRadioInSte"></span></li>
+                                <li><img src="images/right-icon.png" id="carMemorySeat"><span id="cMemory"></span></li>
+                                <li><img src="images/right-icon.png" id="carAutoFoldable"><span id="cAutoFold"></span></li>
+                                <li><img src="images/right-icon.png" id="carXenon"><span id="cXenon"></span></li>
+                                <li><img src="images/right-icon.png" id="carXenonLed"><span id="cXenLed"></span></li>
+                                <li><img src="images/right-icon.png" id="carRainSensor"><span id="cRain"></span></li>
+                                <li><img src="images/right-icon.png" id="carSmartKey"><span id="cSmartKey"></span></li>
+                                <li><img src="images/right-icon.png" id="carTireMoni"><span id="cTire"></span></li>
+
+                                <li><img src="images/right-icon.png" id="carCruseControl"><span id="cCruse"></span></li>
+                                <li><img src="images/right-icon.png" id="carAdjustSteering"><span id="cAduSte"></span></li>
+                                <li><img src="images/right-icon.png" id="carBluetooth"><span id="cBluetooth"></span></li>
+                                <li><img src="images/right-icon.png" id="carRadioConUSB"><span id="cRadioCon"></span></li>
+                                <li><img src="images/right-icon.png" id="carHydraulicSteering"><span id="cHydraulic"></span></li>
+                                <li><img src="images/right-icon.png" id="carCentralLocking"><span id="cCentLock"></span></li>
+                                <li><img src="images/right-icon.png" id="carPowerSeats"><span id="cPowerSeat"></span></li>
+                                <li><img src="images/right-icon.png" id="carTintedGlasses"><span id="cTintedGla"></span></li>
+                                <li><img src="images/right-icon.png" id="carElectricGlasses"><span id="cElectricGls"></span></li>
+                                <li><img src="images/right-icon.png" id="carBrakes"><span id="cBreaks"></span></li>
+                                <li><img src="images/right-icon.png" id="carTripComputer"><span id="cTripCom"></span></li>
+                                <li><img src="images/right-icon.png" id="carStartButtonKey"><span id="cIntelligent"></span></li>
+
+                            </ul>
+                            <ul>
+                                <li><span id="carComment">Comentario</span></li>
+                            </ul>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="clear"></div>
+        <div class="footer-area">
+            <div class="add"><img src="images/cocacola-img.png"></div>
+
+
+        </div>
+
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
+                        id="sundries"> Sundries</span></a>
+                </li>
+                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/owl.carousel.js"></script>
+
+
+<script src="js/switchery.min.js"></script>
+<script src="js/pages.min.js"></script>
+
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script src="js/kc.fab.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var links = [
+            {
+                "bgcolor": "red",
+                "icon": "+",
+            },
+            {
+                "url": "car-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-car.png'></i>",
+            },
+            {
+                "url": "realestate-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "white",
+                "icon": "<i class='fa fa-music'><img src='images/mini-real.png'></i>"
+            },
+            {
+                "url": "othersupload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-others.png'></i>",
+            }
+        ]
+        $('.kc_fab_wrapper').kc_fab(links);
+    })
+</script>
+
+</body>
+</html>

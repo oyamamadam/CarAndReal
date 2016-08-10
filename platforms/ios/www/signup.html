@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/singup.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/signup.js"></script>
+</head>
+<body>
+<div data-role="page">
+    <div data-role="main" class="ui-content">
+        <div data-role="header" class="bg_login" style="border-bottom: 1px solid #ddd;">
+            <div class="logo_login"><img src="images/logo.png"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="profile-area">
+                        <form action="" name="loginfrm" method="post">
+                            <div class="for_form">
+                                <div data-role="fieldcontain">
+                                    <input type="text" name="firstname" id="firstname" value=""
+                                           placeholder="First Name"/>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <input type="text" name="lastname" id="lastname" value="" placeholder="Last Name"/>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <input type="text" name="contactno" id="contactno" value=""
+                                           placeholder="Contact Number"/>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <input type="text" name="emailid" id="emailid" value="" placeholder="E-mail"/>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <input type="password" name="password" id="password" value=""
+                                           placeholder="Password"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                                        <input type="radio" name="sex" id="male" value="male" checked="checked"
+                                               class="profile-radio" onClick="goToGender();"> Male
+                                    </div>
+                                    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                        <input type="radio" name="sex" id="female" value="female" class="profile-radio"
+                                               onclick="goToGender();"> Female
+                                    </div>
+                                </div>
+                                <br/>
+
+                                <div class="for_btn">
+                                    <input type="checkbox" name="tccheck" id="tccheck" checked="checked"
+                                           class="mar_top"><a href="termsconditions.html">Terms & Conditions</a>
+                                    <br/>
+                                    <a onClick="return goToSignUp();" class="button ui-btn ui-btn-inline my_login">Sign
+                                        up</a> <br/>
+                                    <!--<a onclick="iwilldolater();">I'll do later</a>-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

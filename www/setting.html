@@ -1,0 +1,149 @@
+<!doctype html>
+<html id="#homepage">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <link rel="stylesheet" href="css/kc.fab.css"/>
+    <style>
+        #owl-demo .item img {
+            display: block;
+            width: 100% !important;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body class="for_main_bg">
+
+<div class="kc_fab_wrapper"></div>
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();">
+                <a data-rel="close">
+                    <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                    <h4 id="profilename"><b id="profile">Profile</b></h4>
+                </a>
+            </div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
+            </li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                    id="setting">Setting</span></a>
+            </li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+            </li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+                FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+    </div>
+
+
+    <div data-role="main" class="ui-content">
+
+        <div id="demo">
+            <div class="container">
+                <div class="row">
+                    <div class="span12">
+                        <div class="profile-area">
+                            <div align="center">
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                                    <span id="cangelang">Change Your Language</span>
+                                </button> 
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal">
+                                    <span id="resetpassword" onclick="goToResetPassword();">Reset Password</span>
+                                </button>
+                            </div>
+                            <!-- Modal -->
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title"><span id="cangelang1">Change Your Language</span>
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><input type="radio" class="radio-button" name="lang_radio" id="en_radio">
+                                                <span id="enlang">English</span></p>
+
+                                            <p><input type="radio" class="radio-button" name="lang_radio" id="es_radio">
+                                                <span id="eslang">Spanish</span></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button style="float:left" type="button" class="btn btn-default"
+                                                    data-dismiss="modal" onclick="goToLangChange();">
+                                                <span id="ok">Ok</span>
+                                            </button>
+                                            <button style="float:right" type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                <span id="close">Close</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- model-->
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+            <div class="add"><img src="images/cocacola-img.png"></div>
+    <div class="clear"></div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
+                        id="sundries"> Sundries</span></a>
+                </li>
+                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/setting.js"></script>
+</body>
+</html>

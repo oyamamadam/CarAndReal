@@ -1,0 +1,51 @@
+.for_form {
+    width:96%;
+    margin:0 auto;
+}
+.for_form ul {
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.for_form ul li {
+    width:100%;
+    float:left;
+    margin:20px 0 0 0;
+}
+
+input[type="radio"] {
+    line-height: normal;
+    margin: 0 0 0 0;
+    width: 30px !important;
+}
+
+.for_form label {
+    position: relative;
+    top: -15px;
+    color:#666;opacity: 1; font-weight:normal;
+}
+input[type="checkbox"] {
+    line-height: normal;
+    margin: 0 0 0 0;
+    width: 30px !important;
+}
+.for_form checkbox label {
+    position: relative;
+    top: -15px;
+    color:#666;opacity: 1;font-weight:normal;
+}
+.for_form_button{
+    background:#41B900;
+    text-align:center !important;
+    padding:7px 20px;
+    border:none;
+    font-size:17px;
+    color:#fff;
+    margin-bottom:15px;
+    border-radius:3px;
+}
+.for_form input::-moz-placeholder, input::-moz-placeholder, textarea::-moz-placeholder
+{ color:#666;}
+*::-moz-placeholder {
+    opacity: 1;
+}

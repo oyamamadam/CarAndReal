@@ -1,0 +1,418 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/radio.css">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/kc.fab.css"/>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+    <script src="js/editother.js"></script>
+    <style>
+        .table-bordered {
+            margin-top: 20px;
+            width: 100% !important;
+        }
+
+        table tr td {
+            text-align: center;
+            padding: 0px !important;
+        }
+
+        table caption {
+            padding: .5em 0;
+        }
+
+        .ui-mobile label, .ui-controlgroup-label {
+            display: block;
+            margin: 0px 0 0px;
+        }
+
+        @media screen and (max-width: 767px) {
+            table caption {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+        label {
+            position: relative !important;
+            padding: 0px;
+        }
+
+    </style>
+</head>
+
+<body class="for_main_bg">
+<div class="kc_fab_wrapper"></div>
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();"><a data-rel="close"> <img id="profilegender"
+                                                                                    src="images/menu-profile-icon.png"><br>
+                <h4 id="profilename"><b id="profile">Profile</b></h4>
+            </a></div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
+            </li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                    id="setting">Setting</span></a></li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+            </li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+        FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+    </div>
+    <div data-role="main" class="ui-content">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#menu1"><span id="basicinfo">Basic Info</span></a></li>
+                <li><a data-toggle="pill" href="#menu2"><span id="ouploadpic">Upload Pics</span></a></li>
+                <li><a data-toggle="pill" href="#menu3"><span id="extraInfo">Info & Extras</span></a>
+                </li>
+            </ul>
+            <div class="tab-content">
+
+                <div id="menu1" class="tab-pane fade in active">
+                    <div style="padding:15px 0px;" class="panel-body">
+                        <div class="row">
+                            <div id="divOtherType">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select name="other_type" id="other_type" required="required"
+                                                onChange="selectClear('errfn');">
+                                            <option value="">Select Type</option>
+                                            <option value="Old">Old</option>
+                                            <option value="New">New</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divCategoryType">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn1" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select name="other_category" id="other_category" required="required"
+                                                onChange="selectClear('errfn1');">
+                                            <option value="">Select Category</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="clear"></div>
+                                <div align="center" id="errfn2" style="color: #ff0a1b;"></div>
+                                <div class="clear"></div>
+                                <div class="for_field new-field">
+                                    <input type="text" id="other_title" name="other_title"
+                                           placeholder="Title" onfocus="this.placeholder = ''"
+                                           onblur="setPlaceHolderTitle();" required
+                                           onclick="selectClear('errfn2');"/>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div id="divCountry">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn3" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select name="selectCountry" id="selectCountry"
+                                                onChange="selectState12(this.value);" onclick="selectClear('errfn3');">
+                                            <option selected="" value="">Select Country</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="row">
+                            <div id="div5">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn4" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select onchange="selectCity12(this.value);"
+                                                id="selectState" name="selectState" onclick="selectClear('errfn4');">
+                                            <option value="">Select State</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="div6">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn5" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select id="selectCity" name="selectCity" onclick="selectClear('errfn5');">
+                                            <option value="">Select City</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        <div class="row">
+                            <div id="divRatingType">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn6" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select name="car_rating" id="car_rating" onclick="selectClear('errfn6');">
+                                            <option value="">Select Rating</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="divConditionType">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="clear"></div>
+                                    <div align="center" id="errfn7" style="color: #ff0a1b;"></div>
+                                    <div class="clear"></div>
+                                    <div class="for_field new-field">
+                                        <select id="car_condition" name="car_condition" onclick="selectClear('errfn7');">
+                                            <option value="">Select Condtion</option>
+                                            <option value="Excellent">Excellent</option>
+                                            <option value="Very Good">Very Good</option>
+                                            <option value="Okay">Okay</option>
+                                            <option value="Regular">Regular</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="for_lable">
+                                    <label for="other_pri_type" id="pricetype">Price Type</label>
+                                </div>
+                                <div class="for_field">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="other_pri_type" class="onoffswitch-checkbox"
+                                               id="other_pri_type" checked>
+                                        <label class="onoffswitch-label" for="other_pri_type">
+                                            <span class="onoffswitch-inner price"></span>
+                                            <span class="onoffswitch-switch price"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="clear"></div>
+                                <div align="center" id="errfn8" style="color: #ff0a1b;"></div>
+                                <div class="clear"></div>
+                                <div class="for_field new-field">
+                                    <input type="text" id="other_price" name="other_price"
+                                           onclick="selectClear('errfn8');" placeholder="Price"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="setPlaceHolderPrice();"
+                                           required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+
+                <!--- tab 1 end --------------------------------------------------->
+                <div id="menu2" class="tab-pane fade">
+                    <div class="panel-body">
+                        <div class="row">
+                            <ul id="carImages"></ul>
+                        </div>
+                        <div class="row">
+                            <div align="center"><p><a onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img
+                                    src="images/addpic.jpg"/></a></p></div>
+                        </div>
+                    </div>
+                </div>
+                <!--------- tab2 end ----------------------------------------------->
+                <div id="menu3" class="tab-pane fade">
+                    <table class="table-bordered">
+                        <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="other_exchange" id="other_exchange" class="css-checkbox"/>
+                                <label for="other_exchange" class="css-label" id="exchange">Exchange</label></td>
+                            <td><input type="checkbox" name="checkboxG4" id="other_loan" class="css-checkbox"/>
+                                <label for="other_loan" class="css-label" id="loan">Loan</label></td>
+                            <td><input type="checkbox" name="other_flex_pri" id="other_flex_pri" class="css-checkbox"/>
+                                <label for="other_flex_pri" class="css-label" id="oFlexible">Flexible Price</label>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                        <!--          <tfoot>
+                        <tr>
+                          <td colspan="5" class="text-center">Data retrieved from <a href="http://www.infoplease.com/ipa/A0855611.html" target="_blank">infoplease</a> and <a href="http://www.worldometers.info/world-population/population-by-country/" target="_blank">worldometers</a>.</td>
+                        </tr>
+                      </tfoot>-->
+                    </table>
+                    <div class="clear"></div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div align="center" id="errfn19" style="color: #ff0a1b;"></div>
+                            <input type="text" placeholder="Publish By" name="u_name"
+                                   id="u_name" onclick="selectClear('errfn9');"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="setPlaceHolderPublishBy();" required/>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div align="center" id="errfn20" style="color: #ff0a1b;"></div>
+                            <div class="clear"></div>
+                            <input type="text" placeholder="Contact No." name="u_phone"
+                                   id="u_phone" onclick="selectClear('errfn10');"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="setPlaceHolderContact();"
+                                   required="required"/>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <textarea cols="25" rows="2" style="border: 1px solid #CCCCCC;" name="other_comment"
+                            id="other_comment" onfocus="this.placeholder = ''"
+                            onblur="setPlaceHolderComment();"></textarea>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <!--end of .table-responsive-->
+
+        </div>
+        <!------------- tab content end ------------->
+        <div align="center">
+            <button onclick="return updateOtherDetail();" class="my_login ui-btn ui-btn-inline" type="submit"
+                    id="oSubmit">Submit
+            </button>
+        </div>
+    </div>
+
+    <div class="add"><img src="images/cocacola-img.png"></div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
+                        id="sundries"> Sundries</span></a>
+                </li>
+                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!--  <script src="js/jquery-1.5.1.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<!--<script src="js/owl.carousel.js"></script>-->
+<!--<script>-->
+<!--$(document).ready(function () {-->
+<!--$("#owl-demo").owlCarousel({-->
+
+<!--navigation: false,-->
+<!--slideSpeed: 300,-->
+<!--paginationSpeed: 400,-->
+<!--singleItem: true-->
+<!--});-->
+<!--});-->
+<!--</script>-->
+<!--<script src="js/switchery.min.js"></script>-->
+<!--<script src="js/pages.min.js"></script>-->
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script src="js/kc.fab.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var links = [
+            {
+                "bgcolor": "red",
+                "icon": "+",
+            },
+            {
+                "url": "car-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-car.png'></i>",
+            },
+            {
+                "url": "realestate-upload.html",
+                "bgcolor": "#2372f5",
+                "color": "white",
+                "icon": "<i class='fa fa-music'><img src='images/mini-real.png'></i>"
+            },
+            {
+                "url": "othersupload.html",
+                "bgcolor": "#2372f5",
+                "color": "#fffff",
+                "icon": "<i class='fa fa-car'><img src='images/mini-others.png'></i>",
+            }
+        ]
+        $('.kc_fab_wrapper').kc_fab(links);
+    })
+</script>
+
+</div>
+</body>
+</html>

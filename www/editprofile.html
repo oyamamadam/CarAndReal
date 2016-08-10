@@ -1,0 +1,141 @@
+<!doctype html>
+<html id="#homepage">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Grupo Del Cambalache</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/1444221890.ico">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.minold.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/constant.js"></script>
+
+
+</head>
+<body class="for_main_bg">
+<div class="kc_fab_wrapper"></div>
+<div data-role="page" id="pageone">
+    <!--------------dropdown menu open------------->
+    <div data-role="panel" id="myPanel" class="my_listview">
+        <ul data-role="">
+            <div class="profile" onclick="goToProfile();">
+                <a data-rel="close">
+                    <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                    <h4 id="profilename"><b id="profile">Profile</b></h4>
+                </a>
+            </div>
+            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                    id="home">Home</span></a></li>
+            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
+            </li>
+            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                    id="setting">Setting</span></a>
+            </li>
+            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+            </li>
+            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                    id="contactus">Contact Us</span></a></li>
+            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+                FAQ</span></a></li>
+            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                    id="logout">Logout</span></a></li>
+        </ul>
+    </div>
+    <!--------------dropdown menu open------------->
+    <div data-role="header" data-position="fixed" class="bg_login">
+        <div class="container">
+            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+    </div>
+    <div data-role="main" class="ui-content">
+        <div id="demo" class="btm_marg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="profile-area">
+                            <div align="center">
+                                <!--<a class="ui-link" href="profile.html" data-rel="close">-->
+                                <div align="center">
+                                    <div class="img-box"><img id="profilepic" src="images/g_male.png"></div>
+                                </div>
+                                <br>
+
+                                <form action="" name="editfrm" method="post">
+                                    <div class="for_form">
+                                        <ul class="profile-ul">
+                                            <li><input type="text" name="firstname" id="firstname" value=""
+                                                       placeholder="First Name"/></li>
+                                            <li><input type="text" name="lastname" id="lastname" value=""
+                                                       placeholder="Last Name"/></li>
+                                            <li><input type="text" name="usermobile" id="usermobile"
+                                                       placeholder="Contact Number"/></li>
+                                            <li><input type="text" name="useremail" id="useremail"
+                                                       placeholder="E-mail"/></li>
+                                            <li>
+                                                <div>
+                                                    <div align="left">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                                                                <input type="radio" name="sex" id="male" value="male"
+                                                                       class="profile-radio" onclick="goToGender();">
+                                                                Male
+                                                            </div>
+                                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                                                                <input type="radio" name="sex" id="female"
+                                                                       value="female" class="profile-radio"
+                                                                       onclick="goToGender();"> Female
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="for_btn">
+
+                                        <a onClick="return goToUpdateProfile();"
+                                           class="button ui-btn ui-btn-inline my_login">Update</a>
+                                    </div>
+                                </form>
+                                <!--<h4 id="profilename">Address : Sterling Tower Indore </h4>-->
+                                <!--</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+ <div class="clearfix"> </div>
+    <!------close here-------->
+    <div class="add"><img src="images/cocacola-img.png"></div>
+    <div class="clear"> </div>
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                    Automobiles</span></a></li>
+            <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                    State</span></a></li>
+            <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
+                    id="sundries"> Sundries</span></a>
+            </li>
+            <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
+        </ul>
+    </div>
+</div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/editprofile.js"></script>
+</body>
+</html>

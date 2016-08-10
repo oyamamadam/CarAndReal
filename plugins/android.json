@@ -1,0 +1,42 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-facebook4": {
+            "APP_ID": "489678871213616",
+            "APP_NAME": "CarAndReal",
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-pdialog": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-sim": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.carandreal"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.carandreal"
+        }
+    }
+}
