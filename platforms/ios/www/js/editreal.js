@@ -88,7 +88,7 @@ function ready_eng() {
     rSizeCon = "Size Range Of Construction";
     rBuilt = "Year of build";
     ruploadpic = "Upload Pics";
-    extraInfo = "Extra Info";
+    extraInfo = "Extra";
     rMorgage = "Mortgage";
     rFlexible = "Flexible Price";
     loan = "Loan";
@@ -397,13 +397,15 @@ function selectCountry12(str) {
 
 function selectState12(real_country, real_state) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?ecountry_id=" + real_country + "&st_id=" + real_state;
     jQuery.ajax({
@@ -411,18 +413,21 @@ function selectState12(real_country, real_state) {
             jQuery("#div5").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectCity12(real_state, real_city) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?estate_id=" + real_state + "&ci_id=" + real_city;
     jQuery.ajax({
@@ -430,7 +435,8 @@ function selectCity12(real_state, real_city) {
             jQuery("#div6").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectCondition(str) {
@@ -485,13 +491,15 @@ app.initialize();
 
 function getRealDetailForEdit(rid) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
+
 
     var getData = '{"method":"EditRealEstateDetail", "real_id":"' + rid + '", "regi_id":"' + gdc_uid + '"}';
     $.ajax({
@@ -505,8 +513,9 @@ function getRealDetailForEdit(rid) {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -621,7 +630,9 @@ function realDetailEditData(data) {
             }
         }
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
+
     return true;
 }
 
@@ -692,7 +703,7 @@ function getPhoto(source) {
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Alert','Ok');
 }
 
 var removecar_img = "";
@@ -765,21 +776,21 @@ function goUpdateReal() {
 
     var real_property = document.getElementById('proType').value;
     if ($.trim(real_property) == "") {
-        alert(selectOtherMsg);
+        navigator.notification.alert(selectOtherMsg,null,'Alert','Ok');
         $('#proType').focus();
         document.getElementById('errfn').innerHTML = selectOtherMsg;
         return false;
     }
     var real_pro_type = document.getElementById('propertyType').value;
     if ($.trim(real_pro_type) == "") {
-        alert(selectCatMsg);
+        navigator.notification.alert(selectCatMsg,null,'Alert','Ok');
         $('#propertyType').focus();
         document.getElementById('errfn1').innerHTML = selectCatMsg;
         return false;
     }
     var real_title_lis = document.getElementById('real_title_lis').value;
     if ($.trim(real_title_lis).length == 0) {
-        alert(insertTitleMsg);
+        navigator.notification.alert(insertTitleMsg,null,'Alert','Ok');
         $('#real_title_lis').focus();
         document.getElementById('errfn2').innerHTML = insertTitleMsg;
         return false;
@@ -787,7 +798,7 @@ function goUpdateReal() {
 
     var real_three = document.getElementById('real_three').value;
     if ($.trim(real_three).length == 0) {
-        alert(insertBuiltMsg);
+        navigator.notification.alert(insertBuiltMsg,null,'Alert','Ok');
         $('#real_three').focus();
         document.getElementById('errfn33').innerHTML = insertBuiltMsg;
         return false;
@@ -795,14 +806,14 @@ function goUpdateReal() {
 
     var real_terrain = document.getElementById('real_terrain').value;
     if ($.trim(real_terrain).length == 0) {
-        alert(insertTerrainMsg);
+        navigator.notification.alert(insertTerrainMsg,null,'Alert','Ok');
         $('#real_terrain').focus();
         document.getElementById('errfn44').innerHTML = insertTerrainMsg;
         return false;
     }
     var real_building = document.getElementById('real_building').value;
     if ($.trim(real_building).length == 0) {
-        alert(insertBuildingMsg);
+        navigator.notification.alert(insertBuildingMsg,null,'Alert','Ok');
         $('#real_building').focus();
         document.getElementById('errfn5').innerHTML = insertBuildingMsg;
         return false;
@@ -811,42 +822,42 @@ function goUpdateReal() {
 
     var real_near_by_loc = document.getElementById('real_near_by_loc').value;
     if ($.trim(real_near_by_loc).length == 0) {
-        alert(insertNearbyMsg);
+        navigator.notification.alert(insertNearbyMsg,null,'Alert','Ok');
         $('#real_near_by_loc').focus();
         document.getElementById('errfn13').innerHTML = insertNearbyMsg;
         return false;
     }
     var real_country = document.getElementById('selectCountry').value;
     if ($.trim(real_country) == "") {
-        alert(insertCountryMsg);
+        navigator.notification.alert(insertCountryMsg,null,'Alert','Ok');
         $('#selectCountry').focus();
         document.getElementById('errfn3').innerHTML = insertCountryMsg;
         return false;
     }
     var real_state = document.getElementById('selectState').value;
     if ($.trim(real_state) == "") {
-        alert(insertStateMsg);
+        navigator.notification.alert(insertStateMsg,null,'Alert','Ok');
         $('#selectState').focus();
         document.getElementById('errfn4').innerHTML = insertStateMsg;
         return false;
     }
     var real_city = document.getElementById('selectCity').value;
     if ($.trim(real_city) == "") {
-        alert(insertCityMsg);
+        navigator.notification.alert(insertCityMsg,null,'Alert','Ok');
         $('#selectCity').focus();
         document.getElementById('errfn5').innerHTML = insertCityMsg;
         return false;
     }
     var real_room = document.getElementById('real_room').value;
     if ($.trim(real_room).length == 0) {
-        alert(insertRoomMsg);
+        navigator.notification.alert(insertRoomMsg,null,'Alert','Ok');
         $('#real_room').focus();
         document.getElementById('errfn10').innerHTML = insertRoomMsg;
         return false;
     }
     var real_baths = document.getElementById('real_baths').value;
     if ($.trim(real_baths).length == 0) {
-        alert(insertBathroomMsg);
+        navigator.notification.alert(insertBathroomMsg,null,'Alert','Ok');
         $('#real_baths').focus();
         document.getElementById('errfn11').innerHTML = insertBathroomMsg;
         return false;
@@ -854,7 +865,7 @@ function goUpdateReal() {
 
     var real_rating = document.getElementById('real_rating').value;
     if ($.trim(real_rating) == "") {
-        alert(selectRatingMsg);
+        navigator.notification.alert(selectRatingMsg,null,'Alert','Ok');
         $('#real_rating').focus();
         document.getElementById('errfn6').innerHTML = selectRatingMsg;
         return false;
@@ -862,7 +873,7 @@ function goUpdateReal() {
 
     var real_condition = document.getElementById('real_condition').value;
     if ($.trim(real_condition) == "") {
-        alert(selectConditionMsg);
+        navigator.notification.alert(selectConditionMsg,null,'Alert','Ok');
         $('#real_condition').focus();
         document.getElementById('errfn7').innerHTML = selectConditionMsg;
         return false;
@@ -888,7 +899,7 @@ function goUpdateReal() {
     //alert(real_price_type);
     var real_price = document.getElementById('real_price').value;
     if ($.trim(real_price).length == 0) {
-        alert(insertPriceMsg);
+        navigator.notification.alert(insertPriceMsg,null,'Alert','Ok');
         $('#real_price').focus();
         document.getElementById('errfn14').innerHTML = insertPriceMsg;
         return false;
@@ -945,14 +956,15 @@ function goUpdateReal() {
     //var u_email = document.getElementById('u_email').value;
     var name = document.getElementById('u_name').value;
     if ($.trim(name).length == 0) {
-        alert(insertNameMsg);
+        navigator.notification.alert(insertNameMsg,null,'Alert','Ok');
+
         $('#u_name').focus();
         document.getElementById('errfn9').innerHTML = insertNameMsg;
         return false;
     }
     var u_phone = document.getElementById('u_phone').value;
     if ($.trim(u_phone).length == 0) {
-        alert(insertContactMsg);
+        navigator.notification.alert(insertContactMsg,null,'Alert','Ok');
         $('#u_phone').focus();
         document.getElementById('errfn10').innerHTML = insertContactMsg;
         return false;
@@ -973,13 +985,15 @@ function goUpdateReal() {
         var im_data = '{"method":"UpdateRealEstateDetail", "regi_id":"' + regi_id + '","real_id":"' + editreal_id + '", "real_property":"' + real_property + '", ' + '"real_title_lis":"' + real_title_lis + '", "real_pro_type":"' + real_pro_type + '", ' + '"real_terrain":"' + real_terrain + '", "real_building":"' + real_building + '", ' + '"real_location":"' + real_location + '", "real_near_by_loc":"' + real_near_by_loc + '", "real_country":"' + real_country + '", "real_state":"' + real_state + '", "real_city":"' + real_city + '", "real_room":"' + real_room + '", "real_baths":"' + real_baths + '", "real_condition":"' + real_condition + '", "real_rating":"' + real_rating + '", "real_loan":"' + real_loan + '", "real_rec":"' + real_rec + '", "real_size_pro":"' + real_size_pro + '", "real_size_con":"' + real_size_con + '", "real_electricity":"' + real_electricity + '", "real_water":"' + real_water + '", "real_morgage":"' + real_morgage + '","real_three":"' + real_three + '", ' + '"real_acc_flex":"' + real_acc_flex + '", "real_comment":"' + real_comment + '", "name":"' + name + '",  "u_phone":"' + u_phone + '", ' + '"u_email":"' + u_email + '", "real_trade":"' + real_trade + '", "real_price_type":"' + real_price_type + '", "real_price":"' + real_price + '", "real_image":' + JSON.stringify(image) + '}';
     }
     //console.log(im_data);
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -989,19 +1003,23 @@ function goUpdateReal() {
         data: im_data,
         success: function (data) {
             if (data.success == 0) {
-                cordova.plugin.pDialog.dismiss();
-                alert(errorMsg);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(errorMsg,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
             if (data.success == 1) {
-                cordova.plugin.pDialog.dismiss();
-                alert(successMsg);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(successMsg,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 window.location.href = "userpost.html?type=realmenu";
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert(errorMsg);
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert(errorMsg,null,'Alert','Ok');
+            $("#preloader").css('display','none');
+
             return false;
         }
     });

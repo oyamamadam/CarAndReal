@@ -1,4 +1,5 @@
 /**
+/**
  * Created by CTinfotech on 01/25/2015.
  */
 var carkey = "";
@@ -71,7 +72,7 @@ $(document).ready(
 function goToSerachCar() {
     var carkey = document.getElementById('carkey').value;
     if ($.trim(carkey).length == 0) {
-        alert(blank_msg);
+        navigator.notification.alert(blank_msg,null,'Alert','Ok');
         return false;
     }
     window.location.href = "carsearchresult.html?searchtype=carsearch" + "&carkey=" + carkey;
@@ -84,7 +85,8 @@ function goToAdvanceSerachCar() {
 function goToSearchReal() {
     var realkey = document.getElementById('realkey').value;
     if ($.trim(realkey).length == 0) {
-        alert(blank_msg);
+        navigator.notification.alert(blank_msg,null,'Alert','Ok');
+        alert();
         return false;
     }
     window.location.href = "realsearchresult.html?searchtype=realsearch" + "&realkey=" + realkey;
@@ -97,7 +99,7 @@ function goToAdvanceSearchReal() {
 function goToSearchOther() {
     var otherkey = document.getElementById('otherkey').value;
     if ($.trim(otherkey).length == 0) {
-        alert(blank_msg);
+        navigator.notification.alert(blank_msg,null,'Alert','Ok');
         return false;
     }
     window.location.href = "otherssearchresult.html?searchtype=othersearch" + "&otherkey=" + otherkey;

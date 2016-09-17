@@ -7,6 +7,7 @@ var gdc_lastname = window.localStorage.getItem("gdc_lastname");
 var gdc_gender = window.localStorage.getItem("gdc_gender");
 var gdc_email = window.localStorage.getItem("gdc_email_id");
 var gdc_mobile = window.localStorage.getItem("gdc_contactno");
+var profile_image = window.localStorage['profile-image'];
 //alert(gdc_lastname);
 //var gdc_password = window.localStorage.getItem("gdc_contactno");
 var gdc_username = gdc_firstname + " " + gdc_lastname;
@@ -28,11 +29,21 @@ $(document).ready(
         }
         if (gdc_gender == null) {
 
-        } else {
-            if (gdc_gender == "male") {
+                document.getElementById("profilepic").src = "images/g_mail.png";
 
-            } else {
+
+        } else {
+            if (!gdc_gender == "male") {
                 document.getElementById("profilepic").src = "images/g_female.png";
+            } else {
+                //document.getElementById("profilepic").src =  "images/g_male.png";
+               if(gdc_gender=="")
+               {
+                   document.getElementById("profilepic").src =  "images/g_male.png";
+               }else
+               {
+                   document.getElementById("profilepic").src = profile_image;
+               }
             }
         }
     }
@@ -57,6 +68,55 @@ function goToGender() {
     }
 }
 
+//function onPhotoDataSuccess(imageData) {
+//    var smallImage = document.getElementById('smallImage');
+//    smallImage.style.display = 'block';
+//    smallImage.src = "data:image/jpeg;base64," + imageData;
+//
+//}
+
+//function getPhoto(source) {
+//    navigator.camera.getPicture(onPhotoURISuccess, onFail, {
+//        quality: 50,
+//        destinationType: destinationType.DATA_URL,
+//        sourceType: source
+//    });
+//}
+
+
+
+
+//var pictureSource;   // picture source
+//var destinationType; // sets the format of returned value
+
+//document.addEventListener("deviceready",onDeviceReady,false);
+
+//function onDeviceReady() {
+//    pictureSource=navigator.camera.PictureSourceType;
+//    destinationType=navigator.camera.DestinationType;
+//}
+
+//function onPhotoURISuccess(imageURI) {
+//    var largeImage = document.getElementById('profilepic');
+//    //alert(imageURI);
+//    largeImage.style.display = 'block';
+//    largeImage.src = imageURI;
+//}
+////function getPhoto(source) {
+//    // Retrieve image file location from specified source
+//    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+//        destinationType: destinationType.FILE_URI,
+//        sourceType: source });
+//}
+//function onFail(message) {
+//    alert('Failed because: ' + message);
+//}
+
+
+
+
+
+
 function goToUpdateProfile() {
 
     var firstname = document.getElementById('firstname').value;
@@ -70,36 +130,38 @@ function goToUpdateProfile() {
         var gender = document.getElementById('female').value;
     }
     if ($.trim(firstname).length == 0) {
-        alert('Please enter first name.');
+        navigator.notification.alert('Please enter first name.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(lastname).length == 0) {
-        alert('Please enter last name.');
+        navigator.notification.alert('Please enter last name.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(contactno).length == 0) {
-        alert('Please enter contact no.');
+        navigator.notification.alert('Please enter contact no.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(contactno).length < 10) {
-        alert('Please enter valid contact no.');
+        navigator.notification.alert('Please enter valid contact no.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(email_id).length == 0) {
-        alert('Please enter valid email address.');
+        navigator.notification.alert('Please enter valid email address.',null,'Alert','Ok');
+
         return false;
     }
 
     if (validateEmail(email_id)) {
 
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
 
+        $("#preloader").css('display','blcok');
 
         $.ajax({
             url: BASE_URL + APP_API,
@@ -109,13 +171,17 @@ function goToUpdateProfile() {
             data: '{"method":"UpdateProfile", "uid":"' + gdc_uid + '","first_name":"' + firstname + '","last_name":"' + lastname + '", "gender":"' + gender + '", "contact_no":"' + contactno + '", "email_id":"' + email_id + '"}',
             success: function (data) {
                 if (data.success == 0) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+                    //alert();
                     return false;
                 }
                 if (data.success == 1) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+                    //alert();
                     //window.location.href ="verifynumber.html";
 
                     window.location.href = "profile.html";
@@ -127,14 +193,16 @@ function goToUpdateProfile() {
                     window.localStorage.setItem("gdc_email_id", data.userinfo.email_id);
                 }
                 if (data.success == 2) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
                     return false;
                 }
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Server Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });
@@ -142,7 +210,9 @@ function goToUpdateProfile() {
 
     }
     else {
-        alert('Invalid Email Address');
+        navigator.notification.alert('Invalid Email Address',null,'Alert','Ok');
+        $("#preloader").css('display','none');
+        //alert('');
         return false;
     }
 

@@ -120,6 +120,11 @@ function goToOtherList() {
 function goToMore() {
     window.location.href = "more.html";
 }
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var gdc_uid = window.localStorage.getItem("gdc_uid");
 var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
@@ -192,16 +197,16 @@ function goToPrv() {
     getAllRealDetail();
 }
 function getAllRealDetail() {
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
-
-
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -254,6 +259,8 @@ function realListData(data) {
         var obj = data.realtotal;
         document.getElementById('totalrealadv').innerHTML = obj;
         document.getElementById('pageno').innerHTML = pageno;
+        //var aa = data.reallist;
+        //alert(JSON.stringify(aa));
         $("#allRealData").children().remove();
         for (var i = 0; i < data.reallist.length; i++) {
             var real_id = data.reallist[i].real_id;
@@ -301,30 +308,80 @@ function realListData(data) {
 
             var electricity = data.reallist[i].real_electricity;
             if (electricity == "Yes") {
-                var electricityli = '<img src="images/electric.png" class="icon-img" title="Electricity-Service">';
+                var electricityli = '<img src="images/electric.png" class="icon-img" title="">';
             } else {
                 var electricityli = "";
             }
 
             var water = data.reallist[i].real_water;
             if (water == "Yes") {
-                var waterli = '<img src="images/water.png" class="icon-img" title="Water-Service">';
+                var waterli = '<img src="images/water.png" class="icon-img" title="">';
             } else {
                 var waterli = "";
             }
 
             var real_price_type = data.reallist[i].real_price_type;
-            if (real_price_type == "Dollares") {
-                var real_price = "$ " + data.reallist[i].real_price;
-            } else {
-                var real_price = "₡ " + data.reallist[i].real_price;
-            }
+            var real_price =numberWithCommas(data.reallist[i].real_price);
+            //if (real_price_type == "Dollares") {
+            //    var real_price = "$ " + data.reallist[i].real_price;
+            //} else {
+            //    var real_price = "₡ " + data.reallist[i].real_price;
+            //}
             var real_publish = data.reallist[i].real_publish;
             var real_status = data.reallist[i].real_status;
             var real_img = data.reallist[i].real_img;
             var image1 = real_img[0];
             //alert(image1);
-            $("#allRealData").append('<li><a onclick="gotopage(' + real_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + real_title_lis + '</h4><h3>' + real_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + real_city + ', ' + real_state + ', ' + real_country + '</h6><div class="icon-area"><div class="rating-area"><div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + ' /10</div> </div><div class="clearfix"> </div><div align="right">' + exchangeli + loanli + electricityli + waterli + '</div></div></a></li>');
+            if (real_price_type == "Dollares") {
+                $("#allRealData").append('<li>' +
+                '<a onclick="gotopage(' + real_id + ')">' +
+                '<div class="img_for_listing">' +
+                '<img src=' + image1 + '>' +
+                '</div>' +
+                '<div class="txt_for_listing">' +
+                '<h4>' + real_title_lis + '</h4>' +
+                '<h3>' +'$'+ real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h6>' + real_city + ', ' + real_state + ', ' + real_country + '</h6>' +
+                '<div class="icon-area">' +
+                '<div class="rating-area">' +
+                '<div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + ' /10' +
+                '</div> ' +
+                '</div>' +
+                '<div class="clearfix"> </div>' +
+                '</div>' +
+                '</div>' +
+                '</a>' +
+                '<div align="right" class="realestate">' + exchangeli + loanli + electricityli + waterli +
+                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">'+
+                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">'+
+                '</div>' +
+                '</li>');
+            }else
+            {
+                $("#allRealData").append('<li>' +
+                '<a onclick="gotopage(' + real_id + ')">' +
+                '<div class="img_for_listing">' +
+                '<img src=' + image1 + '>' +
+                '</div>' +
+                '<div class="txt_for_listing">' +
+                '<h4>' + real_title_lis + '</h4>' +
+                '<h3 style="color: blue;">' +'₡'+ real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h6>' + real_city + ', ' + real_state + ', ' + real_country + '</h6>' +
+                '<div class="icon-area">' +
+                '<div class="rating-area">' +
+                '<div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + ' /10' +
+                '</div> ' +
+                '</div>' +
+                '<div class="clearfix"> </div>' +
+                '</div>' +
+                '</div>' +
+                '</a>' +
+                '<div align="right" class="realestate">' + exchangeli + loanli + electricityli + waterli +
+                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">'+
+                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">'+
+                '</div>' +
+                '</li>');
+            }
         }
 
         /* setTimeout(function () {
@@ -333,7 +390,8 @@ function realListData(data) {
          }, 3000);
          return true;*/
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 $(document).ready(function () {

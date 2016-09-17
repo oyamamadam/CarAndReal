@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, dl, dt, dd, ol, nav ul, nav li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
     display: block;
 }
 
@@ -16,6 +16,9 @@ ol, ul {
     padding: 0;
 }
 
+.select-tab{
+    background-color: rgb(130, 213, 255) !important;
+}
 a {
     text-decoration: none;
     /*color: #433f3f;*/
@@ -26,21 +29,22 @@ a:hover {
     text-decoration: none;
 }
 
+
 @font-face {
     font-family: 'ambleregular';
-    src: url(../fonts/Amble-Regular-webfont.ttf) format('truetype');
+    /*src: url(../fonts/Amble-Regular-webfont.ttf) format('truetype');*/
 }
 
 @font-face {
     font-family: 'Lobster';
-    src: url(../fonts/Lobster.eot);
-    src: url(../fonts/Lobster.eot?#iefix) format('embedded-opentype'), url(../fonts/Lobster.woff2) format('woff2'), url(../fonts/Lobster.woff) format('woff'), url(../fonts/Lobster.ttf) format('truetype'), url(../fonts/Lobster.svg#Lobster) format('svg')
+    /*src: url(../fonts/Lobster.eot);*/
+    /*src: url(../fonts/Lobster.eot?#iefix) format('embedded-opentype'), url(../fonts/Lobster.woff2) format('woff2'), url(../fonts/Lobster.woff) format('woff'), url(../fonts/Lobster.ttf) format('truetype'), url(../fonts/Lobster.svg#Lobster) format('svg')*/
 }
 
 @font-face {
     font-family: 'Oswald-Medium';
-    src: url(../fonts/Oswald-Medium.eot);
-    src: url(../fonts/Oswald-Medium.eot?#iefix) format('embedded-opentype'), url(../fonts/Oswald-Medium.woff2) format('woff2'), url(../fonts/Oswald-Medium.woff) format('woff'), url(../fonts/Oswald-Medium.ttf) format('truetype'), url(../fonts/Oswald-Medium.svg#Oswald-Medium) format('svg')
+    /*src: url(../fonts/Oswald-Medium.eot);*/
+    /*src: url(../fonts/Oswald-Medium.eot?#iefix) format('embedded-opentype'), url(../fonts/Oswald-Medium.woff2) format('woff2'), url(../fonts/Oswald-Medium.woff) format('woff'), url(../fonts/Oswald-Medium.ttf) format('truetype'), url(../fonts/Oswald-Medium.svg#Oswald-Medium) format('svg')*/
 }
 
 body {
@@ -529,7 +533,7 @@ select {
     background: #fff;
     border: 1px solid #ccc;
     margin: 0 0 15px 0;
-    padding: 10px 10px 10px 0;
+    /*padding: 10px 10px 10px 0;*/
 }
 
 .home_bg img {
@@ -1040,7 +1044,7 @@ select {
 */
 
 .owl-theme .owl-controls {
-    margin-top: 10px;
+    margin-top: -20px;
     text-align: center;
     margin-right: 20px;
 }
@@ -1051,7 +1055,7 @@ select {
     color: #FFF;
     display: inline-block;
     zoom: 1;
-    *display: inline; /*IE7 life-saver */
+    /* *display: inline; IE7 life-saver */
     margin: 5px;
     padding: 3px 10px;
     font-size: 12px;
@@ -1076,7 +1080,7 @@ select {
 .owl-theme .owl-controls .owl-page {
     display: inline-block;
     zoom: 1;
-    *display: inline; /*IE7 life-saver */
+    /*display: inline; IE7 life-saver */
 }
 
 .owl-theme .owl-controls .owl-page span {
@@ -1110,7 +1114,7 @@ select {
 /* preloading images */
 .owl-item.loading {
     min-height: 150px;
-    background: url(AjaxLoader.gif) no-repeat center center
+    /*background: url(AjaxLoader.gif) no-repeat center center*/
 }
 
 /*new css edit*/
@@ -1174,6 +1178,12 @@ select {
     border: 1px solid #369a00 !important;
     border-radius: 4px !important;
     margin-right: 5px;
+}
+.upload_proimg
+{
+    background-color: rgb(255, 98, 81) !important;
+    color: white !important;
+    border-radius: 4px !important;
 }
 
 .my_facebook {
@@ -1264,11 +1274,12 @@ select {
 	bottom:46px;
 	left: 0px;
 	z-index:999;
+    display: none;
 }
 
 .add img {
     width: 100%;
-	max-height:60px !important;
+	/*max-height:60px !important;*/
 }
 
 .my_listview {
@@ -1470,7 +1481,7 @@ height: 30px !important;
     padding: 0 0 0 43%;
 }
 
-.txt checkbox {
+.txt {
     padding: 0 !important;
     margin: 0 !important;
 }
@@ -1633,10 +1644,10 @@ width:60%;
     color: white;
 }
 
-.setup-content input[type="file" i
+.setup-content input[type="file"
 
 ]
-:file-upload-button, button {
+.file-upload-button, button {
     padding: 1px 6px;
     background: red;
 }
@@ -2344,7 +2355,7 @@ max-height: 90px;
     height: 33px;
     border: 1px solid #ccc;
     border-left: 0px solid #ccc;
-    background: url(../../Nurturing-connections/images/search.png) no-repeat 5px 2px;
+    /*background: url(../../Nurturing-connections/images/search.png) no-repeat 5px 2px;*/
 }
 
 .for_search_car_icon input {
@@ -2640,7 +2651,7 @@ max-height: 90px;
 }
 .icon-area {
 	float:right;
-	width:90%:
+	width:90%;
 	clear:both;
 	text-align:right;
 	padding-left:5%;
@@ -2730,4 +2741,95 @@ color: #f00 !important;
     text-align: center;
     cursor: pointer;
 }
+.ui-panel-wrapper
+{
+    overflow-x: visible !important;
+    overflow: visible !important;
+}
+/*.nav-pills>li*/
+/*{*/
+    /*width: 50% !important;*/
+/*}*/
+.col-padding
+{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.row-margin
+{
+    margin-right: -25px !important;
+    margin-left: -25px !important;
+    margin-top: 5px;
+}
+.view
+{
+    float: right;
+    font-weight: bold;
+    font-size: 18px;
+}
+.gypsy
+{
+    float: right;
+    margin-right: 5px;
+}
+#carComment,#realComment,#realVisitorCount
+{
+    font-weight: bold;
+}
+.realestate
+{
+    width: 100%;
+    text-align: left;
+    float: left;
+}
+.bow-cell {
+    margin-left: 10px !important;
+    margin-top: 2px;
+    float: left;
+    margin-bottom: 0px;
+}
+#profilegender
+{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
 
+ #preloader {
+
+     display: none;
+     position:fixed;
+     z-index:2500;
+     top:0;
+     left:0;
+     right:0;
+     bottom:0;
+     z-index:999999999;
+                     }
+#status {
+    position: fixed;
+    z-index: 99999999;
+    width: 250px;
+    height: 130px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding-bottom: 40px;
+    background-image: url(../img/wheel.gif);
+     /*background-color: grey;*/
+    background-size: 64px 64px;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    margin: -100px 0 0 -125px;
+}
+.preloader-logo{
+    background-image:url(../img/loader.png);
+    background-size:130px 50px;
+    height:50px;
+    width:130px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:40px;
+}
+.center-text{text-align:center; display:block;color:#0a2dff; }

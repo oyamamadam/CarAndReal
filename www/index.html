@@ -25,22 +25,22 @@
     <style>
         #owl-demo .item img {
             display: block;
-            width: 53%;
-            height: 165px;
+            width: 40%;
+            height: 110px;
             margin-left: 2%;
         }
 
         #owl-demo2 .item img {
             display: block;
-            width: 53%;
-            height: 165px;
+            width: 40%;
+            height: 110px;
             margin-left: 2%;
         }
 
         #owl-demo3 .item img {
             display: block;
-            width: 53%;
-            height: 160px;
+            width: 40%;
+            height: 110px;
             margin-left: 2%;
         }
 
@@ -59,7 +59,7 @@
     <!-- slider css here -->
     <style>
         .for_slider_txt {
-            width: 40%;
+            width: 55%;
             background: rgba(255, 255, 255, 0.81);
             float: right !important;
             position: absolute;
@@ -68,8 +68,9 @@
             right: 0 !important;
             padding-top: 5px;
             padding-bottom: 5px;
-            height: 100%;
+            height: 110px;
             text-align: right;
+            top: -10px;
         }
 
         .slider_price {
@@ -127,6 +128,11 @@
             position: relative;
             width: 100%;
             margin-bottom: 5px;
+            /*height: 25vh !important;*/
+        }
+        div.owl-wrapper
+        {
+            transition-duration: 1s !important;
         }
     </style>
     <!-- slider css end -->
@@ -135,7 +141,17 @@
 <body class="for_main_bg">
 
 <div class="kc_fab_wrapper"></div>
+
 <div data-role="page" id="pageone">
+
+    <div id="preloader">
+        <div id="status">
+            <h3 class="center-text">Please Waiting</h3>
+        </div>
+    </div>
+
+
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -167,38 +183,21 @@
 
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
-            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="header_menu_icon">
+                <a href="#myPanel"><img src="images/nav.png"></a>
+            </div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
         </div>
     </div>
 
 
     <div data-role="main" class="ui-content">
-
         <div id="demo" class="btm_marg">
             <div class="container">
                 <div class="row">
                     <div class="span12">
                         <div id="owl-demo" class="owl-carousel">
-                            <!--<a onclick="goToLogOut(this, this);">-->
-                            <!--<div class="item"><img src="images/car-01.png">-->
-
-                            <!--<div class="for_slider_txt">-->
-                            <!--<div class="slider_title">White Audi</div>-->
-                            <!--<div class="slider_price">$ 2000</div>-->
-                            <!--<div class="slider_address">Palasia Indore</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</a>-->
-
-                            <!--<div class="clear"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-
                         </div>
                     </div>
                 </div>
@@ -206,69 +205,20 @@
                 <div class="row">
                     <div class="span12">
                         <div id="owl-demo2" class="owl-carousel home-slider">
-                            <!--<a onclick="goToLogOut(this, this);">-->
-                            <!--<div class="item"><img src="images/car-01.png">-->
-
-                            <!--<div class="for_slider_txt">-->
-                            <!--<div class="slider_title">White Audi</div>-->
-                            <!--<div class="slider_price">$ 2000</div>-->
-                            <!--<div class="slider_address">Palasia Indore</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</a>-->
-
-                            <!--<div class="clear"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="span12">
                         <div id="owl-demo3" class="owl-carousel home-slider">
-                            <!--<a onclick="goToLogOut(this, this);">-->
-                            <!--<div class="item"><img src="images/car-01.png">-->
-
-                            <!--<div class="for_slider_txt">-->
-                            <!--<div class="slider_title">White Audi</div>-->
-                            <!--<div class="slider_price">$ 2000</div>-->
-                            <!--<div class="slider_address">Palasia Indore</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</a>-->
-
-                            <!--<div class="clear"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
-                            <!--<div class="item"><img src="images/best-car-01.jpg"></div>-->
 
                         </div>
                     </div>
                 </div>
-
-
             </div>
-            <div class="add"><img src="images/cocacola-img.png"></div>
+
         </div>
         <div class="clear"></div>
-
-
-        <!--<div class="main_tab_up">
-        <div class="car_tab"><img src="images/white-car.png"><br>Automoviles</div>
-        <div class="real_tab"><img src="images/white-real.png"><br>Real State</div>
-        </div>
-        <div class="clear"></div>
-
-        <div class="main_tab_btm">
-        <div class="others_tab"><img src="images/white-others.png"><br>Articulos Varios</div>
-        </div>-->
-
     </div>
 
     <div data-role="footer" data-position="fixed">
@@ -278,8 +228,7 @@
                     Automobiles</span></a></li>
                 <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
                     State</span></a></li>
-                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
-                        id="sundries"> Sundries</span></a></li>
+                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span id="sundries"> Sundries</span></a></li>
                 <li><a onclick="goToMore();"><img src="images/more-icon.png"><br> <span id="more"> More</span></a></li>
             </ul>
         </div>
@@ -289,24 +238,77 @@
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/owl.carousel.js"></script>
-<!--<script>-->
-<!--$(document).ready(function () {-->
-<!--$("#owl-demo").owlCarousel({-->
-<!--navigation: false,-->
-<!--slideSpeed: 300,-->
-<!--paginationSpeed: 400,-->
-<!--singleItem: true-->
-<!--});-->
-<!--});-->
-<!--</script>-->
-
 <script src="js/kc.fab.min.js"></script>
 <script>
+
+
     $(document).ready(function () {
+
+
+        var admobid = {};
+
+        // TODO: replace the following ad units with your own
+        if( /(android)/i.test(navigator.userAgent) ) {
+            admobid = { // for Android
+                //banner: 'ca-app-pub-4361374683322706/2786367479',
+                //interstitial: 'ca-app-pub-4361374683322706/1309634271'
+
+                banner: 'ca-app-pub-4361374683322706/2786367479',
+                interstitial: 'ca-app-pub-4361374683322706/1309634271'
+            };
+        } else if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {
+            admobid = { // for iOS
+
+                banner: 'ca-app-pub-4361374683322706/2786367479',
+                interstitial: 'ca-app-pub-4361374683322706/1309634271'
+            };
+        }
+        else {
+            admobid = { // for Windows Phone
+                banner: 'ca-app-pub-4361374683322706/2786367479',
+                interstitial: 'ca-app-pub-4361374683322706/1309634271'
+            };
+        }
+
+        function initApp() {
+            if (! AdMob ) { alert( 'admob plugin not ready' ); return; }
+
+//            this will create a banner on startup
+            AdMob.createBanner( {
+                adId: admobid.banner,
+                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+                overlap: false,
+                offsetTopBar: false,
+                autoShow: true,
+                bgColor: 'black'
+            } );
+
+//            if(AdMob) AdMob.createBanner( {
+//                adId:admobid.banner,
+//               adSize:'CUSTOM',  width:380, height:50,
+//                overlap:true,
+//                position:AdMob.AD_POSITION.POS_XY, x:0, y:400,
+////                position: AdMob.AD_POSITION.BOTTOM_CENTER,
+//                autoShow:true} );
+
+        }
+
+
+//
+        if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
+            document.addEventListener('deviceready', initApp, false);
+        } else {
+            initApp();
+        }
+
+//        alert("aa");
+//        var profile_image = window.localStorage['profile-image'];
+//        $('#profilegender').attr('src',profile_image);
+
         var links = [
             {
                 "bgcolor": "red",
-                "icon": "+",
+                "icon": "+"
             },
             {
                 "url": "car-upload.html",
@@ -328,6 +330,8 @@
             }
         ]
         $('.kc_fab_wrapper').kc_fab(links);
+
+
     })
 </script>
 </body>

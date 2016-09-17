@@ -15,9 +15,6 @@
     <access origin="https://api.facebook.com" />
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
-    <feature name="PDialog">
-        <param name="android-package" value="io.github.pwlin.cordova.plugins.pdialog.PDialog" />
-    </feature>
     <feature name="Sim">
         <param name="android-package" value="com.pbakondy.Sim" />
     </feature>
@@ -28,6 +25,17 @@
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="AdMob">
+        <param name="android-package" value="com.rjfun.cordova.admob.AdMobPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <name>CarAndReal</name>
     <description>
@@ -62,5 +70,6 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-minSdkVersion" value="15" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="SplashScreenDelay" value="2500" />
+    <preference name="SplashScreenDelay" value="1500" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
 </widget>

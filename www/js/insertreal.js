@@ -37,6 +37,20 @@ var rSubmit = "";
 var rElectricity = "";
 var rWater = "";
 
+var selType = "";
+var selCate = "";
+var selCountry = "";
+var selState = "";
+var selCity = "";
+var selRating = "";
+var selCondition = "";
+var excellent = "";
+var good = "";
+var okay = "";
+var regular = "";
+var old = "";
+var _new = "";
+
 var selectOtherMsg = "";
 var selectCatMsg = "";
 var insertTitleMsg = "";
@@ -58,6 +72,7 @@ var insertBuiltMsg = "";
 var insertNameMsg = "";
 var insertContactMsg = "";
 var insertEmailMsg = "";
+
 
 var successMsg = "";
 var errorMsg = "";
@@ -94,13 +109,13 @@ function ready_eng() {
     rSizeCon = "Size Range Of Construction";
     rBuilt = "Year of build";
     ruploadpic = "Upload Pics";
-    extraInfo = "Extra Info";
+    extraInfo = "Extra";
     rMorgage = "Mortgage";
     rFlexible = "Flexible Price";
     loan = "Loan";
     trade = "Trade";
     exchange = "Exchange";
-    pricetype = "Price Type";
+    pricetype = "";
     price = "Price";
     rComment = "Comment";
     rPublishBy = "Published By";
@@ -131,6 +146,21 @@ function ready_eng() {
     insertContactMsg = "Please enter contact number.";
     insertEmailMsg = "Please enter email.";
 
+    selType = " Select Type";
+    selCate = "Select Category ";
+    selCity = "Select City";
+    selCountry = "Select Country";
+    selState = "Select Start";
+    selRating = "Select Rating";
+    selCondition = "Select Condition";
+    excellent = "Excellent";
+    good = "Good";
+    okay = "Okay";
+    regular = "Regular";
+    old = "Old";
+    _new = " New";
+
+
     successMsg = "Congratulation, Details Successfully Submitted.";
     errorMsg = "Sorry, There is some problem, please try again.";
 
@@ -155,13 +185,13 @@ function ready_spa() {
     rSizeCon = "Gama del tamaño de la construcción";
     rBuilt = "año de construcción";
     ruploadpic = "Subir fotos";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     rMorgage = "Hipoteca";
     rFlexible = "Precio Flexible";
     loan = "Préstamo";
     trade = "Comercio";
     exchange = "Intercambiar";
-    pricetype = "Tipo Precio";
+    pricetype = "";
     price = "Precio";
     rComment = "Comentario";
     rPublishBy = "Publicado por";
@@ -191,6 +221,21 @@ function ready_spa() {
     insertNameMsg = "Por favor, introduzca su nombre.";
     insertContactMsg = "Por favor, introduzca el número de contacto.";
     insertEmailMsg = "Por favor, introduzca correo electrónico.";
+
+    selType = " Seleccionar el tipo de";
+    selCate = "Seleccionar categoría ";
+    selCity = "Seleccionar Ciudad";
+    selCountry = "Seleccionar país";
+    selState = "Seleccionar Estado";
+    selRating = "Seleccione el grado";
+    selCondition = "Seleccione Condición";
+    excellent = "Excelente";
+    good = "mejor";
+    okay = "bueno";
+    regular = "Regular";
+    old = "antiguo";
+    _new = "nuevo";
+
     successMsg = "Enhorabuena, detalles se sometieron con éxito.";
     errorMsg = "Lo sentimos, hay algún problema, por favor intente de nuevo.";
 }
@@ -198,20 +243,21 @@ display();
 
 function display() {
     $(document).ready(function () {
+
         document.getElementById('basicinfo').innerHTML = basicinfo;
-        //document.getElementById('ptype').innerHTML = ptype;
-        //document.getElementById('cattype').innerHTML = cattype;
-        //document.getElementById('rTitle').innerHTML = rTitle;
-        //document.getElementById('rTerrain').innerHTML = rTerrain;
-        //document.getElementById('rBuilding').innerHTML = rBuilding;
-        //document.getElementById('rLocation').innerHTML = rLocation;
-        //document.getElementById('rNear').innerHTML = rNear;
-        //document.getElementById('rCountry').innerHTML = rCountry;
-        //document.getElementById('rState').innerHTML = rState;
-        //document.getElementById('rCity').innerHTML = rCity;
-        //document.getElementById('rooms').innerHTML = rooms;
-        //document.getElementById('bathrooms').innerHTML = bathrooms;
-        //document.getElementById('rCondition').innerHTML = rCondition;
+        document.getElementById('selType').innerHTML = selType;
+        document.getElementById('selOld').innerHTML = old;
+        document.getElementById('selNew').innerHTML = _new;
+        document.getElementById('proCate').innerHTML = selCate;
+        document.getElementById('selCountry').innerHTML = selCountry;
+        document.getElementById('selState').innerHTML = selState;
+        document.getElementById('selCity').innerHTML = selCity;
+        document.getElementById('selRating').innerHTML = selRating;
+        document.getElementById('selCondition').innerHTML = selCondition;
+        document.getElementById('excellent').innerHTML = excellent;
+        document.getElementById('good').innerHTML = good;
+        document.getElementById('okay').innerHTML = okay;
+        document.getElementById('regular').innerHTML = regular;
         //document.getElementById('rRating').innerHTML = rRating;
         //document.getElementById('rSizePro').innerHTML = rSizePro;
         //document.getElementById('rSizeCon').innerHTML = rSizeCon;
@@ -232,6 +278,22 @@ function display() {
         document.getElementById('rSubmit').innerHTML = rSubmit;
         document.getElementById('rElectricity').innerHTML = rElectricity;
         document.getElementById('rWater').innerHTML = rWater;
+
+
+        $('#proType-button span').html(selType);
+        //document.getElementById('selType').innerHTML = selType;
+        $('#propertyType-button span').html(selCate);
+        //document.getElementById('propertyType').innerHTML = selCate;
+        $('#selectCountry-button span').html(selCountry);
+        //document.getElementById('selCountry').innerHTML = selCountry;
+        $('#selectCity-button span').html(selCity);
+        //document.getElementById('selCity').innerHTML = selCity;
+        $('#selectState-button span').html(selState);
+        //document.getElementById('selState').innerHTML = selState;
+        $('#real_rating-button span').html(selRating);
+        $('#real_condition-button span').html(selCondition);
+        //document.getElementById('selRating').innerHTML = selRating;
+
     })
 }
 
@@ -308,12 +370,13 @@ function getPhoto(source) {
     navigator.camera.getPicture(onPhotoURISuccess, onFail, {
         quality: 50,
         destinationType: destinationType.DATA_URL,
-        sourceType: source
+        sourceType: source,
+        targetWidth: 200
     });
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Alert','Ok');
 }
 
 var removecar_img = "";
@@ -432,15 +495,15 @@ app.initialize();
 
 function getRealCatList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
-
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -453,8 +516,9 @@ function getRealCatList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -462,13 +526,14 @@ function getRealCatList() {
 
 function getCountryList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -482,8 +547,9 @@ function getCountryList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -494,7 +560,8 @@ function proData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#propertyType').append($('<option>').text(obj[i].real_pro_name).attr('value', obj[i].real_pro_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 function countryData(data) {
@@ -502,20 +569,22 @@ function countryData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#selectCountry').append($('<option>').text(obj[i].counry_name).attr('value', obj[i].counry_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 
 
 function selectState12(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?country_id=" + str;
     jQuery.ajax({
@@ -523,18 +592,20 @@ function selectState12(str) {
             jQuery("#div5").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectCity12(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?state_id=" + str;
     jQuery.ajax({
@@ -542,7 +613,8 @@ function selectCity12(str) {
             jQuery("#div6").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectClear(str) {
@@ -587,21 +659,21 @@ function goInsertReal() {
     var regi_id = gdc_uid;
     var real_property = document.getElementById('proType').value;
     if ($.trim(real_property) == "") {
-        alert(selectOtherMsg);
+        navigator.notification.alert(selectOtherMsg,null,'Alert','Ok');
         $('#proType').focus();
         document.getElementById('errfn').innerHTML = selectOtherMsg;
         return false;
     }
     var real_pro_type = document.getElementById('propertyType').value;
     if ($.trim(real_pro_type) == "") {
-        alert(selectCatMsg);
+        navigator.notification.alert(selectCatMsg,null,'Alert','Ok');
         $('#propertyType').focus();
         document.getElementById('errfn1').innerHTML = selectCatMsg;
         return false;
     }
     var real_title_lis = document.getElementById('real_title_lis').value;
     if ($.trim(real_title_lis).length == 0) {
-        alert(insertTitleMsg);
+        navigator.notification.alert(insertTitleMsg,null,'Alert','Ok');
         $('#real_title_lis').focus();
         document.getElementById('errfn2').innerHTML = insertTitleMsg;
         return false;
@@ -609,7 +681,7 @@ function goInsertReal() {
 
     var real_three = document.getElementById('real_three').value;
     if ($.trim(real_three).length == 0) {
-        alert(insertBuiltMsg);
+        navigator.notification.alert(insertBuiltMsg,null,'Alert','Ok');
         $('#real_three').focus();
         document.getElementById('errfn3').innerHTML = insertBuiltMsg;
         return false;
@@ -617,14 +689,14 @@ function goInsertReal() {
 
     var real_terrain = document.getElementById('real_terrain').value;
     if ($.trim(real_terrain).length == 0) {
-        alert(insertTerrainMsg);
+        navigator.notification.alert(insertTerrainMsg,null,'Alert','Ok');
         $('#real_terrain').focus();
         document.getElementById('errfn4').innerHTML = insertTerrainMsg;
         return false;
     }
     var real_building = document.getElementById('real_building').value;
     if ($.trim(real_building).length == 0) {
-        alert(insertBuildingMsg);
+        navigator.notification.alert(insertBuildingMsg,null,'Alert','Ok');
         $('#real_building').focus();
         document.getElementById('errfn5').innerHTML = insertBuildingMsg;
         return false;
@@ -632,21 +704,21 @@ function goInsertReal() {
     var real_location = "";
     var real_country = document.getElementById('selectCountry').value;
     if ($.trim(real_country) == "") {
-        alert(insertCountryMsg);
+        navigator.notification.alert(insertCountryMsg,null,'Alert','Ok');
         $('#selectCountry').focus();
         document.getElementById('errfn6').innerHTML = insertCountryMsg;
         return false;
     }
     var real_state = document.getElementById('selectState').value;
     if ($.trim(real_state) == "") {
-        alert(insertStateMsg);
+        navigator.notification.alert(insertStateMsg,null,'Alert','Ok');
         $('#selectState').focus();
         document.getElementById('errfn7').innerHTML = insertStateMsg;
         return false;
     }
     var real_city = document.getElementById('selectCity').value;
     if ($.trim(real_city) == "") {
-        alert(insertCityMsg);
+        navigator.notification.alert(insertCityMsg,null,'Alert','Ok');
         $('#selectCity').focus();
         document.getElementById('errfn8').innerHTML = insertCityMsg;
         return false;
@@ -654,7 +726,7 @@ function goInsertReal() {
 
     var real_near_by_loc = document.getElementById('real_near_by_loc').value;
     if ($.trim(real_near_by_loc).length == 0) {
-        alert(insertNearbyMsg);
+        navigator.notification.alert(insertNearbyMsg,null,'Alert','Ok');
         $('#real_near_by_loc').focus();
         document.getElementById('errfn9').innerHTML = insertNearbyMsg;
         return false;
@@ -662,14 +734,14 @@ function goInsertReal() {
 
     var real_room = document.getElementById('real_room').value;
     if ($.trim(real_room).length == 0) {
-        alert(insertRoomMsg);
+        navigator.notification.alert(insertRoomMsg,null,'Alert','Ok');
         $('#real_room').focus();
         document.getElementById('errfn10').innerHTML = insertRoomMsg;
         return false;
     }
     var real_baths = document.getElementById('real_baths').value;
     if ($.trim(real_baths).length == 0) {
-        alert(insertBathroomMsg);
+        navigator.notification.alert(insertBathroomMsg,null,'Alert','Ok');
         $('#real_baths').focus();
         document.getElementById('errfn11').innerHTML = insertBathroomMsg;
         return false;
@@ -677,7 +749,7 @@ function goInsertReal() {
 
     var real_rating = document.getElementById('real_rating').value;
     if ($.trim(real_rating) == "") {
-        alert(selectRatingMsg);
+        navigator.notification.alert(selectRatingMsg,null,'Alert','Ok');
         $('#real_rating').focus();
         document.getElementById('errfn12').innerHTML = selectRatingMsg;
         return false;
@@ -685,7 +757,8 @@ function goInsertReal() {
 
     var real_condition = document.getElementById('real_condition').value;
     if ($.trim(real_condition) == "") {
-        alert(selectConditionMsg);
+        navigator.notification.alert(selectConditionMsg,null,'Alert','Ok');
+
         $('#real_condition').focus();
         document.getElementById('errfn13').innerHTML = selectConditionMsg;
         return false;
@@ -710,7 +783,7 @@ function goInsertReal() {
     }
     var real_price = document.getElementById('real_price').value;
     if ($.trim(real_price).length == 0) {
-        alert(insertPriceMsg);
+        navigator.notification.alert(insertPriceMsg,null,'Alert','Ok');
         $('#real_price').focus();
         document.getElementById('errfn14').innerHTML = insertPriceMsg;
         return false;
@@ -767,14 +840,14 @@ function goInsertReal() {
 
     var name = document.getElementById('u_name').value;
     if ($.trim(name).length == 0) {
-        alert(insertNameMsg);
+        navigator.notification.alert(insertNameMsg,null,'Alert','Ok');
         $('#u_name').focus();
         document.getElementById('errfn15').innerHTML = insertNameMsg;
         return false;
     }
     var u_phone = document.getElementById('u_phone').value;
     if ($.trim(u_phone).length == 0) {
-        alert(insertContactMsg);
+        navigator.notification.alert(insertContactMsg,null,'Alert','Ok');
         $('#u_phone').focus();
         document.getElementById('errfn16').innerHTML = insertContactMsg;
         return false;
@@ -794,14 +867,15 @@ function goInsertReal() {
     } else {
         var real_detail = '{"method":"InsertRealEstateDetail", "regi_id":"' + regi_id + '", "real_property":"' + real_property + '", "real_title_lis":"' + real_title_lis + '", "real_pro_type":"' + real_pro_type + '", "real_terrain":"' + real_terrain + '", "real_building":"' + real_building + '", "real_location":"' + real_location + '", "real_near_by_loc":"' + real_near_by_loc + '", "real_country":"' + real_country + '", "real_state":"' + real_state + '", "real_city":"' + real_city + '", "real_room":"' + real_room + '", "real_baths":"' + real_baths + '", "real_condition":"' + real_condition + '", "real_rating":"' + real_rating + '", "real_loan":"' + real_loan + '", "real_rec":"' + real_rec + '", "real_size_pro":"' + real_size_pro + '", "real_size_con":"' + real_size_con + '", "real_electricity":"' + real_electricity + '", "real_water":"' + real_water + '", "real_morgage":"' + real_morgage + '","real_three":"' + real_three + '", "real_acc_flex":"' + real_acc_flex + '", "real_comment":"' + real_comment + '", "real_name":"' + name + '", "real_phone":"' + u_phone + '", "real_email":"' + u_email + '", "real_trade":"' + real_trade + '", "real_price_type":"' + real_price_type + '", "real_price":"' + real_price + '", "real_visitor":"", "real_image":' + JSON.stringify(image) + '}';
     }
-
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -811,19 +885,22 @@ function goInsertReal() {
         data: real_detail,
         success: function (data) {
             if (data.success == 0) {
-                cordova.plugin.pDialog.dismiss();
-                alert(errorMsg);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(errorMsg,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
             if (data.success == 1) {
-                cordova.plugin.pDialog.dismiss();
-                alert(successMsg);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(successMsg,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 window.location.href = "userpost.html?type=realmenu";
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert(errorMsg);
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert(errorMsg,null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });

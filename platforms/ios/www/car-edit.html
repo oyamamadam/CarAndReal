@@ -70,763 +70,771 @@
 <body class="for_main_bg">
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
-    <!--------------dropdown menu open------------->
-    <div data-role="panel" id="myPanel" class="my_listview">
-        <ul data-role="">
-            <div class="profile" onclick="goToProfile();"><a data-rel="close"> <img id="profilegender"
-                                                                                    src="images/menu-profile-icon.png"><br>
-                <h4 id="profilename"><b id="profile">Profile</b></h4>
-            </a></div>
-            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
-                    id="home">Home</span></a></li>
-            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a></li>
-            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
-                    id="setting">Setting</span></a></li>
-            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
-            </li>
-            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
-                    id="contactus">Contact Us</span></a></li>
-            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
-            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+
+<div id="preloader">
+    <div id="status">
+        <h3 class="center-text">Please Waiting</h3>
+    </div>
+</div>
+
+<!--------------dropdown menu open------------->
+<div data-role="panel" id="myPanel" class="my_listview">
+    <ul data-role="">
+        <div class="profile" onclick="goToProfile();"><a data-rel="close"> <img id="profilegender"
+                                                                                src="images/menu-profile-icon.png"><br>
+            <h4 id="profilename"><b id="profile">Profile</b></h4>
+        </a></div>
+        <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                id="home">Home</span></a></li>
+        <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a></li>
+        <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                id="setting">Setting</span></a></li>
+        <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+        </li>
+        <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                id="contactus">Contact Us</span></a></li>
+        <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+        <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
           FAQ</span></a></li>
-            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
-                    id="logout">Logout</span></a></li>
-        </ul>
-    </div>
-    <!--------------dropdown menu open------------->
+        <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                id="logout">Logout</span></a></li>
+    </ul>
+</div>
+<!--------------dropdown menu open------------->
 
-    <div data-role="header" data-position="fixed" class="bg_login">
-        <div class="container">
-            <!-- Modal popup script -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog">
+<div data-role="header" data-position="fixed" class="bg_login">
+    <div class="container">
+        <!-- Modal popup script -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"> Upload Image</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p><a href="#"> <strong>Upload From Gallery</strong> </a></p>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"> Upload Image</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><a href="#"> <strong>Upload From Gallery</strong> </a></p>
 
-                            <p><a href="#"> <strong>Upload From Camera</strong> </a></p>
-                        </div>
-                        <div class="modal-footer">
-                            <div align="center">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                        <p><a href="#"> <strong>Upload From Camera</strong> </a></p>
+                    </div>
+                    <div class="modal-footer">
+                        <div align="center">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- model popup end-->
-            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
-            <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+        </div>
+        <!-- model popup end-->
+        <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+        <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
+        <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
+    </div>
+</div>
+<div data-role="main" class="ui-content">
+
+<!------open here-------->
+<div class="container">
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="pill" href="#menu1"><span id="basicinfo">Basic Info</span></a></li>
+    <li><a data-toggle="pill" href="#menu2"><span id="cUploadpic">Upload Pics</span></a></li>
+    <li><a data-toggle="pill" href="#menu3"><span id="extraInfo">Info & Extras</span></a></li>
+</ul>
+<div class="tab-content">
+<div id="menu1" class="tab-pane fade in active">
+<div style="padding:15px 0px;" class="panel-body">
+<div class="row">
+    <div id="divProType">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn" style="color: #ff0a1b;"></div>
+            <div calss="clear"></div>
+            <div class="for_field new-field">
+                <select class="select-box" name="car_type" id="car_type"
+                        onChange="selectClear('errfn');">
+                    <option value="">Select Type</option>
+                    <option value="Old">Old</option>
+                    <option value="New">New</option>
+                </select>
+            </div>
         </div>
     </div>
-    <div data-role="main" class="ui-content">
+    <div id="divMakeType">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn1" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="car_make" id="car_make"
+                        onChange="selectModel12(this.value);" onclick="selectClear('errfn1');">
+                    <option selected="" value="">Select Make</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div id="divModel">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnModel" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="selectModel" id="selectModel"
+                        onclick="selectClear('errfnModel');">
+                    <option selected="" value="">Select Model</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="divStyle">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnStyle" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="selectStyle" id="selectStyle"
+                        onclick="selectClear('errfnStyle');">
+                    <option selected="" value="">Select Style</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Sedans">Sedans</option>
+                    <option value="Suv">Suv</option>
+                    <option value="MUV">MUV</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="Convertible">Convertible</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Coupe">Coupe</option>
+                    <option value="Minivans">Minivans</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div id="divFuel">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnFuel" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select id="car_fuel" name="car_fuel" onclick="selectClear('errfnFuel');">
+                    <option value="">Select Fuel</option>
+                    <option value="Gas LPG">Gas LPG</option>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Hydrogen">Hydrogen</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="divTransmission">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnTrans" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select id="car_transmission" name="car_transmission"
+                        onclick="selectClear('errfnTrans');">
+                    <option value="">Select Tranmission</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                    <option value="Tiptronic">Tiptronic</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn16" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="number" id="car_engine" name="car_engine"
+                   placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderEngine();" onclick="selectClear('errfn16');"
+                    />
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn17" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="number" placeholder="Year" name="car_year"
+                   id="car_year" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderYear();" onclick="selectClear('errfn17');"
+                    />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
 
-        <!------open here-------->
-        <div class="container">
-            <ul class="nav nav-pills">
-                <li class="active"><a data-toggle="pill" href="#menu1"><span id="basicinfo">Basic Info</span></a></li>
-                <li><a data-toggle="pill" href="#menu2"><span id="cUploadpic">Upload Pics</span></a></li>
-                <li><a data-toggle="pill" href="#menu3"><span id="extraInfo">Info & Extras</span></a></li>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_lable">
+            <label for="car_price_type" id="pricetype">Price Type</label>
+        </div>
+        <div class="for_field">
+            <div class="onoffswitch">
+                <input type="checkbox" name="car_price_type" class="onoffswitch-checkbox"
+                       id="car_price_type" checked>
+                <label class="onoffswitch-label" for="car_price_type">
+                    <span class="onoffswitch-inner price"></span>
+                    <span class="onoffswitch-switch price"></span>
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn88" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="number" placeholder="Price" id="car_price" name="car_price"
+                   onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderPrice();" onclick="selectClear('errfn88');"
+                    />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn9" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="text" placeholder="Interior Color"
+                   name="car_int_color" id="car_int_color" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderIntColor();" onclick="selectClear('errfn9');"
+                    />
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn10" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="text" placeholder="Exterior Color" id="car_ext_color"
+                   name="car_ext_color" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderExtColor();" onclick="selectClear('errfn10');"
+                    />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="clear"></div>
+        <div align="center" id="errfn11" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <div class="for_field new-field">
+            <input type="number" placeholder="Kilometer" name="car_km"
+                   id="car_km" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderKilo();" onclick="selectClear('errfn11');"
+                    />
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_lable">
+            <label class="label-space" for="car_odometer"
+                   id="odometerType">Odometer</label>
+        </div>
+        <div class="for_field">
+
+            <div class="onoffswitch">
+                <input type="checkbox" name="car_odometer" class="onoffswitch-checkbox"
+                       id="car_odometer" checked>
+
+                <label class="onoffswitch-label" for="car_odometer">
+                    <span class="onoffswitch-inner meter"></span>
+                    <span class="onoffswitch-switch meter"></span>
+                </label>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div id="divCountry">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn6" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="selectCountry" id="selectCountry"
+                        onChange="selectState12(this.value);" onclick="selectClear('errfn6');">
+                    <option selected="" value="">Select Country</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="div5">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn7" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select onchange="selectCity12(this.value);"
+                        id="selectState" name="selectState" onclick="selectClear('errfn7');">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="row">
+    <div id="div6">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn8" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="divDoorType">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfn15" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="car_doors" id="car_doors" onclick="selectClear('errfn15');">
+                    <option value="">Select Door</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <!--<option value="7">7</option>-->
+                    <!--<option value="8">8</option>-->
+                    <!--<option value="9">9</option>-->
+                    <!--<option value="10">10</option>-->
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="row">
+    <div id="divRatingType">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnCarRating" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select name="car_rating" id="car_rating"
+                        onclick="selectClear('errfnCarRating');">
+                    <option value="">Select Rating</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="divConditionType">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="clear"></div>
+            <div align="center" id="errfnCarCondition" style="color: #ff0a1b;"></div>
+            <div class="clear"></div>
+            <div class="for_field new-field">
+                <select id="car_condition" name="car_condition"
+                        onclick="selectClear('errfnCarCondition');">
+                    <option value="">Select Condtion</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Very Good">Very Good</option>
+                    <option value="Okay">Okay</option>
+                    <option value="Regular">Regular</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<!--<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select name="car_rating" id="car_rating">
+                <option value="">Select Rating</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <input type="text" id="car_engine" name="car_engine"
+                   placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderEngine();" required
+                    />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <input type="text" placeholder="Year" name="car_year"
+                   id="car_year" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderYear();" required
+                    />
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+    </div>
+</div>-->
+<div class="clear"></div>
+</div>
+</div>
+
+<!--- tab 1 end --------------------------------------------------->
+<div id="menu2" class="tab-pane fade">
+    <div class="panel-body">
+        <!--<div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div id="imgeDiv1"><img src="images/add-img1.png" class="img-responsive"></div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div id="imgeDiv2"><img src="images/add-img1.png" class="img-responsive"></div>
+            </div>
+        </div>-->
+        <!----- row --------->
+        <div class="row">
+
+            <ul id="carImages">
+
+
             </ul>
-            <div class="tab-content">
-                <div id="menu1" class="tab-pane fade in active">
-                    <div style="padding:15px 0px;" class="panel-body">
-                        <div class="row">
-                            <div id="divProType">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn" style="color: #ff0a1b;"></div>
-                                    <div calss="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select class="select-box" name="car_type" id="car_type"
-                                                onChange="selectClear('errfn');">
-                                            <option value="">Select Type</option>
-                                            <option value="Old">Old</option>
-                                            <option value="New">New</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divMakeType">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn1" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="car_make" id="car_make"
-                                                onChange="selectModel12(this.value);" onclick="selectClear('errfn1');">
-                                            <option selected="" value="">Select Make</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="row">
-                            <div id="divModel">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnModel" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="selectModel" id="selectModel"
-                                                onclick="selectClear('errfnModel');">
-                                            <option selected="" value="">Select Model</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divStyle">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnStyle" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="selectStyle" id="selectStyle"
-                                                onclick="selectClear('errfnStyle');">
-                                            <option selected="" value="">Select Style</option>
-                                            <option value="Hatchback">Hatchback</option>
-                                            <option value="Sedans">Sedans</option>
-                                            <option value="Suv">Suv</option>
-                                            <option value="MUV">MUV</option>
-                                            <option value="Luxury">Luxury</option>
-                                            <option value="Convertible">Convertible</option>
-                                            <option value="Hybrid">Hybrid</option>
-                                            <option value="Coupe">Coupe</option>
-                                            <option value="Minivans">Minivans</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="row">
-                            <div id="divFuel">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnFuel" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select id="car_fuel" name="car_fuel" onclick="selectClear('errfnFuel');">
-                                            <option value="">Select Fuel</option>
-                                            <option value="Gas LPG">Gas LPG</option>
-                                            <option value="Diesel">Diesel</option>
-                                            <option value="Electric">Electric</option>
-                                            <option value="Hydrogen">Hydrogen</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divTransmission">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnTrans" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select id="car_transmission" name="car_transmission"
-                                                onclick="selectClear('errfnTrans');">
-                                            <option value="">Select Tranmission</option>
-                                            <option value="Manual">Manual</option>
-                                            <option value="Automatic">Automatic</option>
-                                            <option value="Tiptronic">Tiptronic</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn16" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="number" id="car_engine" name="car_engine"
-                                           placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderEngine();" onclick="selectClear('errfn16');"
-                                            />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn17" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="number" placeholder="Year" name="car_year"
-                                           id="car_year" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderYear();" onclick="selectClear('errfn17');"
-                                            />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
+            <div align="center"><p><a onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img
+                    src="images/addpic.jpg"/></a></p></div>
 
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="for_lable">
-                                    <label for="car_price_type" id="pricetype">Price Type</label>
-                                </div>
-                                <div class="for_field">
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="car_price_type" class="onoffswitch-checkbox"
-                                               id="car_price_type" checked>
-                                        <label class="onoffswitch-label" for="car_price_type">
-                                            <span class="onoffswitch-inner price"></span>
-                                            <span class="onoffswitch-switch price"></span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn88" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="number" placeholder="Price" id="car_price" name="car_price"
-                                           onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderPrice();" onclick="selectClear('errfn88');"
-                                            />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn9" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="text" placeholder="Interior Color"
-                                           name="car_int_color" id="car_int_color" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderIntColor();" onclick="selectClear('errfn9');"
-                                            />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn10" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="text" placeholder="Exterior Color" id="car_ext_color"
-                                           name="car_ext_color" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderExtColor();" onclick="selectClear('errfn10');"
-                                            />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="clear"></div>
-                                <div align="center" id="errfn11" style="color: #ff0a1b;"></div>
-                                <div class="clear"></div>
-                                <div class="for_field new-field">
-                                    <input type="number" placeholder="Kilometer" name="car_km"
-                                           id="car_km" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderKilo();" onclick="selectClear('errfn11');"
-                                            />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="for_lable">
-                                    <label class="label-space" for="car_odometer"
-                                           id="odometerType">Odometer</label>
-                                </div>
-                                <div class="for_field">
-
-                                    <div class="onoffswitch">
-                                        <input type="checkbox" name="car_odometer" class="onoffswitch-checkbox"
-                                               id="car_odometer" checked>
-
-                                        <label class="onoffswitch-label" for="car_odometer">
-                                            <span class="onoffswitch-inner meter"></span>
-                                            <span class="onoffswitch-switch meter"></span>
-                                        </label>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="row">
-                            <div id="divCountry">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn6" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="selectCountry" id="selectCountry"
-                                                onChange="selectState12(this.value);" onclick="selectClear('errfn6');">
-                                            <option selected="" value="">Select Country</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="div5">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn7" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select onchange="selectCity12(this.value);"
-                                                id="selectState" name="selectState" onclick="selectClear('errfn7');">
-                                            <option value="">Select State</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="row">
-                            <div id="div6">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn8" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
-                                            <option value="">Select City</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divDoorType">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfn15" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="car_doors" id="car_doors" onclick="selectClear('errfn15');">
-                                            <option value="">Select Door</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <!--<option value="7">7</option>-->
-                                            <!--<option value="8">8</option>-->
-                                            <!--<option value="9">9</option>-->
-                                            <!--<option value="10">10</option>-->
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="row">
-                            <div id="divRatingType">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnCarRating" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select name="car_rating" id="car_rating"
-                                                onclick="selectClear('errfnCarRating');">
-                                            <option value="">Select Rating</option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="divConditionType">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div class="clear"></div>
-                                    <div align="center" id="errfnCarCondition" style="color: #ff0a1b;"></div>
-                                    <div class="clear"></div>
-                                    <div class="for_field new-field">
-                                        <select id="car_condition" name="car_condition"
-                                                onclick="selectClear('errfnCarCondition');">
-                                            <option value="">Select Condtion</option>
-                                            <option value="Excellent">Excellent</option>
-                                            <option value="Very Good">Very Good</option>
-                                            <option value="Okay">Okay</option>
-                                            <option value="Regular">Regular</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <!--<div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="for_field new-field">
-                                    <select name="car_rating" id="car_rating">
-                                        <option value="">Select Rating</option>
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="for_field new-field">
-                                    <input type="text" id="car_engine" name="car_engine"
-                                           placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderEngine();" required
-                                            />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div class="for_field new-field">
-                                    <input type="text" placeholder="Year" name="car_year"
-                                           id="car_year" onfocus="this.placeholder = ''"
-                                           onblur="setPlaceHolderYear();" required
-                                            />
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            </div>
-                        </div>-->
-                        <div class="clear"></div>
-                    </div>
-                </div>
-
-                <!--- tab 1 end --------------------------------------------------->
-                <div id="menu2" class="tab-pane fade">
-                    <div class="panel-body">
-                        <!--<div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div id="imgeDiv1"><img src="images/add-img1.png" class="img-responsive"></div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div id="imgeDiv2"><img src="images/add-img1.png" class="img-responsive"></div>
-                            </div>
-                        </div>-->
-                        <!----- row --------->
-                        <div class="row">
-
-                            <ul id="carImages">
-
-
-                            </ul>
-                            <div align="center"><p><a onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img
-                                    src="images/addpic.jpg"/></a></p></div>
-
-                            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                            <!--<div id="imgeDiv3"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                            <!--</div>-->
-                            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                            <!--<div id="imgeDiv4"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                            <!--</div>-->
-                        </div>
-                        <!----- row --------->
-                        <!--<div class="row">-->
-                        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                        <!--<div id="imgeDiv5"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                        <!--</div>-->
-                        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                        <!--<div id="imgeDiv6"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!----- row --------->
-                        <!--<div class="row">-->
-                        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                        <!--<div id="imgeDiv7"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                        <!--</div>-->
-                        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
-                        <!--<div id="imgeDiv8"><img src="images/add-img1.png" class="img-responsive"></div>-->
-                        <!--</div>-->
-                        <!--</div>-->
-                        <!----- row --------->
-
-                    </div>
-                </div>
-                <!--------- tab2 end ----------------------------------------------->
-                <div id="menu3" class="tab-pane fade">
-                    <table class="table-bordered">
-                        <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="car_loan" id="car_loan" class="css-checkbox"/>
-                                <label for="car_loan" id="loan" class="css-label">Loan</label></td>
-                            <td><input type="checkbox" name="car_exchange" id="car_exchange" class="css-checkbox"/>
-                                <label for="car_exchange" id="exchange" class="css-label">Exchange</label></td>
-                            <td><input type="checkbox" name="car_pow_lock" id="car_pow_lock" class="css-checkbox"/>
-                                <label for="car_pow_lock" id="cPowerLock" class="css-label">Power Lock</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_tint_win" id="car_tint_win" class="css-checkbox"/>
-                                <label for="car_tint_win" id="cTintWin" class="css-label">Tint Windows</label></td>
-                            <td><input type="checkbox" name="car_pow_win" id="car_pow_win" class="css-checkbox"/>
-                                <label for="car_pow_win" id="cPowerWin" class="css-label">Power Windows</label></td>
-                            <td><input type="checkbox" name="car_alarm" id="car_alarm" class="css-checkbox"/>
-                                <label for="car_alarm" id="cAlarm" class="css-label">Alarm</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_ac" id="car_ac" class="css-checkbox"/>
-                                <label for="car_ac" id="ac" class="css-label">A/C</label></td>
-                            <td><input type="checkbox" name="car_ac_climate" id="car_ac_climate"
-                                       class="css-checkbox"/>
-                                <label for="car_ac_climate" id="cAClim" class="css-label">A/C Climatized
-                                    (Independent
-                                    A/C)</label></td>
-                            <td><input type="checkbox" name="car_sunroof" id="car_sunroof" class="css-checkbox"/>
-                                <label for="car_sunroof" id="cSunRoof" class="css-label">Sun Roof /Panoramic
-                                    Roof</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_turbo" id="car_turbo" class="css-checkbox"/>
-                                <label for="car_turbo" id="cTurbo" class="css-label">Turbo</label></td>
-                            <td><input type="checkbox" name="car_halo" id="car_halo" class="css-checkbox"/>
-                                <label for="car_halo" id="cHalogan" class="css-label">Halogen</label></td>
-                            <td><input type="checkbox" name="car_dvd" id="car_dvd" class="css-checkbox"/>
-                                <label for="car_dvd" id="cDisco" class="css-label">Disco Compacto (DVD)</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_rtv" id="car_rtv" class="css-checkbox"/>
-                                <label for="car_rtv" id="rtv" class="css-label">RTV</label></td>
-                            <td><input type="checkbox" name="car_cont_desce" id="car_cont_desce"
-                                       class="css-checkbox"/>
-                                <label for="car_cont_desce" id="cDescent" class="css-label">Descent Control</label>
-                            </td>
-                            <td><input type="checkbox" name="car_rear_cam" id="car_rear_cam" class="css-checkbox"/>
-                                <label for="car_rear_cam" id="cRear" class="css-label">Rear View Camera</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_front_sen" id="car_front_sen"
-                                       class="css-checkbox"/>
-                                <label for="car_front_sen" id="cFront" class="css-label">Front Sensor</label></td>
-                            <td><input type="checkbox" name="car_vol_multi" id="car_vol_multi"
-                                       class="css-checkbox"/>
-                                <label for="car_vol_multi" id="cMultifunctional" class="css-label">Multifunctional
-                                    steering wheel</label></td>
-                            <td><input type="checkbox" name="car_mem_seat" id="car_mem_seat" class="css-checkbox"/>
-                                <label for="car_mem_seat" id="cMemory" class="css-label">Memory Seats</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_xenon" id="car_xenon" class="css-checkbox"/>
-                                <label for="car_xenon" id="cXenon" class="css-label">Xenon, Bi-Xenon</label></td>
-                            <td><input type="checkbox" name="car_rain_sen" id="car_rain_sen" class="css-checkbox"/>
-                                <label for="car_rain_sen" id="cRain" class="css-label">Rain Sensor</label></td>
-                            <td><input type="checkbox" name="car_tire_pressure" id="car_tire_pressure"
-                                       class="css-checkbox"/>
-                                <label for="car_tire_pressure" id="cTire" class="css-label">Tire Pressure
-                                    Monitor</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_ad_ster" id="car_ad_ster" class="css-checkbox"/>
-                                <label for="car_ad_ster" id="cAduSte" class="css-label">Adjustable Steering</label>
-                            </td>
-                            <td><input type="checkbox" name="car_usb" id="car_usb" class="css-checkbox"/>
-                                <label for="car_usb" id="cRadioCon" class="css-label">Radio Con USB/AUX</label></td>
-                            <td><input type="checkbox" name="car_hydo_ster" id="car_hydo_ster"
-                                       class="css-checkbox"/>
-                                <label for="car_hydo_ster" id="cHydraulic" class="css-label">Hydraulic
-                                    steering</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_pow_seat" id="car_pow_seat" class="css-checkbox"/>
-                                <label for="car_pow_seat" id="cPowerSeat" class="css-label">Power Seats</label></td>
-                            <td><input type="checkbox" name="car_ele_glass" id="car_ele_glass"
-                                       class="css-checkbox"/>
-                                <label for="car_ele_glass" id="cElectricGls" class="css-label">Electric
-                                    Glasses</label>
-                            </td>
-                            <td><input type="checkbox" name="car_trip_com" id="car_trip_com" class="css-checkbox"/>
-                                <label for="car_trip_com" id="cTripCom" class="css-label">Trip Computer</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_ele_seat" id="car_ele_seat" class="css-checkbox"/>
-                                <label for="car_ele_seat" id="cElectricAdj" class="css-label">Electric Adjust
-                                    Seat</label></td>
-                            <td><input type="checkbox" name="car_air_bag" id="car_air_bag" class="css-checkbox"/>
-                                <label for="car_air_bag" id="cAir" class="css-label">Air Bags</label></td>
-                            <td><input type="checkbox" name="car_ele_mir" id="car_ele_mir" class="css-checkbox"/>
-                                <label for="car_ele_mir" id="cElectricMir" class="css-label">Electric Mirror</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_abs" id="car_abs" class="css-checkbox"/>
-                                <label for="car_abs" id="cAbs" class="css-label">ABS</label></td>
-                            <td><input type="checkbox" name="car_win_difo" id="car_win_difo" class="css-checkbox"/>
-                                <label for="car_win_difo" id="cWinDff" class="css-label">Windows Dffoger</label>
-                            </td>
-                            <td><input type="checkbox" name="car_rims" id="car_rims" class="css-checkbox"/>
-                                <label for="car_rims" id="cRims" class="css-label">Rims</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_lea_seat" id="car_lea_seat" class="css-checkbox"/>
-                                <label for="car_lea_seat" id="cLeaSeat" class="css-label">Leather Seats</label></td>
-                            <td><input type="checkbox" name="car_cas" id="car_cas" class="css-checkbox"/>
-                                <label for="car_cas" id="cCassette" class="css-label">Cassette</label></td>
-                            <td><input type="checkbox" name="car_cru_con" id="car_cru_con" class="css-checkbox"/>
-                                <label for="car_cru_con" id="cCruise" class="css-label">Cruise Control</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_cont_elect" id="car_cont_elect"
-                                       class="css-checkbox"/>
-                                <label for="car_cont_elect" id="cElectronic" class="css-label">Electronic Stability
-                                    Control</label></td>
-                            <td><input type="checkbox" name="car_triptonic" id="car_triptonic"
-                                       class="css-checkbox"/>
-                                <label for="car_triptonic" id="cChangeDual" class="css-label">Changes Dual Box
-                                    (Triptonic)</label></td>
-                            <td><input type="checkbox" name="car_rear_sen" id="car_rear_sen" class="css-checkbox"/>
-                                <label for="car_rear_sen" id="cRearSen" class="css-label">Rear Sensor</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_radio_string" id="car_radio_string"
-                                       class="css-checkbox"/>
-                                <label for="car_radio_string" id="cRadioInSte" class="css-label">Radio In Steering
-                                    Controls</label></td>
-                            <td><input type="checkbox" name="car_auto_fold_mir" id="car_auto_fold_mir"
-                                       class="css-checkbox"/>
-                                <label for="car_auto_fold_mir" id="cAutoFold" class="css-label">Auto-Foldable
-                                    Mirrors</label></td>
-                            <td><input type="checkbox" name="car_xenon_led" id="car_xenon_led"
-                                       class="css-checkbox"/>
-                                <label for="car_xenon_led" id="cXenLed" class="css-label">Xenon Led</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_smt_keyof" id="car_smt_keyof"
-                                       class="css-checkbox"/>
-                                <label for="car_smt_keyof" id="cSmartKey" class="css-label">Smart Keyfob</label>
-                            </td>
-                            <td><input type="checkbox" name="car_cru_cont" id="car_cru_cont" class="css-checkbox"/>
-                                <label for="car_cru_cont" id="cCruse" class="css-label">Cruse Control</label></td>
-                            <td><input type="checkbox" name="car_blue" id="car_blue" class="css-checkbox"/>
-                                <label for="car_blue" id="cBluetooth" class="css-label">Bluetooth</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_cen_lock" id="car_cen_lock" class="css-checkbox"/>
-                                <label for="car_cen_lock" id="cCentLock" class="css-label">Central Locking</label>
-                            </td>
-                            <td><input type="checkbox" name="car_tint_glass" id="car_tint_glass"
-                                       class="css-checkbox"/>
-                                <label for="car_tint_glass" id="cTintedGla" class="css-label">Tinted Glasses</label>
-                            </td>
-                            <td><input type="checkbox" name="car_brake" id="car_brake" class="css-checkbox"/>
-                                <label for="car_brake" id="cBreaks" class="css-label">Brakes</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="car_strt_btn" id="car_strt_btn" class="css-checkbox"/>
-                                <label for="car_strt_btn" id="cIntelligent" class="css-label">Intelligent/ Start
-                                    Button
-                                    Key</label></td>
-                            <td><input type="checkbox" onchange="selectPlateStatusNew();" name="car_with_plate"
-                                       id="car_with_plate"
-                                       class="css-checkbox"/>
-                                <label for="car_with_plate" id="withPlate" class="css-label">With Plates</label>
-                            </td>
-                            <td>
-                                <div align="center" id="errfnCarPlate" style="color: #ff0a1b;"></div>
-                                <input style="margin:0% 3%; width:94% !important" type="text" id="car_plate"
-                                       name="car_plate" placeholder="Plate" onfocus="this.placeholder = ''"
-                                       onblur="setPlaceHolderPlate();" onclick="selectClear('errfnCarPlate');"
-                                        /></td>
-                        </tr>
-                        </tbody>
-                        <!--          <tfoot>
-                        <tr>
-                          <td colspan="5" class="text-center">Data retrieved from <a href="http://www.infoplease.com/ipa/A0855611.html" target="_blank">infoplease</a> and <a href="http://www.worldometers.info/world-population/population-by-country/" target="_blank">worldometers</a>.</td>
-                        </tr>
-                      </tfoot>-->
-                    </table>
-                    <div class="clear"></div>
-                    <br/>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-                            <div align="center" id="errfn19" style="color: #ff0a1b;"></div>
-                            <input type="text" placeholder="Publish By" name="u_name"
-                                   id="u_name" onfocus="this.placeholder = ''"
-                                   onblur="setPlaceHolderPublishBy();" required
-                                    />
-
-
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div align="center" id="errfn20" style="color: #ff0a1b;"></div>
-                            <div class="clear"></div>
-                            <input type="text" placeholder="Contact No." required name="u_phone"
-                                   id="u_phone" onfocus="this.placeholder = ''"
-                                   onblur="setPlaceHolderContact();" required="required"/>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-
-                  <textarea cols="25" rows="2" placeholder="Comments" style="border: 1px solid #CCCCCC;"
-                            name="car_comment"
-                            id="car_comment" onfocus="this.placeholder = ''"
-                            onblur="setPlaceHolderComment();"></textarea>
-
-
-                        </div>
-                    </div>
-                    <!--end of .table-responsive-->
-                </div>
-            </div>
+            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+            <!--<div id="imgeDiv3"><img src="images/add-img1.png" class="img-responsive"></div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+            <!--<div id="imgeDiv4"><img src="images/add-img1.png" class="img-responsive"></div>-->
+            <!--</div>-->
         </div>
-        <!------------- tab content end ------------->
-        <div align="center">
-            <button onclick="return updateCarDetail();" class="my_login ui-btn ui-btn-inline" type="submit"
-                    id="cSubmit">Submit
-            </button>
-        </div>
+        <!----- row --------->
+        <!--<div class="row">-->
+        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+        <!--<div id="imgeDiv5"><img src="images/add-img1.png" class="img-responsive"></div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+        <!--<div id="imgeDiv6"><img src="images/add-img1.png" class="img-responsive"></div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!----- row --------->
+        <!--<div class="row">-->
+        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+        <!--<div id="imgeDiv7"><img src="images/add-img1.png" class="img-responsive"></div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">-->
+        <!--<div id="imgeDiv8"><img src="images/add-img1.png" class="img-responsive"></div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!----- row --------->
+
     </div>
+</div>
+<!--------- tab2 end ----------------------------------------------->
+<div id="menu3" class="tab-pane fade">
+<table class="table-bordered">
+    <tbody>
+    <tr>
+        <td><input type="checkbox" name="car_loan" id="car_loan" class="css-checkbox"/>
+            <label for="car_loan" id="loan" class="css-label">Loan</label></td>
+        <td><input type="checkbox" name="car_exchange" id="car_exchange" class="css-checkbox"/>
+            <label for="car_exchange" id="exchange" class="css-label">Exchange</label></td>
+        <td><input type="checkbox" name="car_pow_lock" id="car_pow_lock" class="css-checkbox"/>
+            <label for="car_pow_lock" id="cPowerLock" class="css-label">Power Lock</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_tint_win" id="car_tint_win" class="css-checkbox"/>
+            <label for="car_tint_win" id="cTintWin" class="css-label">Tint Windows</label></td>
+        <td><input type="checkbox" name="car_pow_win" id="car_pow_win" class="css-checkbox"/>
+            <label for="car_pow_win" id="cPowerWin" class="css-label">Power Windows</label></td>
+        <td><input type="checkbox" name="car_alarm" id="car_alarm" class="css-checkbox"/>
+            <label for="car_alarm" id="cAlarm" class="css-label">Alarm</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_ac" id="car_ac" class="css-checkbox"/>
+            <label for="car_ac" id="ac" class="css-label">A/C</label></td>
+        <td><input type="checkbox" name="car_ac_climate" id="car_ac_climate"
+                   class="css-checkbox"/>
+            <label for="car_ac_climate" id="cAClim" class="css-label">A/C Climatized
+                (Independent
+                A/C)</label></td>
+        <td><input type="checkbox" name="car_sunroof" id="car_sunroof" class="css-checkbox"/>
+            <label for="car_sunroof" id="cSunRoof" class="css-label">Sun Roof /Panoramic
+                Roof</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_turbo" id="car_turbo" class="css-checkbox"/>
+            <label for="car_turbo" id="cTurbo" class="css-label">Turbo</label></td>
+        <td><input type="checkbox" name="car_halo" id="car_halo" class="css-checkbox"/>
+            <label for="car_halo" id="cHalogan" class="css-label">Halogen</label></td>
+        <td><input type="checkbox" name="car_dvd" id="car_dvd" class="css-checkbox"/>
+            <label for="car_dvd" id="cDisco" class="css-label">Disco Compacto (DVD)</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_rtv" id="car_rtv" class="css-checkbox"/>
+            <label for="car_rtv" id="rtv" class="css-label">RTV</label></td>
+        <td><input type="checkbox" name="car_cont_desce" id="car_cont_desce"
+                   class="css-checkbox"/>
+            <label for="car_cont_desce" id="cDescent" class="css-label">Descent Control</label>
+        </td>
+        <td><input type="checkbox" name="car_rear_cam" id="car_rear_cam" class="css-checkbox"/>
+            <label for="car_rear_cam" id="cRear" class="css-label">Rear View Camera</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_front_sen" id="car_front_sen"
+                   class="css-checkbox"/>
+            <label for="car_front_sen" id="cFront" class="css-label">Front Sensor</label></td>
+        <td><input type="checkbox" name="car_vol_multi" id="car_vol_multi"
+                   class="css-checkbox"/>
+            <label for="car_vol_multi" id="cMultifunctional" class="css-label">Multifunctional
+                steering wheel</label></td>
+        <td><input type="checkbox" name="car_mem_seat" id="car_mem_seat" class="css-checkbox"/>
+            <label for="car_mem_seat" id="cMemory" class="css-label">Memory Seats</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_xenon" id="car_xenon" class="css-checkbox"/>
+            <label for="car_xenon" id="cXenon" class="css-label">Xenon, Bi-Xenon</label></td>
+        <td><input type="checkbox" name="car_rain_sen" id="car_rain_sen" class="css-checkbox"/>
+            <label for="car_rain_sen" id="cRain" class="css-label">Rain Sensor</label></td>
+        <td><input type="checkbox" name="car_tire_pressure" id="car_tire_pressure"
+                   class="css-checkbox"/>
+            <label for="car_tire_pressure" id="cTire" class="css-label">Tire Pressure
+                Monitor</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_ad_ster" id="car_ad_ster" class="css-checkbox"/>
+            <label for="car_ad_ster" id="cAduSte" class="css-label">Adjustable Steering</label>
+        </td>
+        <td><input type="checkbox" name="car_usb" id="car_usb" class="css-checkbox"/>
+            <label for="car_usb" id="cRadioCon" class="css-label">Radio Con USB/AUX</label></td>
+        <td><input type="checkbox" name="car_hydo_ster" id="car_hydo_ster"
+                   class="css-checkbox"/>
+            <label for="car_hydo_ster" id="cHydraulic" class="css-label">Hydraulic
+                steering</label>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_pow_seat" id="car_pow_seat" class="css-checkbox"/>
+            <label for="car_pow_seat" id="cPowerSeat" class="css-label">Power Seats</label></td>
+        <td><input type="checkbox" name="car_ele_glass" id="car_ele_glass"
+                   class="css-checkbox"/>
+            <label for="car_ele_glass" id="cElectricGls" class="css-label">Electric
+                Glasses</label>
+        </td>
+        <td><input type="checkbox" name="car_trip_com" id="car_trip_com" class="css-checkbox"/>
+            <label for="car_trip_com" id="cTripCom" class="css-label">Trip Computer</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_ele_seat" id="car_ele_seat" class="css-checkbox"/>
+            <label for="car_ele_seat" id="cElectricAdj" class="css-label">Electric Adjust
+                Seat</label></td>
+        <td><input type="checkbox" name="car_air_bag" id="car_air_bag" class="css-checkbox"/>
+            <label for="car_air_bag" id="cAir" class="css-label">Air Bags</label></td>
+        <td><input type="checkbox" name="car_ele_mir" id="car_ele_mir" class="css-checkbox"/>
+            <label for="car_ele_mir" id="cElectricMir" class="css-label">Electric Mirror</label>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_abs" id="car_abs" class="css-checkbox"/>
+            <label for="car_abs" id="cAbs" class="css-label">ABS</label></td>
+        <td><input type="checkbox" name="car_win_difo" id="car_win_difo" class="css-checkbox"/>
+            <label for="car_win_difo" id="cWinDff" class="css-label">Windows Dffoger</label>
+        </td>
+        <td><input type="checkbox" name="car_rims" id="car_rims" class="css-checkbox"/>
+            <label for="car_rims" id="cRims" class="css-label">Rims</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_lea_seat" id="car_lea_seat" class="css-checkbox"/>
+            <label for="car_lea_seat" id="cLeaSeat" class="css-label">Leather Seats</label></td>
+        <td><input type="checkbox" name="car_cas" id="car_cas" class="css-checkbox"/>
+            <label for="car_cas" id="cCassette" class="css-label">Cassette</label></td>
+        <td><input type="checkbox" name="car_cru_con" id="car_cru_con" class="css-checkbox"/>
+            <label for="car_cru_con" id="cCruise" class="css-label">Cruise Control</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_cont_elect" id="car_cont_elect"
+                   class="css-checkbox"/>
+            <label for="car_cont_elect" id="cElectronic" class="css-label">Electronic Stability
+                Control</label></td>
+        <td><input type="checkbox" name="car_triptonic" id="car_triptonic"
+                   class="css-checkbox"/>
+            <label for="car_triptonic" id="cChangeDual" class="css-label">Changes Dual Box
+                (Triptonic)</label></td>
+        <td><input type="checkbox" name="car_rear_sen" id="car_rear_sen" class="css-checkbox"/>
+            <label for="car_rear_sen" id="cRearSen" class="css-label">Rear Sensor</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_radio_string" id="car_radio_string"
+                   class="css-checkbox"/>
+            <label for="car_radio_string" id="cRadioInSte" class="css-label">Radio In Steering
+                Controls</label></td>
+        <td><input type="checkbox" name="car_auto_fold_mir" id="car_auto_fold_mir"
+                   class="css-checkbox"/>
+            <label for="car_auto_fold_mir" id="cAutoFold" class="css-label">Auto-Foldable
+                Mirrors</label></td>
+        <td><input type="checkbox" name="car_xenon_led" id="car_xenon_led"
+                   class="css-checkbox"/>
+            <label for="car_xenon_led" id="cXenLed" class="css-label">Xenon Led</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_smt_keyof" id="car_smt_keyof"
+                   class="css-checkbox"/>
+            <label for="car_smt_keyof" id="cSmartKey" class="css-label">Smart Keyfob</label>
+        </td>
+        <td><input type="checkbox" name="car_cru_cont" id="car_cru_cont" class="css-checkbox"/>
+            <label for="car_cru_cont" id="cCruse" class="css-label">Cruse Control</label></td>
+        <td><input type="checkbox" name="car_blue" id="car_blue" class="css-checkbox"/>
+            <label for="car_blue" id="cBluetooth" class="css-label">Bluetooth</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_cen_lock" id="car_cen_lock" class="css-checkbox"/>
+            <label for="car_cen_lock" id="cCentLock" class="css-label">Central Locking</label>
+        </td>
+        <td><input type="checkbox" name="car_tint_glass" id="car_tint_glass"
+                   class="css-checkbox"/>
+            <label for="car_tint_glass" id="cTintedGla" class="css-label">Tinted Glasses</label>
+        </td>
+        <td><input type="checkbox" name="car_brake" id="car_brake" class="css-checkbox"/>
+            <label for="car_brake" id="cBreaks" class="css-label">Brakes</label></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="car_strt_btn" id="car_strt_btn" class="css-checkbox"/>
+            <label for="car_strt_btn" id="cIntelligent" class="css-label">Intelligent/ Start
+                Button
+                Key</label></td>
+        <td><input type="checkbox" onchange="selectPlateStatusNew();" name="car_with_plate"
+                   id="car_with_plate"
+                   class="css-checkbox"/>
+            <label for="car_with_plate" id="withPlate" class="css-label">With Plates</label>
+        </td>
+        <td>
+            <div align="center" id="errfnCarPlate" style="color: #ff0a1b;"></div>
+            <input style="margin:0% 3%; width:94% !important" type="text" id="car_plate"
+                   name="car_plate" placeholder="Plate" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderPlate();" onclick="selectClear('errfnCarPlate');"
+                    /></td>
+    </tr>
+    </tbody>
+    <!--          <tfoot>
+    <tr>
+      <td colspan="5" class="text-center">Data retrieved from <a href="http://www.infoplease.com/ipa/A0855611.html" target="_blank">infoplease</a> and <a href="http://www.worldometers.info/world-population/population-by-country/" target="_blank">worldometers</a>.</td>
+    </tr>
+  </tfoot>-->
+</table>
+<div class="clear"></div>
+<br/>
 
-    <!------close here-------->
-    <div class="add"><img src="images/cocacola-img.png"></div>
-    <div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br>
-                    <span id="automobiles"> Automobiles</span></a></li>
-                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br>
+        <div align="center" id="errfn19" style="color: #ff0a1b;"></div>
+        <input type="text" placeholder="Publish By" name="u_name"
+               id="u_name" onfocus="this.placeholder = ''"
+               onblur="setPlaceHolderPublishBy();" required
+                />
+
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div align="center" id="errfn20" style="color: #ff0a1b;"></div>
+        <div class="clear"></div>
+        <input type="text" placeholder="Contact No." required name="u_phone"
+               id="u_phone" onfocus="this.placeholder = ''"
+               onblur="setPlaceHolderContact();" required="required"/>
+    </div>
+</div>
+<br/>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+
+        <textarea cols="25" rows="2" placeholder="Comments" style="border: 1px solid #CCCCCC;"
+                  name="car_comment"
+                  id="car_comment" onfocus="this.placeholder = ''"
+                  onblur="setPlaceHolderComment();"></textarea>
+
+
+    </div>
+</div>
+<!--end of .table-responsive-->
+</div>
+</div>
+</div>
+<!------------- tab content end ------------->
+<div align="center">
+    <button onclick="return updateCarDetail();" class="my_login ui-btn ui-btn-inline" type="submit"
+            id="cSubmit">Submit
+    </button>
+</div>
+<div class="add"><img src="images/cocacola-img.png"></div>
+</div>
+
+<!------close here-------->
+
+<div class="clear"></div>
+
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br>
+                <span id="automobiles"> Automobiles</span></a></li>
+            <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br>
           <span id="realestate"> Real
           State</span></a></li>
-                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br>
-                    <span id="sundries"> Sundries</span></a></li>
-                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br>
-                    <span id="more"> More</span></a></li>
-            </ul>
-        </div>
+            <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br>
+                <span id="sundries"> Sundries</span></a></li>
+            <li><a onclick="goToMore();"><img src="images/more-icon.png"><br>
+                <span id="more"> More</span></a></li>
+        </ul>
     </div>
+</div>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/owl.carousel.js"></script>

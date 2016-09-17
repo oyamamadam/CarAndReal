@@ -14,6 +14,11 @@ var contact_msg = "";
 var select_msg = "";
 var comment_msg = "";
 var invalid_msg = "";
+
+var help = "";
+var banned = "";
+var blocked = "";
+
 gdc_lang = window.localStorage.getItem("gdc_lang");
 if (gdc_lang == null) {
     gdc_lang = "en";
@@ -38,6 +43,11 @@ function ready_eng() {
     select_msg = "Please select query type.";
     comment_msg = "Please enter comment.";
     invalid_msg = "Invalid Email Address.";
+
+    help = "Help";
+    banned = "Banned";
+    blocked = "Blocked";
+
 }
 
 function ready_spa() {
@@ -54,6 +64,10 @@ function ready_spa() {
     select_msg = "Por favor, seleccione el tipo de consulta.";
     comment_msg = "Por favor, introduzca comentario.";
     invalid_msg = "Dirección de correo electrónico no válida.";
+
+    help = "Ayoda";
+    banned = "Prohibido";
+    blocked = "bocked";
 }
 
 display();
@@ -63,9 +77,10 @@ function display() {
         document.getElementById('contact1').innerHTML = contact1;
         document.getElementById('sendmsg').innerHTML = sendmsg;
         document.getElementById('blankfiled').innerHTML = blankfiled;
-        document.getElementById('carfiled').innerHTML = automobiles;
-        document.getElementById('realfiled').innerHTML = realestate;
-        document.getElementById('otherfiled').innerHTML = sundries;
+        document.getElementById('help').innerHTML = help;
+        document.getElementById('banned').innerHTML = banned;
+        document.getElementById('blocked').innerHTML = blocked;
+        $('#cat_type-button span').html(blankfiled);
 
 
     })
@@ -107,43 +122,49 @@ function goContact() {
 
     var fullname = document.getElementById('fullname').value;
     if ($.trim(fullname).length == 0) {
-        alert(name_msg);
+        navigator.notification.alert(name_msg,null,'Alert','Ok');
+
         return false;
     }
 
     var emailid = document.getElementById('emailid').value;
     if ($.trim(emailid).length == 0) {
-        alert(email_msg);
+        navigator.notification.alert(email_msg,null,'Alert','Ok');
+
         return false;
     }
 
     var contactno = document.getElementById('contactno').value;
     if ($.trim(contactno).length == 0) {
-        alert(contact_msg);
+        navigator.notification.alert(contact_msg,null,'Alert','Ok');
+
         return false;
     }
 
     var cat_type = document.getElementById('cat_type').value;
     if ($.trim(cat_type) == "") {
-        alert(select_msg);
+        navigator.notification.alert(select_msg,null,'Alert','Ok');
+
         return false;
     }
 
     var user_comment = document.getElementById('user_comment').value;
     if ($.trim(user_comment).length == 0) {
-        alert(comment_msg);
+        navigator.notification.alert(comment_msg,null,'Alert','Ok');
+
         return false;
     }
 
     if (validateEmail(emailid)) {
-
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //
+        ////cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+        $("#preloader").css('display','block');
 
         $.ajax({
             url: BASE_URL + APP_API,
@@ -153,31 +174,41 @@ function goContact() {
             data: '{"method":"ContactUs", "fullname":"' + fullname + '", "emailid":"' + emailid + '", "contactno":"' + contactno + '", "cat_type":"' + cat_type + '", "user_comment":"' + user_comment + '"}',
             success: function (data) {
                 if (data.success == 0) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+
                     return false;
                 }
                 if (data.success == 1) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+
                     window.location.href = "index.html";
                     return false;
                 }
                 if (data.success == 2) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+
+
                     return false;
                 }
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Server Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });
     }
     else {
-        alert(invalid_msg);
+        navigator.notification.alert(invalid_msg,null,'Alert','Ok');
+
         return false;
     }
 

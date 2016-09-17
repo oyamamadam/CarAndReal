@@ -71,7 +71,13 @@
     </platform>
 
     <preference name="DisallowOverscroll" value="true"/>
-    <preference name="SplashScreenDelay" value="2500" />
+    <preference name="SplashScreenDelay" value="1500" />
+
+    <preference name="StatusBarOverlaysWebView" value="false" />
+
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
 
     <plugin name="cordova-plugin-facebook4" spec="~1.7.1">
         <variable name="APP_ID" value="489678871213616" />

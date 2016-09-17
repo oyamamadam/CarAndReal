@@ -12,7 +12,7 @@ function goForget() {
     var email_id = document.getElementById('emailid').value;
     //alert(email_id);
     if ($.trim(email_id).length == 0) {
-        alert('Please enter valid email address');
+        navigator.notification.alert('Please enter valid email address',null,'Alert','Ok');
         return false;
     }
 
@@ -37,7 +37,8 @@ function goForget() {
 
     }
     else {
-        alert('Invalid Email Address');
+
+        navigator.notification.alert('Invalid Email Address',null,'Alert','Ok');
         return false;
     }
 
@@ -45,13 +46,15 @@ function goForget() {
 
 function forgetUser(email_id) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -60,23 +63,26 @@ function forgetUser(email_id) {
         contentType: "application/json",
         data: '{"method":"ForgetPassword", "email_id":"' + email_id + '"}',
         success: function (data) {
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             if (data.success == 0) {
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 alert(data.message);
                 return false;
             }
             if (data.success == 1) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
             if (data.success == 2) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });

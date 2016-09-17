@@ -155,30 +155,32 @@ function goChangePassword() {
     var confirm_password = document.getElementById('confirm_password').value;
     var n = new_password.localeCompare(confirm_password);
     if ($.trim(old_password).length == 0) {
-        alert(err_old_msg);
+        navigator.notification.alert(err_old_msg,null,'Alert','Ok');
         $('#old_password').focus();
         return false;
     } else if ($.trim(new_password).length == 0) {
-        alert(err_new_msg);
+        navigator.notification.alert(err_new_msg,null,'Alert','Ok');
         $('#new_password').focus();
         return false;
     } else if ($.trim(confirm_password).length == 0) {
-        alert(err_confirm_msg);
+        navigator.notification.alert(err_confirm_msg,null,'Alert','Ok');
         $('#confirm_password').focus();
         return false;
     } else if (n == -1) {
-        alert(err_notmatch_msg);
+        navigator.notification.alert(err_notmatch_msg,null,'Alert','Ok');
         $('#confirm_password').focus();
         return false;
     } else {
 
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+
+        $("#preloader").css('display','block');
 
         var userAddCat = '{"method":"ResetPassword", "regi_id":"' + gdc_uid + '", "old_password":"' + old_password + '", "new_password":"' + new_password + '"}';
         $.ajax({
@@ -189,20 +191,24 @@ function goChangePassword() {
             data: userAddCat,
             success: function (data) {
                 if (data.success == 0) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
+
                     return false;
                 }
                 if (data.success == 1) {
-                    cordova.plugin.pDialog.dismiss();
-                    alert(data.message);
+                    //cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    $("#preloader").css('display','none');
                     window.location.href = "setting.html";
                     return false;
                 }
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });

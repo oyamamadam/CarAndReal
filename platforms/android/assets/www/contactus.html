@@ -37,6 +37,13 @@
 
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
+
+    <div id="preloader">
+        <div id="status">
+            <h3 class="center-text">Please Waiting</h3>
+        </div>
+    </div>
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -69,7 +76,7 @@
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
             <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
         </div>
     </div>
@@ -86,10 +93,17 @@
             <input type="text" name="contactno" id="contactno" value="" placeholder="Contact Number"/><br/>
             <!--<label>Category</label>-->
             <select name="cat_type" id="cat_type" required="required">
+                <!--<option value="" id="blankfiled">Select Query Type</option>-->
+                <!--<option value="Automobiles" id="carfiled">Car</option>-->
+                <!--<option value="Real Estate" id="realfiled">Real Estate</option>-->
+                <!--<option value="Sundries" id="otherfiled">Other</option>-->
+                <!--<option value="Advertising" id="advertisingfiled">Andvertising</option>-->
+
                 <option value="" id="blankfiled">Select Query Type</option>
-                <option value="Automobiles" id="carfiled">Car</option>
-                <option value="Real Estate" id="realfiled">Real Estate</option>
-                <option value="Sundries" id="otherfiled">Other</option>
+                <option value="Help" id="help">Car</option>
+                <option value="Banned" id="banned">Real Estate</option>
+                <option value="Blocked" id="blocked">Other</option>
+                <option value="Advertising" id="advertisingfiled">Andvertising</option>
             </select><br/>
             <!--<label>Comments</label>-->
             <textarea cols="25" rows="2" class="my_form_txtarea" name="user_comment" placeholder="Comment"
@@ -102,11 +116,11 @@
             </div>
 
         </div>
-
+        <div class="add"><img src="images/cocacola-img.png"></div>
     </div>
     <div class="clearfix"></div>
     <!------close here-------->
-    <div class="add"><img src="images/cocacola-img.png"></div>
+
     <div class="clear"></div>
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">

@@ -146,21 +146,24 @@ function getTotalCat() {
             return true;
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Server Error',null,'Error','Ok');
+            //alert("Error");
             return false;
         }
     });
 }
 
 function getUserCatList() {
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    $("#preloader").css('display','block');
 
     var userCat = '{"method":"UserOtherCat", "regi_id":"' + gdc_uid + '"}';
     $.ajax({
@@ -174,7 +177,9 @@ function getUserCatList() {
             return true;
         },
         error: function (result) {
-            alert("Error");
+
+            navigator.notification.alert('Server Error',null,'Error','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -198,22 +203,25 @@ function catListtData(data) {
 
 
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 function goAddCategory() {
     var other_cat_name = document.getElementById('other_cat_name').value;
     if ($.trim(other_cat_name).length == 0) {
-        alert(err_msg);
+        navigator.notification.alert(err_msg,null,'Error','Ok');
+        //alert(err_msg);
         return false;
     } else {
 
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+        $("#preloader").css('display','block');
 
         var userAddCat = '{"method":"AddOtherCat", "regi_id":"' + gdc_uid + '", "other_cat_name":"' + other_cat_name + '"}';
         $.ajax({
@@ -224,20 +232,23 @@ function goAddCategory() {
             data: userAddCat,
             success: function (data) {
                 if (data.success == 0) {
-                    alert(data.message);
-                    cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
+                    //cordova.plugin.pDialog.dismiss();
+                    $("#preloader").css('display','none');
                     return false;
                 }
                 if (data.success == 1) {
-                    alert(data.message);
-                    cordova.plugin.pDialog.dismiss();
+                    navigator.notification.alert(data.message,null,'Error','Ok');
+                    $("#preloader").css('display','none');
+                    //cordova.plugin.pDialog.dismiss();
                     window.location.href = "more.html";
                     return false;
                 }
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Server Error',null,'Error','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });

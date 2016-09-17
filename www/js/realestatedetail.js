@@ -77,7 +77,7 @@ function ready_eng() {
     rSizeCon = "Size Range Of Construction";
     rBuilt = "3 years from the moment they built";
     ruploadpic = "Upload Pics";
-    extraInfo = "Extra Info";
+    extraInfo = "Extras";
     rMorgage = "Mortgage";
     rFlexible = "Flexible Price";
     loan = "Loan";
@@ -105,7 +105,7 @@ function ready_spa() {
     rLocation = "Ubicación";
     rSize = "Tamaño (área)";
     rNear = "Cerca";
-    cPublishOn = "En publicará";
+    cPublishOn = "Publicará";
     rCountry = "País";
     rState = "Estado";
     rCity = "Ciudad";
@@ -113,12 +113,12 @@ function ready_spa() {
     vCount = "Contador de visitantes";
     bathrooms = "Baños";
     rCondition = "Condición";
-    rRating = "Clasificación";
+    rRating = "Estado";
     rSizePro = "Gama del tamaño de la propiedad";
     rSizeCon = "Gama del tamaño de la construcción";
-    rBuilt = "3 años a partir del momento en que se construyen";
+    rBuilt = "Aniode Construccion";
     ruploadpic = "Subir fotos";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     rMorgage = "Hipoteca";
     rFlexible = "Precio Flexible";
     loan = "Préstamo";
@@ -224,6 +224,11 @@ function goToRealList() {
 function goToOtherList() {
     window.location.href = "others-listing.html";
 }
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var gdc_uid = window.localStorage.getItem("gdc_uid");
 var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
@@ -292,14 +297,15 @@ $(document).ready(function () {
 
 function getRealDetail(rid) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -312,7 +318,8 @@ function getRealDetail(rid) {
             return true;
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -354,20 +361,34 @@ function realDetailData(data) {
         //document.getElementById('realSizeRangeOfProperty').innerHTML = real_size_pro + " Sq.";
         var real_size_con = data.reallist[i].real_size_con;
         //document.getElementById('realSizeRangeOfConstruction').innerHTML = real_size_con + " Sq.";
-        var real_price = data.reallist[i].real_price;
+        var real_price = numberWithCommas(data.reallist[i].real_price);
         var real_price_type = data.reallist[i].real_price_type;
         if (real_price_type == "Dollares") {
-            document.getElementById('realPrice').innerHTML = "&#36; " + real_price;
+            document.getElementById('realPrice').innerHTML = "&#36;" + real_price+' ';
         } else {
-            document.getElementById('realPrice').innerHTML = "&#128; " + real_price;
+            document.getElementById('realPrice').innerHTML = "&#128;" + real_price+' ';
         }
 
         var real_three = data.reallist[i].real_three;
         document.getElementById('realYersMoment').innerHTML = real_three;
         var real_visitor = data.reallist[i].real_visitor;
         document.getElementById('realVisitorCount').innerHTML = real_visitor;
-        var real_publish = data.reallist[i].real_publish;
-        document.getElementById('realPublish').innerHTML = real_publish;
+        var date = data.reallist[i].real_publish;
+
+
+        var m_names = new Array("Jan", "Feb", "Mar", "Apl", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+
+
+        var kk = date.split(" ");
+        var year = kk[0].split("-");
+        var time = kk[1];
+
+        var cc = parseInt(year[1]);
+        var real_publish =m_names[cc]+'/'+ year[2]+'/'+year[0];
+
+
+        document.getElementById('realPublish').innerHTML = real_publish +" "+ time;
         var name = data.reallist[i].name;
         document.getElementById('realPublishUname').innerHTML = name;
         var u_email = data.reallist[i].u_email;
@@ -380,6 +401,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realLoan").src = string;
+            $('.ul-left li:nth-child(1)').css("display",'none');
         }
         var real_rec = data.reallist[i].real_rec;
         if (real_rec == "Yes") {
@@ -388,6 +410,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realExchange").src = string;
+            $('.ul-left li:nth-child(2)').css("display",'none');
         }
         var real_electricity = data.reallist[i].real_electricity;
         if (real_electricity == "Yes") {
@@ -396,6 +419,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realElectricity").src = string;
+            $('.ul-left li:nth-child(3)').css("display",'none');
         }
 
         var real_water = data.reallist[i].real_water;
@@ -405,6 +429,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realWater").src = string;
+            $('.ul-right li:nth-child(3)').css("display",'none');
         }
 
         var real_morgage = data.reallist[i].real_morgage;
@@ -414,6 +439,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realMorgage").src = string;
+            $('.ul-right li:nth-child(1)').css("display",'none');
         }
 
         var real_acc_flex = data.reallist[i].real_acc_flex;
@@ -423,6 +449,7 @@ function realDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realFlexiblePrice").src = string;
+            $('.ul-right li:nth-child(2)').css("display",'none');
         }
 
         /*var real_trade = data.reallist[i].real_trade;
@@ -443,6 +470,7 @@ function realDetailData(data) {
             $("#owl-demo2").append('<div class="item"><img src="' + real_img[j] + '"></div>');
         }
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }

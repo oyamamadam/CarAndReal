@@ -39,6 +39,13 @@
 
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
+
+<div id="preloader">
+    <div id="status">
+        <h3 class="center-text">Please Waiting</h3>
+    </div>
+</div>
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -70,7 +77,7 @@
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
             <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
         </div>
     </div>
@@ -79,7 +86,7 @@
     <div data-role="main" class="ui-content">
 
         <div class="container">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-padding">
 
                 <div class="home_bg">
                     <div class="container">
@@ -88,7 +95,7 @@
 
                             <div id="demos">
                                 <div class="container">
-                                    <div class="row">
+                                    <div class="row row-margin">
                                         <div class="span12">
                                             <div id="owl-demo2" class="owl-carousel">
 
@@ -106,6 +113,12 @@
 
                         </div>
                     </div>
+
+                    
+                </div>
+                <div>
+                    <span id="carVisitorCount" class="view"></span>
+                    <span class="gypsy"><img src="images/eye.png"></span>
                 </div>
 
             </div>
@@ -149,7 +162,7 @@
                                     <span id="carInteriorColor"></span>
                                 </li>
                                 <li><span style="font-weight:bold; width:40%; float:left;" id="ecolor">Exterior Color:</span>
-                                    <span id="carExteriorColor"></span>
+                                    <span id="carExteriorColor" style="font-weight:bold;"></span>
                                 </li>
                                 <li><span style="font-weight:bold; width:40%; float:left;" id="clocation">Location:</span>
                                     <span id="carLocation"></span>
@@ -187,10 +200,8 @@
                                 <li><span style="font-weight:bold; width:40%; float:left;" id="price">Price:</span>
                                     <span id="carPrice"></span>
                                     <span class="nego">NEGOTIABLE</span></li>
+                                <li style="display: none;"><span id="carComment">Comentario</span><span>,</span></li>
 
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="vCount">Visitor Count:</span>
-                                    <span id="carVisitorCount"></span>
-                                </li>
                                 <li>
                                     <span style="font-weight:bold; width:40%; float:left;" id="cPublishOn">Publish On:</span>
                                     <span id="carPublish"></span>
@@ -214,33 +225,32 @@
                     <div class="panel-body">
                         <ul class="all_details">
                             <ul class="ul-left">
-                                <li><img src="images/wrong-icon.png" id="carPlate"><span id="carPlateNumber"></span>
-                                </li>
+                                <!--1-->
+                                <li><img src="images/wrong-icon.png" id="carPlate"><span id="carPlateNumber"></span></li>
                                 <li><img src="images/wrong-icon.png" id="carLoan"><span id="loan"></span></li>
                                 <li><img src="images/right-icon.png" id="carExchange"><span id="exchange"></span></li>
-                                <li><img src="images/right-icon.png" id="carPowerLock"><span id="cPowerLock"></span>
-                                </li>
+                                <li><img src="images/right-icon.png" id="carPowerLock"><span id="cPowerLock"></span></li>
                                 <li><img src="images/right-icon.png" id="carTintWin"><span id="cTintWin"></span></li>
+                                <!--6-->
                                 <li><img src="images/right-icon.png" id="carpowerWin"><span id="cPowerWin"></span></li>
                                 <li><img src="images/right-icon.png" id="carAlarm"><span id="cAlarm"></span></li>
                                 <li><img src="images/right-icon.png" id="carACClimatized"><span id="cAClim"></span></li>
                                 <li><img src="images/right-icon.png" id="carSunRoof"><span id="cSunRoof"></span></li>
                                 <li><img src="images/right-icon.png" id="carTurbo"><span id="cTurbo"></span></li>
+                                <!--11-->
                                 <li><img src="images/right-icon.png" id="carHalogen"><span id="cHalogan"></span></li>
                                 <li><img src="images/right-icon.png" id="carDisco"><span id="cDisco"></span></li>
-                                <li><img src="images/right-icon.png" id="carDescentControl"><span id="cDescent"></span>
-                                </li>
-                                <li><img src="images/wrong-icon.png" id="carElecAdSeat"><span id="cElectricAdj"></span>
-                                </li>
+                                <li><img src="images/right-icon.png" id="carDescentControl"><span id="cDescent"></span></li>
+                                <li><img src="images/wrong-icon.png" id="carElecAdSeat"><span id="cElectricAdj"></span></li>
                                 <li><img src="images/right-icon.png" id="carAirBag"><span id="cAir"></span></li>
-                                <li><img src="images/right-icon.png" id="carElecMir"><span id="cElectricMir"></span>
-                                </li>
+                                <!--16-->
+                                <li><img src="images/right-icon.png" id="carElecMir"><span id="cElectricMir"></span></li>
                                 <li><img src="images/right-icon.png" id="carABS"><span id="cAbs"></span></li>
                                 <li><img src="images/right-icon.png" id="carAC">A/C</li>
                                 <li><img src="images/right-icon.png" id="carWinDff"><span id="cWinDff"></span></li>
                                 <li><img src="images/right-icon.png" id="carRims"><span id="cRims"></span></li>
-                                <li><img src="images/right-icon.png" id="carLeatherSeat"><span id="cLeaSeat"></span>
-                                </li>
+                                <!--21-->
+                                <li><img src="images/right-icon.png" id="carLeatherSeat"><span id="cLeaSeat"></span></li>
                                 <li><img src="images/right-icon.png" id="carCassette"><span id="cCassette"></span></li>
                                 <li><img src="images/right-icon.png" id="carCruise"><span id="cCruise"></span></li>
                                 <li><img src="images/right-icon.png" id="carRTV">RTV</li>
@@ -251,26 +261,28 @@
 
                                 <li><img src="images/right-icon.png" id="carRearViewCam"><span id="cRear"></span></li>
                                 <li><img src="images/right-icon.png" id="carFrontSensor"><span id="cFront"></span></li>
-                                <li><img src="images/right-icon.png" id="carMulStrWheel"><span
-                                        id="cMultifunctional"></span></li>
+                                <li><img src="images/right-icon.png" id="carMulStrWheel"><span id="cMultifunctional"></span></li>
                                 <li><img src="images/right-icon.png" id="carRearSensor"><span id="cRearSen"></span></li>
                                 <li><img src="images/right-icon.png" id="carChangesDual"><span id="cChangeDual"></span></li>
+                                <!--6-->
                                 <li><img src="images/right-icon.png" id="carRadio"><span id="cRadioInSte"></span></li>
                                 <li><img src="images/right-icon.png" id="carMemorySeat"><span id="cMemory"></span></li>
                                 <li><img src="images/right-icon.png" id="carAutoFoldable"><span id="cAutoFold"></span></li>
                                 <li><img src="images/right-icon.png" id="carXenon"><span id="cXenon"></span></li>
                                 <li><img src="images/right-icon.png" id="carXenonLed"><span id="cXenLed"></span></li>
+                                <!--11-->
                                 <li><img src="images/right-icon.png" id="carRainSensor"><span id="cRain"></span></li>
                                 <li><img src="images/right-icon.png" id="carSmartKey"><span id="cSmartKey"></span></li>
                                 <li><img src="images/right-icon.png" id="carTireMoni"><span id="cTire"></span></li>
-
                                 <li><img src="images/right-icon.png" id="carCruseControl"><span id="cCruse"></span></li>
                                 <li><img src="images/right-icon.png" id="carAdjustSteering"><span id="cAduSte"></span></li>
+                                <!--16-->
                                 <li><img src="images/right-icon.png" id="carBluetooth"><span id="cBluetooth"></span></li>
                                 <li><img src="images/right-icon.png" id="carRadioConUSB"><span id="cRadioCon"></span></li>
                                 <li><img src="images/right-icon.png" id="carHydraulicSteering"><span id="cHydraulic"></span></li>
                                 <li><img src="images/right-icon.png" id="carCentralLocking"><span id="cCentLock"></span></li>
                                 <li><img src="images/right-icon.png" id="carPowerSeats"><span id="cPowerSeat"></span></li>
+                                <!--21-->
                                 <li><img src="images/right-icon.png" id="carTintedGlasses"><span id="cTintedGla"></span></li>
                                 <li><img src="images/right-icon.png" id="carElectricGlasses"><span id="cElectricGls"></span></li>
                                 <li><img src="images/right-icon.png" id="carBrakes"><span id="cBreaks"></span></li>
@@ -278,8 +290,11 @@
                                 <li><img src="images/right-icon.png" id="carStartButtonKey"><span id="cIntelligent"></span></li>
 
                             </ul>
-                            <ul>
-                                <li><span id="carComment">Comentario</span></li>
+                            <ul style="display: none;">
+                                <li><span id="vCount">Visitor Count:</span>
+                                    <span id="carVisitorCount"></span>
+                                </li>
+                                <!--<li><span id="carComment">Comentario</span></li>-->
                             </ul>
                         </ul>
 
@@ -287,22 +302,19 @@
                 </div>
 
             </div>
-
+            <div class="add"><img src="images/cocacola-img.png"></div>
         </div>
 
 
         <div class="clear"></div>
-        <div class="footer-area">
-            <div class="add"><img src="images/cocacola-img.png"></div>
-
-
-        </div>
+        <div class="footer-area"></div>
 
     </div>
     <div data-role="footer" data-position="fixed">
+
         <div data-role="navbar">
             <ul>
-                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
+                <li class="select-tab"><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
                     Automobiles</span></a></li>
                 <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
                     State</span></a></li>
@@ -333,7 +345,7 @@
         var links = [
             {
                 "bgcolor": "red",
-                "icon": "+",
+                "icon": "+"
             },
             {
                 "url": "car-upload.html",

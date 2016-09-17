@@ -39,13 +39,13 @@ var login = function () {
     }
     facebookConnectPlugin.login(["email"],
         function (response) {
-            //alert("A")
-            //alert(JSON.stringify(response))
+            //alert("A");
+            //alert(JSON.stringify(response));
             apiTest();
         },
         function (response) {
-            //alert("B")
-            alert(JSON.stringify(response))
+            //alert("B");
+            //alert(JSON.stringify(response));
         }
     );
 
@@ -54,18 +54,19 @@ var login = function () {
 var showDialog = function () {
     facebookConnectPlugin.showDialog({method: "feed"},
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response));
         },
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response));
         });
 }
 
 var apiTest = function () {
-    facebookConnectPlugin.api("me/?fields=id,name,email,gender", ["public_profile"],
+    //facebookConnectPlugin.api("me/?fields=id,name,email,gender", ["public_profile"],
+        facebookConnectPlugin.api("me/?fields=id,name,email,gender,picture.width(160).height(160)", ["public_profile"],
         function (response) {
             //alert("C")
-            //alert(JSON.stringify(response))
+            //alert(JSON.stringify(response));
             //alert(response.name);
             var fullname = response.name;
             var contactno = "0";
@@ -73,13 +74,16 @@ var apiTest = function () {
             var password = "123456";
             var birthday = response.birthday;
             var gender = response.gender;
+            var profile_image = response.picture.data.url;
+
+            window.localStorage['profile-image'] = profile_image;
             //alert(response.birthday);
             //alert(response.gender);
             goSocialLogin(fullname, gender, contactno, email_id, password);
         },
         function (response) {
             //alert("D")
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         }
     );
 }
@@ -87,10 +91,10 @@ var apiTest = function () {
 var logPurchase = function () {
     facebookConnectPlugin.logPurchase(1.99, "USD",
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         },
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         });
 }
 
@@ -106,30 +110,30 @@ var logEvent = function () {
             ContentID: "HDFU-8452"
         }, null,
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         },
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         });
 }
 
 var getAccessToken = function () {
     facebookConnectPlugin.getAccessToken(
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         },
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         });
 }
 
 var getStatus = function () {
     facebookConnectPlugin.getLoginStatus(
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         },
         function (response) {
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         });
 }
 
@@ -141,7 +145,7 @@ var logout = function () {
         },
         function (response) {
             //alert("2");
-            alert(JSON.stringify(response))
+            //alert(JSON.stringify(response))
         });
 }
 var first_name = "";
@@ -174,13 +178,14 @@ function goSocialLogin(name, gender, contact_no, email_id, password) {
 function goSocialLoginUser(first_name, last_name, gender, contact_no, email_id, password) {
 
     var socialLogin = '{"method":"SingUpSocial", "first_name":"' + first_name + '","last_name":"' + last_name + '", "gender":"' + gender + '", "contact_no":"' + contact_no + '", "email_id":"' + email_id + '", "password":"' + password + '"}';
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -189,10 +194,11 @@ function goSocialLoginUser(first_name, last_name, gender, contact_no, email_id, 
         data: socialLogin,
         success: function (data) {
 
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
 
             if (data.success == 0) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
             if (data.success == 1) {
@@ -209,13 +215,14 @@ function goSocialLoginUser(first_name, last_name, gender, contact_no, email_id, 
                 window.localStorage.setItem("gdc_lang", "en");
             }
             if (data.success == 2) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -225,13 +232,13 @@ function goToLogin() {
     var email_id = document.getElementById('email_id').value;
     var password = document.getElementById('password').value;
     if ($.trim(email_id).length == 0) {
-        alert('Please enter valid email address');
+        navigator.notification.alert('Please enter valid email address',null,'Alert','Ok');
         return false;
     }
 
     if (validateEmail(email_id)) {
         if ($.trim(password).length == 0) {
-            alert('Please enter password');
+            navigator.notification.alert('Please enter password',null,'Alert','Ok');
             return false;
         }
         else {
@@ -257,20 +264,21 @@ function goToLogin() {
         }
     }
     else {
-        alert('Invalid Email Address');
+        navigator.notification.alert('Invalid Email Address',null,'Alert','Ok');
         return false;
     }
 }
 
 function goLoginUser(email_id, password) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -279,7 +287,8 @@ function goLoginUser(email_id, password) {
         contentType: "application/json",
         data: '{"method":"UserLogin", "email_id":"' + email_id + '", "password":"' + password + '"}',
         success: function (data) {
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             if (data.success == 1) {
                 //alert(data.userinfo.first_name);
                 //alert(data.userinfo.last_name);
@@ -295,13 +304,14 @@ function goLoginUser(email_id, password) {
                 //alert(gdc_lang);
             }
             else {
-                alert('Please enter valid email address or password');
+                navigator.notification.alert('Please enter valid email address or password',null,'Alert','Ok');
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });

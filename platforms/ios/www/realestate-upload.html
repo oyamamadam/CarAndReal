@@ -55,6 +55,13 @@
 <body class="for_main_bg">
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
+
+<div id="preloader">
+    <div id="status">
+        <h3 class="center-text">Please Waiting</h3>
+    </div>
+</div>
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -84,7 +91,7 @@
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
             <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a href="#.html"><img src="images/search.png"></a></div>
         </div>
     </div>
@@ -108,9 +115,9 @@
                                 <div class="clear"></div>
                                 <div class="for_field new-field">
                                     <select name="proType" id="proType" onChange="selectClear('errfn');">
-                                        <option value="">Select Type</option>
-                                        <option value="Old">Old</option>
-                                        <option value="New">New</option>
+                                        <option value="" id="selType">Select Type</option>
+                                        <option value="Old" id="selOld">Old</option>
+                                        <option value="New" id="selNew">New</option>
                                     </select>
                                 </div>
                                 <div class="clear"></div>
@@ -121,7 +128,7 @@
                                 <div class="clear"></div>
                                 <div class="for_field new-field">
                                     <select name="propertyType" id="propertyType" onChange="selectClear('errfn1');">
-                                        <option selected="" value="">Select Category</option>
+                                        <option value="" id="proCate">Select Category</option>
                                     </select>
                                 </div>
                             </div>
@@ -189,7 +196,7 @@
                                 <div class="for_field new-field">
                                     <select name="selectCountry" id="selectCountry"
                                             onChange="selectState12(this.value);" onclick="selectClear('errfn6');">
-                                        <option selected="" value="">Select Country</option>
+                                        <option selected="" value="" id="selCountry">Select Country</option>
                                     </select>
                                 </div>
                             </div>
@@ -201,7 +208,7 @@
                                     <div class="for_field new-field">
                                         <select onchange="selectCity12(this.value);"
                                                 id="selectState" name="selectState" onclick="selectClear('errfn7');">
-                                            <option value="">Select State</option>
+                                            <option value="" id="selState">Select State</option>
                                         </select>
                                     </div>
                                 </div>
@@ -216,7 +223,7 @@
                                     <div class="clear"></div>
                                     <div class="for_field new-field">
                                         <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
-                                            <option value="">Select City</option>
+                                            <option value="" id="selCity">Select City</option>
                                         </select>
                                     </div>
                                 </div>
@@ -268,7 +275,7 @@
                                 <div class="clear"></div>
                                 <div class="for_field new-field">
                                     <select name="real_rating" id="real_rating" onclick="selectClear('errfn12');">
-                                        <option value="">Select Rating</option>
+                                        <option value="" id="selRating">Select Rating</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -289,11 +296,11 @@
                                 <div class="clear"></div>
                                 <div class="for_field new-field">
                                     <select name="real_condition" id="real_condition" onclick="selectClear('errfn13');">
-                                        <option value="">Select Condtion</option>
-                                        <option value="Excellent">Excellent</option>
-                                        <option value="Very Good">Very Good</option>
-                                        <option value="Okay">Okay</option>
-                                        <option value="Regular">Regular</option>
+                                        <option value="" id="selCondition">Select Condtion</option>
+                                        <option value="Excellent" id="excellent">Excellent</option>
+                                        <option value="Very Good" id="good">Very Good</option>
+                                        <option value="Okay" id="okay">Okay</option>
+                                        <option value="Regular" id="regular">Regular</option>
                                     </select>
                                 </div>
                             </div>
@@ -302,9 +309,9 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="for_lable">
-                                    <label for="real_price_type" id="pricetype">Price Type</label>
+                                    <label for="real_price_type" id="pricetype"></label>
                                 </div>
-                                <div class="for_field">
+                                <div class="for_field" style="margin-left: -30px;">
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="real_price_type" class="onoffswitch-checkbox"
                                                onchange="checkStatus();"
@@ -427,10 +434,11 @@
                 </button>
             </div>
         </div>
+        <div class="add"><img src="images/cocacola-img.png"></div>
     </div>
 
     <div class="clear"></div>
-    <div class="add"><img src="images/cocacola-img.png"></div>
+
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>

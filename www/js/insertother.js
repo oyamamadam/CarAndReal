@@ -18,7 +18,8 @@ var exchange = "";
 var pricetype = "";
 var price = "";
 var ouploadpic = "";
-var extraInfo = "";
+var extraInfo = "" +
+    "";
 var oAceept = "";
 var oFlexible = "";
 var oComment = "";
@@ -41,6 +42,20 @@ var insertPriceMsg = "";
 var insertNameMsg = "";
 var insertContactMsg = "";
 var insertEmailMsg = "";
+
+var selType = "";
+var selCate = "";
+var selCountry = "";
+var selState = "";
+var selCity = "";
+var selRating = "";
+var selCondition = "";
+var excellent = "";
+var good = "";
+var okay = "";
+var regular = "";
+var old = "";
+var _new = "";
 
 gdc_lang = window.localStorage.getItem("gdc_lang");
 //alert(gdc_lang);
@@ -66,13 +81,13 @@ function ready_eng() {
     oCondition = "Condition";
     oRating = "Rating";
     ouploadpic = "Upload Pics";
-    extraInfo = "Extra Info";
+    extraInfo = "Extra";
     oAceept = "Accept Old As Payment";
     oFlexible = "Flexible Price";
     loan = "Loan";
     trade = "Trade";
     exchange = "Exchange";
-    pricetype = "Price Type";
+    pricetype = "";
     price = "Price";
     oComment = "Comment";
     oPublishBy = "Published By";
@@ -95,6 +110,20 @@ function ready_eng() {
     insertContactMsg = "Please enter contact number.";
     insertEmailMsg = "Please enter email.";
 
+
+    selType = " Select Type";
+    selCate = "Select Category ";
+    selCity = "Select City";
+    selCountry = "Select Country";
+    selState = "Select Start";
+    selRating = "Select Rating";
+    selCondition = "Select Condition";
+    excellent = "Excellent";
+    good = "Good";
+    okay = "Okay";
+    regular = "Regular";
+    old = "Old";
+    _new = " New";
 }
 function ready_spa() {
     basicinfo = "Básica";
@@ -109,13 +138,13 @@ function ready_spa() {
     oCondition = "Condición";
     oRating = "Clasificación";
     ouploadpic = "Subir fotos";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     oAceept = "Acepta el oro como medio de pago";
     oFlexible = "Precio Flexible";
     loan = "Préstamo";
     trade = "Comercio";
     exchange = "Intercambiar";
-    pricetype = "Tipo Precio";
+    pricetype = "";
     price = "Precio";
     oComment = "Comentario";
     oPublishBy = "Publicado por";
@@ -137,22 +166,41 @@ function ready_spa() {
     insertNameMsg = "Por favor, introduzca su nombre.";
     insertContactMsg = "Por favor, introduzca el número de contacto.";
     insertEmailMsg = "Por favor, introduzca correo electrónico.";
+
+    selType = " Seleccionar el tipo de";
+    selCate = "Seleccionar categoría ";
+    selCity = "Seleccionar Ciudad";
+    selCountry = "Seleccionar país";
+    selState = "Seleccionar Estado";
+    selRating = "Seleccione el grado";
+    selCondition = "Seleccione Condición";
+    excellent = "Excelente";
+    good = "mejor";
+    okay = "bueno";
+    regular = "Regular";
+    old = "antiguo";
+    _new = "nuevo";
 }
 display();
 
 function display() {
     $(document).ready(function () {
         document.getElementById('basicinfo').innerHTML = basicinfo;
-        //document.getElementById('ptype').innerHTML = ptype;
-        //document.getElementById('cattype').innerHTML = cattype;
-        //document.getElementById('oTitle').innerHTML = oTitle;
-        //document.getElementById('oColor').innerHTML = oColor;
-        //document.getElementById('olocation').innerHTML = olocation;
-        //document.getElementById('oCountry').innerHTML = oCountry;
-        //document.getElementById('oState').innerHTML = oState;
-        //document.getElementById('oCity').innerHTML = oCity;
-        //document.getElementById('oCondition').innerHTML = oCondition;
-        //document.getElementById('oRating').innerHTML = oRating;
+
+        document.getElementById('selType').innerHTML = selType;
+        document.getElementById('selOld').innerHTML = old;
+        document.getElementById('selNew').innerHTML = _new;
+        document.getElementById('proCate').innerHTML = selCate;
+        document.getElementById('selCountry').innerHTML = selCountry;
+        document.getElementById('selState').innerHTML = selState;
+        document.getElementById('selCity').innerHTML = selCity;
+        document.getElementById('selRating').innerHTML = selRating;
+        document.getElementById('selCondition').innerHTML = selCondition;
+        document.getElementById('excellent').innerHTML = excellent;
+        document.getElementById('good').innerHTML = good;
+        document.getElementById('okay').innerHTML = okay;
+        document.getElementById('regular').innerHTML = regular;
+
         document.getElementById('ouploadpic').innerHTML = ouploadpic;
         document.getElementById('extraInfo').innerHTML = extraInfo;
         //document.getElementById('oAceept').innerHTML = oAceept;
@@ -167,6 +215,15 @@ function display() {
         //document.getElementById('oContact').innerHTML = oContact;
         //document.getElementById('oEmail').innerHTML = oEmail;
         document.getElementById('oSubmit').innerHTML = oSubmit;
+
+
+        $('#other_type-button span').html(selType);
+        $('#other_category-button span').html(selCate);
+        $('#selectCountry-button span').html(selCountry);
+        $('#selectCity-button span').html(selCity);
+        $('#selectState-button span').html(selState);
+        $('#other_rating-button span').html(selRating);
+        $('#other_condition-button span').html(selCondition);
     })
 }
 
@@ -288,7 +345,7 @@ function onPhotoDataSuccess(imageData) {
     smallImage.style.display = 'block';
     smallImage.src = "data:image/jpeg;base64," + imageData;
     $.post("http://ctinfotech.com.md-in-37.webhostbox.net/car_admin/upload.php", {imageData: imageData}, function (data) {
-        alert("Image uploaded!");
+        navigator.notification.alert("Image uploaded!",null,'Alert','Ok');
     });
 }
 // Called when a photo is successfully retrieved
@@ -325,12 +382,13 @@ function getPhoto(source) {
     navigator.camera.getPicture(onPhotoURISuccess, onFail, {
         quality: 50,
         destinationType: destinationType.DATA_URL,
-        sourceType: source
+        sourceType: source,
+        targetWidth: 200
     });
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Alert','Ok');
 }
 
 var removecar_img = "";
@@ -360,14 +418,15 @@ function reBuildArray(str) {
 
 //Ashish
 function getOtherCatList() {
-
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -381,8 +440,9 @@ function getOtherCatList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert("Error",null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -390,13 +450,14 @@ function getOtherCatList() {
 
 function getCountryList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -410,8 +471,9 @@ function getCountryList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert("Error",null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -422,7 +484,8 @@ function OtherCatData(data) {
         $('#other_category').append($('<option>').text(obj[i].other_cat_name).attr('value', obj[i].other_cat_id));
     }
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 
@@ -432,7 +495,8 @@ function countryData(data) {
         $('#selectCountry').append($('<option>').text(obj[i].counry_name).attr('value', obj[i].counry_id));
     }
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 
@@ -440,13 +504,14 @@ var state = 0;
 function selectState12(str) {
     state = str;
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?country_id=" + state;
     jQuery.ajax({
@@ -454,19 +519,21 @@ function selectState12(str) {
             jQuery("#div5").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 var state = 0;
 function selectCity12(str) {
     city = str;
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?state_id=" + city;
     jQuery.ajax({
@@ -474,7 +541,8 @@ function selectCity12(str) {
             jQuery("#div6").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectClear(str) {
@@ -501,21 +569,21 @@ function insertOtherDetail() {
     var regi_id = gdc_uid;
     var other_type = document.getElementById('other_type').value;
     if ($.trim(other_type) == "") {
-        alert(selectOtherMsg);
+        navigator.notification.alert(selectOtherMsg,null,'Alert','Ok');
         $('#other_type').focus();
         document.getElementById('errfn').innerHTML = selectOtherMsg;
         return false;
     }
     var other_category = document.getElementById('other_category').value;
     if ($.trim(other_category) == "") {
-        alert(selectCatMsg);
+        navigator.notification.alert(selectCatMsg,null,'Alert','Ok');
         $('#other_category').focus();
         document.getElementById('errfn1').innerHTML = selectCatMsg;
         return false;
     }
     var other_title = document.getElementById('other_title').value;
     if ($.trim(other_title).length == 0) {
-        alert(insertTitleMsg);
+        navigator.notification.alert(insertTitleMsg,null,'Alert','Ok');
         $('#other_title').focus();
         document.getElementById('errfn2').innerHTML = insertTitleMsg;
         return false;
@@ -534,35 +602,35 @@ function insertOtherDetail() {
     //}
     var other_country = document.getElementById('selectCountry').value;
     if ($.trim(other_country) == "") {
-        alert(insertCountryMsg);
+        navigator.notification.alert(insertCountryMsg,null,'Alert','Ok');
         $('#selectCountry').focus();
         document.getElementById('errfn3').innerHTML = insertCountryMsg;
         return false;
     }
     var other_state = document.getElementById('selectState').value;
     if ($.trim(other_state) == "") {
-        alert(insertStateMsg);
+        navigator.notification.alert(insertStateMsg,null,'Alert','Ok');
         $('#selectState').focus();
         document.getElementById('errfn7').innerHTML = insertStateMsg;
         return false;
     }
     var other_city = document.getElementById('selectCity').value;
     if ($.trim(other_city) == "") {
-        alert(insertCityMsg);
+        navigator.notification.alert(insertCityMsg,null,'Alert','Ok');
         $('#selectCity').focus();
         document.getElementById('errfn8').innerHTML = insertCityMsg;
         return false;
     }
     var other_condition = document.getElementById('other_condition').value;
     if ($.trim(other_condition) == "") {
-        alert(selectConditionMsg);
+        navigator.notification.alert(selectConditionMsg,null,'Alert','Ok');
         $('#other_condition').focus();
         document.getElementById('errfn6').innerHTML = selectConditionMsg;
         return false;
     }
     var other_rating = document.getElementById('other_rating').value;
     if ($.trim(other_rating) == "") {
-        alert(selectRatingMsg);
+        navigator.notification.alert(selectRatingMsg,null,'Alert','Ok');
         $('#other_rating').focus();
         document.getElementById('errfn9').innerHTML = selectRatingMsg;
         return false;
@@ -575,7 +643,7 @@ function insertOtherDetail() {
     }
     var other_price = document.getElementById('other_price').value;
     if ($.trim(other_price).length == 0) {
-        alert(insertPriceMsg);
+        navigator.notification.alert(insertPriceMsg,null,'Alert','Ok');
         $('#other_price').focus();
         document.getElementById('errfn10').innerHTML = insertPriceMsg;
         return false;
@@ -619,14 +687,14 @@ function insertOtherDetail() {
     var other_comment = document.getElementById('other_comment').value;
     var other_cont_name = document.getElementById('u_name').value;
     if ($.trim(other_cont_name).length == 0) {
-        alert(insertNameMsg);
+        navigator.notification.alert(insertNameMsg,null,'Alert','Ok');
         $('#u_name').focus();
         document.getElementById('errfn9').innerHTML = insertNameMsg;
         return false;
     }
     var other_phone = document.getElementById('u_phone').value;
     if ($.trim(other_phone).length == 0) {
-        alert(insertContactMsg);
+        navigator.notification.alert(insertContactMsg,null,'Alert','Ok');
         $('#u_phone').focus();
         document.getElementById('errfn10').innerHTML = insertContactMsg;
         return false;
@@ -649,13 +717,14 @@ function insertOtherDetail() {
 
     //console.log(others_detail);
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -665,24 +734,28 @@ function insertOtherDetail() {
         data: others_detail,
         success: function (data) {
             if (data.success == 0) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
             if (data.success == 1) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 window.location.href = "userpost.html?type=othermenu";
             }
             if (data.success == 2) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert("Error",null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });

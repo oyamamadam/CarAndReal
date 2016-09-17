@@ -14,7 +14,7 @@ function goVerify() {
     var verifynumber = document.getElementById('verifynumber').value;
     //alert(verifynumber);
     if ($.trim(verifynumber).length == 0) {
-        alert('Please enter valid verify number');
+        navigator.notification.alert('Please enter valid verify number',null,'Alert','Ok');
         return false;
     }
         $.ajax({
@@ -25,18 +25,18 @@ function goVerify() {
                     data: '{"method":"VerifyNumber", "verifynumber":"' + verifynumber + '"}',
                     success: function (data) {
                         if (data.success == 0) {
-                            alert(data.message);
+                            navigator.notification.alert(data.message,null,'Alert','Ok');
                             window.location.href ="index.html";
                             return false;
                         }
                         if (data.success == 1) {
-                            alert(data.message);
+                            navigator.notification.alert(data.message,null,'Alert','Ok');
                             window.location.href ="index.html";
                             return false;
                         }
                     },
                     error: function (result) {
-                        alert("Mobile Number Not Verify, Please Try Again!");
+                        navigator.notification.alert('Mobile Number Not Verify, Please Try Again!',null,'Alert','Ok');
                         return false;
                     }
             });

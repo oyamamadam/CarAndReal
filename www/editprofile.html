@@ -21,6 +21,13 @@
 <body class="for_main_bg">
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
+
+    <div id="preloader">
+        <div id="status">
+            <h3 class="center-text">Please Waiting</h3>
+        </div>
+    </div>
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -52,7 +59,7 @@
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
             <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
         </div>
     </div>
@@ -66,9 +73,21 @@
                                 <!--<a class="ui-link" href="profile.html" data-rel="close">-->
                                 <div align="center">
                                     <div class="img-box"><img id="profilepic" src="images/g_male.png"></div>
+                                    <!--<p>-->
+                                        <!--&lt;!&ndash;<a onclick="getPhoto(pictureSource.PHOTOLIBRARY);"><img id="profile_image"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;src="images/addpic.jpg"/>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                                        <!--<a onclick="getPhoto(pictureSource.PHOTOLIBRARY);">-->
+                                            <!--&lt;!&ndash;<img id="profile_image" style="width: 200px;height: auto;" src="images/addpic.jpg"/>&ndash;&gt;-->
+                                            <!--<img id="profile_image" src="images/addpic.jpg"/>-->
+                                        <!--</a>-->
+                                    <!--</p>-->
                                 </div>
-                                <br>
+                                <!--<div class="for_btn">-->
 
+                                    <!--<a onClick="return goToUpdateProfile();"-->
+                                       <!--class="button ui-btn ui-btn-inline my_login">Upload</a>-->
+                                <!--</div>-->
                                 <form action="" name="editfrm" method="post">
                                     <div class="for_form">
                                         <ul class="profile-ul">
@@ -76,9 +95,9 @@
                                                        placeholder="First Name"/></li>
                                             <li><input type="text" name="lastname" id="lastname" value=""
                                                        placeholder="Last Name"/></li>
-                                            <li><input type="text" name="usermobile" id="usermobile"
+                                            <li><input type="tel" name="usermobile" id="usermobile"
                                                        placeholder="Contact Number"/></li>
-                                            <li><input type="text" name="useremail" id="useremail"
+                                            <li><input type="email" name="useremail" id="useremail"
                                                        placeholder="E-mail"/></li>
                                             <li>
                                                 <div>
@@ -115,10 +134,11 @@
             </div>
         </div>
         <div class="clear"></div>
+        <div class="add"><img src="images/cocacola-img.png"></div>
     </div>
  <div class="clearfix"> </div>
     <!------close here-------->
-    <div class="add"><img src="images/cocacola-img.png"></div>
+
     <div class="clear"> </div>
 <div data-role="footer" data-position="fixed">
     <div data-role="navbar">

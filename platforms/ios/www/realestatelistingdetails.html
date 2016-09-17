@@ -38,6 +38,13 @@
 
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
+
+<div id="preloader">
+    <div id="status">
+        <h3 class="center-text">Please Waiting</h3>
+    </div>
+</div>
+
     <!--------------dropdown menu open------------->
     <div data-role="panel" id="myPanel" class="my_listview">
         <ul data-role="">
@@ -67,7 +74,7 @@
     <div data-role="header" data-position="fixed" class="bg_login">
         <div class="container">
             <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
+            <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
             <div class="for_back_btn"><a onclick="goToSearch();"><img src="images/search.png"></a></div>
         </div>
     </div>
@@ -103,7 +110,10 @@
                         </div>
                     </div>
                 </div>
-
+                <div>
+                    <span id="realVisitorCount" class="view"></span>
+                    <span class="gypsy"><img src="images/eye.png"></span>
+                </div>
             </div>
         </div>
 
@@ -124,50 +134,21 @@
                             <h3 id="realPropertyType"> </h3>
                             <ul>
 
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rTitle">Property:</span>
-                                    <span id="realName"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="clocation">Location:</span>
-                                    <span id="realLocation"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rNear">Near by:</span>
-                                    <span id="realNearBy"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rSize">Size(area):</span>
-                                    <span id="realTerrain"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rooms">Rooms:</span>
-                                    <span id="realRooms"></span>
-                                </li>
-
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="bathrooms">Bathrooms:</span>
-                                    <span id="realBathrooms"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rCondition">Condition:</span>
-                                    <span id="realCondition" class="nego"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rRating">Rating:</span>
-                                    <span id="realRating" class="nego"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="price">Price:</span>
-                                    <span id="realPrice"></span> <span class="nego">NEGOTIABLE</span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="rBuilt">3 years from the moment they built:</span>
-                                    <span id="realYersMoment"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="vCount">Visitor Count:</span>
-                                    <span id="realVisitorCount"></span>
-                                </li>
-                                <li><span style="font-weight:bold; width:40%; float:left;" id="cPublishOn">Publish On:</span>
-                                    <span id="realPublish"></span>
-                                </li>
-                                <li> <span style="font-weight:bold; width:40%; float:left;" id="rPublishBy">Publish By:</span>
-                                    <span id="realPublishUname"></span>
-                                </li>
-
-                                <li id="callPerson">
-
-                                </li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rTitle">Property:</span><span id="realName"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="clocation">Location:</span><span id="realLocation"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rNear">Near by:</span><span id="realNearBy"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rSize">Size(area):</span><span id="realTerrain"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rooms">Rooms:</span><span id="realRooms"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="bathrooms">Bathrooms:</span><span id="realBathrooms"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rCondition">Condition:</span><span id="realCondition" class="nego"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rRating">Rating:</span><span id="realRating" class="nego"></span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="price">Price:</span><span id="realPrice"></span> <span class="nego">NEGOTIABLE</span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="rBuilt">3 years from the moment they built:</span><span id="realYersMoment"></span></li>
+                                <!--<li><span style="font-weight:bold; width:40%; float:left;" id="vCount">Visitor Count:</span><span id="realVisitorCount"></span></li>-->
+                                <li style="display: none;"><span id="realComment">Comentario</span></li>
+                                <li><span style="font-weight:bold; width:40%; float:left;" id="cPublishOn">Publish On:</span><span id="realPublish"></span></li>
+                                <li> <span style="font-weight:bold; width:40%; float:left;" id="rPublishBy">Publish By:</span><span id="realPublishUname"></span></li>
+                                <li id="callPerson"></li>
                             </ul>
                         </div>
                     </div>
@@ -187,8 +168,10 @@
                                 <li><img src="images/right-icon.png" id="realWater"><span id="rWater"></span></li>
                             </ul>
 
-                            <ul>
-                                <li><span id="realComment">Comentario</span></li>
+                            <ul style="display: none;">
+                                <li><span id="vCount">Visitor Count:</span>
+                                <span id="realVisitorCount"></span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -198,17 +181,18 @@
 
 
         </div>
+        <div class="add"><img src="images/cocacola-img.png"></div>
     </div>
 
     <div class="clear"> </div>
-    <div class="add"><img src="images/cocacola-img.png"></div>
+
 
     <div data-role="footer" data-position="fixed">
         <div data-role="navbar">
             <ul>
                 <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br><span id="automobiles">
                     Automobiles</span></a></li>
-                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
+                <li class="select-tab"><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br><span id="realestate"> Real
                     State</span></a></li>
                 <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br> <span
                         id="sundries"> Sundries</span></a>

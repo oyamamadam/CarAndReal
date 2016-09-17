@@ -224,13 +224,14 @@ function goToPrv() {
 }
 
 function getAdvanceOtherDetail() {
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -243,21 +244,23 @@ function getAdvanceOtherDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert(Error,null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
 }
 function getOtherDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -270,8 +273,9 @@ function getOtherDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -284,8 +288,9 @@ function gotopage(oid) {
 
 function otherListData(data) {
     if (data.otherlist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
         if (secondData > 10) {
             secondData = secondData - 10;
         }
@@ -348,7 +353,8 @@ function otherListData(data) {
             var image1 = other_img[0];
             $("#allOtherData").append('<li><a onclick="gotopage(' + other_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + other_title + ', ' + other_category + ' (' + other_type + ')' + '</h4><h3>' + other_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + other_location + ', ' + other_city + ', ' + other_state + ', ' + other_country + '</h6><div class="icon-area"><div class="rating-area"><img src="images/star.png" class="star-img"><div class="rating-txt">' + rating + '/10</div> </div><div class="clearfix"> </div><div align="right">' + exchangeli + loanli + '</div></div></a></li>');
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
@@ -356,13 +362,14 @@ function otherListData(data) {
 //Other Filter
 function getOtherCatList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -376,16 +383,18 @@ function getOtherCatList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
 }
 function OtherCatFilterData(data) {
     if (data.othercat.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
     } else {
 
         // $("#allCarData").children().remove();
@@ -400,7 +409,8 @@ function OtherCatFilterData(data) {
             }
 //            $("#allOtherData").append('<li><a onclick="gotopage(' + other_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + other_title + ', ' + other_category + ' (' + other_type + ')' + '</h4><h3>' + other_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + other_location + ', ' + other_city + ', ' + other_state + ', ' + other_country + '</h6></div></a></li>');
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }

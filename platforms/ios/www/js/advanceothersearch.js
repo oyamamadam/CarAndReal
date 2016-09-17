@@ -103,13 +103,15 @@ function onBackKeyDown() {
 
 function getOtherCatList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -122,8 +124,9 @@ function getOtherCatList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -131,13 +134,14 @@ function getOtherCatList() {
 
 function getCountryList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -150,8 +154,9 @@ function getCountryList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -162,19 +167,22 @@ function countryData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#selectCountry').append($('<option>').text(obj[i].counry_name).attr('value', obj[i].counry_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 
 function selectState12(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     state = str;
     var url = BASE_URL + APP_API + "?country_id=" + state;
@@ -183,18 +191,20 @@ function selectState12(str) {
             jQuery("#div5").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectCity12(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     city = str;
     var url = BASE_URL + APP_API + "?state_id=" + city;
@@ -203,7 +213,9 @@ function selectCity12(str) {
             jQuery("#div6").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+
+    $("#preloader").css('display','none');
+    //cordova.plugin.pDialog.dismiss();
 }
 
 
@@ -216,7 +228,9 @@ function OtherCatData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#other_category').append($('<option>').text(obj[i].other_cat_name).attr('value', obj[i].other_cat_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+
+    $("#preloader").css('display','none');
     return true;
 }
 

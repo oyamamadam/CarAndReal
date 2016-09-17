@@ -9,7 +9,7 @@ var ok = "";
 var close = "";
 gdc_lang = window.localStorage.getItem("gdc_lang");
 if (gdc_lang == null) {
-    gdc_lang = "en";
+    gdc_lang = "es";
 }
 
 if (gdc_lang == "en")
@@ -52,7 +52,7 @@ function display() {
 }
 //gdc_lang = window.localStorage.getItem("gdc_lang");
 if (gdc_lang == null) {
-    gdc_lang = "en";
+    gdc_lang = "es";
 }
 if (gdc_lang == "en") {
     document.getElementById("en_radio").checked = true;

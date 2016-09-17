@@ -4,6 +4,8 @@ var APP_API = "api.php";
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("backbutton", onBackKeyDown, false);
+    //StatusBar.overlaysWebView(false);
+
 }
 
 function onBackKeyDown() {
@@ -24,6 +26,9 @@ var realestate = "";
 var sundries = "";
 var more = "";
 var gdc_lang = "";
+
+
+
 
 gdc_lang = window.localStorage.getItem("gdc_lang");
 //alert(gdc_lang);
@@ -128,15 +133,21 @@ function goToLogOut() {
     //navigator.app.exitApp();
 }
 function goToCarList() {
+    window.localStorage['tabstyle']=1;
+
+
     window.location.href = "car-listing.html";
 }
 function goToRealList() {
+    window.localStorage['tabstyle']=2;
     window.location.href = "realestate-listing.html";
 }
 function goToOtherList() {
+    window.localStorage['tabstyle']=3;
     window.location.href = "others-listing.html";
 }
 function goToMore() {
+    window.localStorage['tabstyle']=4;
     window.location.href = "more.html";
 }
 function goToSearch() {
@@ -150,9 +161,10 @@ var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
 var gdc_username = gdc_firstname + " " + gdc_lastname;
 //alert(gdc_username);
-var gdc_gender = window.localStorage.getItem("gdc_gender");
+//var gdc_gender = window.localStorage.getItem("gdc_gender");
 var gdc_email = window.localStorage.getItem("gdc_email_id");
 var gdc_mobile = window.localStorage.getItem("gdc_contactno");
+var profile_image = window.localStorage['profile-image'];
 
 $(document).ready(
     function () {
@@ -160,15 +172,22 @@ $(document).ready(
             document.getElementById('profilename').innerHTML = "Profile";
         } else {
             document.getElementById('profilename').innerHTML = gdc_username;
+
+        //var profile_image = window.localStorage['profile-image'];
+        //$('#profilegender').attr('src',profile_image);
         }
-        if (gdc_gender == null) {
+
+        if (profile_image == null) {
             document.getElementById('profilename').innerHTML = "Profile";
         } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+            //alert(profile_image);
+            document.getElementById("profilegender").src = profile_image;
+            //$('#profilegender').attr('src',profile_image);
+            //if (gdc_gender == "male") {
+            //
+            //} else {
+            //document.getElementById("profilegender").src = "images/female.png";
+            //}
         }
     }
 );

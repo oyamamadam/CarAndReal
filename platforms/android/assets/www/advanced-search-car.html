@@ -28,329 +28,337 @@
 <body class="for_main_bg">
 <div class="kc_fab_wrapper"></div>
 <div data-role="page" id="pageone">
-    <!--------------dropdown menu open------------->
-    <div data-role="panel" id="myPanel" class="my_listview">
-        <ul data-role="">
-            <div class="profile" onclick="goToProfile();"><a data-rel="close"> <img id="profilegender"
-                                                                                    src="images/menu-profile-icon.png"><br>
-                <h4 id="profilename"><b id="profile">Profile</b></h4>
-            </a></div>
-            <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
-                    id="home">Home</span></a></li>
-            <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
-            </li>
-            <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
-                    id="setting">Setting</span></a></li>
-            <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
-            </li>
-            <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
-                    id="contactus">Contact Us</span></a></li>
-            <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
-            <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
-        FAQ</span></a></li>
-            <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
-                    id="logout">Logout</span></a></li>
-        </ul>
+
+<div id="preloader">
+    <div id="status">
+        <h3 class="center-text">Please Waiting</h3>
     </div>
-    <!--------------dropdown menu open------------->
-    <div data-role="header" data-position="fixed" class="bg_login">
-        <div class="container">
-            <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
-            <div class="logo_home"><a href="index.html"><img src="images/new-logo.png"></a></div>
-            <!--<div class="for_back_btn"><a href="#.html"><img src="images/search.png"></a></div>-->
+</div>
+
+<!--------------dropdown menu open------------->
+<div data-role="panel" id="myPanel" class="my_listview">
+    <ul data-role="">
+        <div class="profile" onclick="goToProfile();"><a data-rel="close"> <img id="profilegender"
+                                                                                src="images/menu-profile-icon.png"><br>
+            <h4 id="profilename"><b id="profile">Profile</b></h4>
+        </a></div>
+        <li><a onclick="goToHome();" data-rel="close"><img src="images/menu-home-icon.png"/><span
+                id="home">Home</span></a></li>
+        <li><a onclick="goToMyPost();"><img src="images/menu-add-icon.png"><span id="mypost">My Post</span></a>
+        </li>
+        <li><a onclick="goToSetting();"><img src="images/menu-setting-icon.png"><span
+                id="setting">Setting</span></a></li>
+        <li><a onclick="goToAboutUs();"><img src="images/menu-about-icon.png"><span id="aboutus">About Us</span></a>
+        </li>
+        <li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-contact-icon.png"><span
+                id="contactus">Contact Us</span></a></li>
+        <!--<li><a onclick="goToContactus();" data-rel="close"><img src="images/menu-rateus-icon.png">Rate Us</a></li>-->
+        <li><a onclick="goToHelp();" data-rel="close"><img src="images/menu-help-icon.png"><span id="helpfaq">Help/
+        FAQ</span></a></li>
+        <li onclick="goToLogOut();"><a data-rel="close"><img src="images/menu-logout-icon.png"><span
+                id="logout">Logout</span></a></li>
+    </ul>
+</div>
+<!--------------dropdown menu open------------->
+<div data-role="header" data-position="fixed" class="bg_login">
+    <div class="container">
+        <div class="header_menu_icon"><a href="#myPanel"><img src="images/nav.png"></a></div>
+        <div class="logo_home"><a onclick="goToHome();"><img src="images/new-logo.png"></a></div>
+        <!--<div class="for_back_btn"><a href="#.html"><img src="images/search.png"></a></div>-->
+    </div>
+</div>
+<div data-role="main" class="ui-content">
+<!------open here-------->
+<div class="container" style="padding-top:10px;">
+<div class="for_car_adv_sch">
+<h4 id="carsearch">Car Search</h4>
+
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 select-box">
+        <div class="for_field new-field">
+            <select class="select-box" name="car_type" id="car_type">
+                <option value="">Select Type</option>
+                <option value="Old">Old</option>
+                <option value="New">New</option>
+            </select>
         </div>
     </div>
-    <div data-role="main" class="ui-content">
-        <!------open here-------->
-        <div class="container" style="padding-top:10px;">
-            <div class="for_car_adv_sch">
-                <h4 id="carsearch">Car Search</h4>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select name="car_make" id="car_make"
+                    onChange="selectModel12(this.value);">
+                <option selected="" value="">Select Make</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 select-box">
-                        <div class="for_field new-field">
-                            <select class="select-box" name="car_type" id="car_type">
-                                <option value="">Select Type</option>
-                                <option value="Old">Old</option>
-                                <option value="New">New</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <select name="car_make" id="car_make"
-                                    onChange="selectModel12(this.value);">
-                                <option selected="" value="">Select Make</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
+<div class="row">
+    <div id="divModel">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="for_field new-field">
+                <select name="selectModel" id="selectModel">
+                    <option selected="" value="">Select Model</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select name="selectStyle" id="selectStyle">
+                <option selected="" value="">Select Style</option>
+                <option value="Hatchback">Hatchback</option>
+                <option value="Sedans">Sedans</option>
+                <option value="Suv">Suv</option>
+                <option value="MUV">MUV</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Convertible">Convertible</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Coupe">Coupe</option>
+                <option value="Minivans">Minivans</option>
+            </select>
+        </div>
+    </div>
+</div>
+<!------- row-->
+<div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select id="car_fuel" name="car_fuel">
+                <option value="">Select Fuel</option>
+                <option value="Petrol">Petrol</option>
+                <option value="Gas LPG">Gas LPG</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+                <option value="Hydrogen">Hydrogen</option>
+            </select>
+        </div>
+    </div>
 
-                <div class="row">
-                    <div id="divModel">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="for_field new-field">
-                                <select name="selectModel" id="selectModel">
-                                    <option selected="" value="">Select Model</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <select name="selectStyle" id="selectStyle">
-                                <option selected="" value="">Select Style</option>
-                                <option value="Hatchback">Hatchback</option>
-                                <option value="Sedans">Sedans</option>
-                                <option value="Suv">Suv</option>
-                                <option value="MUV">MUV</option>
-                                <option value="Luxury">Luxury</option>
-                                <option value="Convertible">Convertible</option>
-                                <option value="Hybrid">Hybrid</option>
-                                <option value="Coupe">Coupe</option>
-                                <option value="Minivans">Minivans</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!------- row-->
-                <div class="clear"></div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <select id="car_fuel" name="car_fuel">
-                                <option value="">Select Fuel</option>
-                                <option value="Petrol">Petrol</option>
-                                <option value="Gas LPG">Gas LPG</option>
-                                <option value="Diesel">Diesel</option>
-                                <option value="Electric">Electric</option>
-                                <option value="Hydrogen">Hydrogen</option>
-                            </select>
-                        </div>
-                    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select id="car_transmission" name="car_transmission">
+                <option value="">Select Tranmission</option>
+                <option value="Manual">Manual</option>
+                <option value="Automatic">Automatic</option>
+                <option value="Tiptronic">Tiptronic</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <select onChange="selectState12(this.value);" name="selectCountry" id="selectCountry">
+                <option selected="" value="">Select Country</option>
+            </select>
+        </div>
+    </div>
+    <div id="div5">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="for_field new-field">
+                <select onchange="selectCity12(this.value);"
+                        id="selectState" name="selectState" onclick="selectClear('errfn7');">
+                    <option value="">Select State</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div id="div6">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="for_field new-field">
+                <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <input type="number" id="car_engine" name="car_engine"
+                   placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderEngine();"
+                    />
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<!--<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <input type="text" placeholder="Interior Color"
+                   name="car_int_color" id="car_int_color" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderIntColor();"
+                    />
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_field new-field">
+            <input type="text" placeholder="Exterior Color" id="car_ext_color"
+                   name="car_ext_color" onfocus="this.placeholder = ''"
+                   onblur="setPlaceHolderExtColor();"
+                    />
+        </div>
+    </div>
+</div>-->
+<!-- <div class="clear"></div>
+ <div class="row">
+     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+         <div class="for_lable">
+             <label id="year">Year</label>
+         </div>
+     </div>
+     <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+         <div class="for_field new-field">
+             <div class="for_field_adv">
+                 <input type="text" placeholder="Year" name="car_year_to"
+                        id="car_year_to" onfocus="this.placeholder = ''"
+                        onblur="setPlaceHolderYear();"
+                         />
+             </div>
+             <span style="float:left; width:26px; height:30px; line-height:30px; text-align:center; padding-top:7px;">to</span>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <select id="car_transmission" name="car_transmission">
-                                <option value="">Select Tranmission</option>
-                                <option value="Manual">Manual</option>
-                                <option value="Automatic">Automatic</option>
-                                <option value="Tiptronic">Tiptronic</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <select onChange="selectState12(this.value);" name="selectCountry" id="selectCountry">
-                                <option selected="" value="">Select Country</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="div5">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="for_field new-field">
-                                <select onchange="selectCity12(this.value);"
-                                        id="selectState" name="selectState" onclick="selectClear('errfn7');">
-                                    <option value="">Select State</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="row">
-                    <div id="div6">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="for_field new-field">
-                                <select id="selectCity" name="selectCity" onclick="selectClear('errfn8');">
-                                    <option value="">Select City</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <input type="number" id="car_engine" name="car_engine"
-                                   placeholder="Car Engine in CC" onfocus="this.placeholder = ''"
-                                   onblur="setPlaceHolderEngine();"
-                                    />
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <!--<div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <input type="text" placeholder="Interior Color"
-                                   name="car_int_color" id="car_int_color" onfocus="this.placeholder = ''"
-                                   onblur="setPlaceHolderIntColor();"
-                                    />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_field new-field">
-                            <input type="text" placeholder="Exterior Color" id="car_ext_color"
-                                   name="car_ext_color" onfocus="this.placeholder = ''"
-                                   onblur="setPlaceHolderExtColor();"
-                                    />
-                        </div>
-                    </div>
-                </div>-->
-               <!-- <div class="clear"></div>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                        <div class="for_lable">
-                            <label id="year">Year</label>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                        <div class="for_field new-field">
-                            <div class="for_field_adv">
-                                <input type="text" placeholder="Year" name="car_year_to"
-                                       id="car_year_to" onfocus="this.placeholder = ''"
-                                       onblur="setPlaceHolderYear();"
-                                        />
-                            </div>
-                            <span style="float:left; width:26px; height:30px; line-height:30px; text-align:center; padding-top:7px;">to</span>
+             <div class="for_field_adv">
+                 <input type="text" placeholder="Year" name="car_year_from"
+                        id="car_year_from" onfocus="this.placeholder = ''"
+                        onblur="setPlaceHolderYear();"
+                         />
+             </div>
+         </div>
+     </div>
+ </div>-->
+<!--<div class="clear"></div>-->
+<!--<div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+        <div class="for_lable">
+            <label id="price">Price</label>
+        </div>
+    </div>
+    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
+        <div class="for_field new-field">
+            <div class="for_field_adv">
+                <input type="text" placeholder="Price" id="car_price_to" name="car_price_to"
+                       onfocus="this.placeholder = ''"
+                       onblur="setPlaceHolderPrice();"
+                        />
+            </div>
+            <span style="float:left; width:26px; height:30px; line-height:30px; text-align:center; padding-top:7px;">to</span>
 
-                            <div class="for_field_adv">
-                                <input type="text" placeholder="Year" name="car_year_from"
-                                       id="car_year_from" onfocus="this.placeholder = ''"
-                                       onblur="setPlaceHolderYear();"
-                                        />
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-                <!--<div class="clear"></div>-->
-                <!--<div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                        <div class="for_lable">
-                            <label id="price">Price</label>
-                        </div>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-9">
-                        <div class="for_field new-field">
-                            <div class="for_field_adv">
-                                <input type="text" placeholder="Price" id="car_price_to" name="car_price_to"
-                                       onfocus="this.placeholder = ''"
-                                       onblur="setPlaceHolderPrice();"
-                                        />
-                            </div>
-                            <span style="float:left; width:26px; height:30px; line-height:30px; text-align:center; padding-top:7px;">to</span>
-
-                            <div class="for_field_adv">
-                                <input type="text" placeholder="Price" id="car_price_from" name="car_price_from"
-                                       onfocus="this.placeholder = ''"
-                                       onblur="setPlaceHolderPrice();"
-                                        />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>-->
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_lable">
-                            <label for="car_price_type" id="pricetype">Price Type</label>
-                        </div>
-                        <div class="for_field">
-                            <div class="onoffswitch">
-                                <input type="checkbox" name="car_price_type" class="onoffswitch-checkbox"
-                                       id="car_price_type" checked>
-                                <label class="onoffswitch-label" for="car_price_type">
-                                    <span class="onoffswitch-inner price"></span>
-                                    <span class="onoffswitch-switch price"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_lable">
-                            <label for="car_loan" id="loan">Loan</label>
-                        </div>
-                        <div class="for_field">
-                            <div class="onoffswitch">
-                                <input type="checkbox" name="car_loan" class="onoffswitch-checkbox"
-                                       id="car_loan" checked>
-                                <label class="onoffswitch-label" for="car_loan">
-                                    <span class="onoffswitch-inner"></span>
-                                    <span class="onoffswitch-switch"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="for_lable">
-                            <label for="car_exchange" id="exchange">Exchange</label>
-                        </div>
-                        <div class="for_field">
-                            <div class="onoffswitch">
-                                <input type="checkbox" name="car_exchange" class="onoffswitch-checkbox"
-                                       id="car_exchange" checked>
-                                <label class="onoffswitch-label" for="car_exchange">
-                                    <span class="onoffswitch-inner"></span>
-                                    <span class="onoffswitch-switch"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                </div>
-                <div class="clear"></div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
-                </div>
-                <!-- row -->
-                <div class="clearfix"></div>
-                <!-- -->
-                <!--<div class="clear"></div>-->
-                <!--<div class="for_lable">-->
-                <!--<label>Color</label>-->
-                <!--</div>-->
-                <!--<div class="for_field">-->
-                <!--<input type="text" placeholder="Color">-->
-                <!--</div>-->
-                <!--<div class="clear"></div>-->
-                <div align="center">
-                    <button class="my_login ui-btn ui-btn-inline" onclick="return goToSerachCar();" type="submit"><span
-                            id="search">Submit</span>
-                    </button>
-                </div>
-                <div class="clear"></div>
-
+            <div class="for_field_adv">
+                <input type="text" placeholder="Price" id="car_price_from" name="car_price_from"
+                       onfocus="this.placeholder = ''"
+                       onblur="setPlaceHolderPrice();"
+                        />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>-->
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_lable">
+            <label for="car_price_type" id="pricetype">Price Type</label>
+        </div>
+        <div class="for_field">
+            <div class="onoffswitch">
+                <input type="checkbox" name="car_price_type" class="onoffswitch-checkbox"
+                       id="car_price_type" checked>
+                <label class="onoffswitch-label" for="car_price_type">
+                    <span class="onoffswitch-inner price"></span>
+                    <span class="onoffswitch-switch price"></span>
+                </label>
             </div>
         </div>
 
     </div>
-    <div class="clearfix"></div>
-    <!------close here-------->
-    <div class="add"><img src="images/cocacola-img.png"></div>
-    <div class="clear"></div>
-    <div data-role="footer" data-position="fixed">
-        <div data-role="navbar">
-            <ul>
-                <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br>
-                    <span id="automobiles"> Automobiles</span></a></li>
-                <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br>
-          <span id="realestate"> Real
-          State</span></a></li>
-                <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br>
-                    <span id="sundries"> Sundries</span></a></li>
-                <li><a onclick="goToMore();"><img src="images/more-icon.png"><br>
-                    <span id="more"> More</span></a></li>
-            </ul>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_lable">
+            <label for="car_loan" id="loan">Loan</label>
+        </div>
+        <div class="for_field">
+            <div class="onoffswitch">
+                <input type="checkbox" name="car_loan" class="onoffswitch-checkbox"
+                       id="car_loan" checked>
+                <label class="onoffswitch-label" for="car_loan">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
         </div>
     </div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="for_lable">
+            <label for="car_exchange" id="exchange">Exchange</label>
+        </div>
+        <div class="for_field">
+            <div class="onoffswitch">
+                <input type="checkbox" name="car_exchange" class="onoffswitch-checkbox"
+                       id="car_exchange" checked>
+                <label class="onoffswitch-label" for="car_exchange">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+</div>
+<div class="clear"></div>
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"></div>
+</div>
+<!-- row -->
+<div class="clearfix"></div>
+<!-- -->
+<!--<div class="clear"></div>-->
+<!--<div class="for_lable">-->
+<!--<label>Color</label>-->
+<!--</div>-->
+<!--<div class="for_field">-->
+<!--<input type="text" placeholder="Color">-->
+<!--</div>-->
+<!--<div class="clear"></div>-->
+<div align="center">
+    <button class="my_login ui-btn ui-btn-inline" onclick="return goToSerachCar();" type="submit"><span
+            id="search">Submit</span>
+    </button>
+</div>
+<div class="clear"></div>
+
+</div>
+<div class="add"><img src="images/cocacola-img.png"></div>
+</div>
+
+</div>
+<div class="clearfix"></div>
+<!------close here-------->
+
+<div class="clear"></div>
+<div data-role="footer" data-position="fixed">
+    <div data-role="navbar">
+        <ul>
+            <li><a onclick="goToCarList();"><img src="images/automoviles-icon.png"> <br>
+                <span id="automobiles"> Automobiles</span></a></li>
+            <li><a onclick="goToRealList();"><img src="images/realestate-icon.png"> <br>
+          <span id="realestate"> Real
+          State</span></a></li>
+            <li><a onclick="goToOtherList();"><img src="images/others-icon.png"><br>
+                <span id="sundries"> Sundries</span></a></li>
+            <li><a onclick="goToMore();"><img src="images/more-icon.png"><br>
+                <span id="more"> More</span></a></li>
+        </ul>
+    </div>
+</div>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/owl.carousel.js"></script>

@@ -2,7 +2,8 @@
  * Created by CTINFO on 1/18/2016.
  */
 function convertImgToDataURLviaCanvas(url, callback, outputFormat){
-    alert(url);
+    navigator.notification.alert(url,null,'Alert','Ok');
+
     var img = new Image();
     img.crossOrigin = 'Anonymous';
     img.onload = function(){
@@ -14,7 +15,8 @@ function convertImgToDataURLviaCanvas(url, callback, outputFormat){
         ctx.drawImage(this, 0, 0);
         dataURL = canvas.toDataURL(outputFormat);
         callback(dataURL);
-        alert(dataURL)
+        navigator.notification.alert(dataURL,null,'Alert','Ok');
+
         canvas = null;
     };
     img.src = url;

@@ -462,7 +462,7 @@ if (typeof Object.create !== "function") {
                 return false;
             }
 
-            base.paginationWrapper.html("");
+            // base.paginationWrapper.html("");
 
             counter = 0;
             lastPage = base.itemsAmount - base.itemsAmount % base.options.items;

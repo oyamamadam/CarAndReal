@@ -388,14 +388,14 @@ function goToPrv() {
 
 function getAdvanceCarDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
-
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
     //var post_data = '"method":"CarDetailsSearch", "car_type":"' + car_type + '","car_country":"' + car_country + '","car_state":"' + car_state + '","car_city":"' + car_city + '","car_engine":"' + car_engine + '", "car_exchange":"' + car_exchange + '", "car_year_to":"' + car_year_to + '","car_year_from":"' + car_year_from + '","car_price_type":"' + car_price_type + '","car_price_to":"' + car_price_to + '","car_price_from":"' + car_price_from + '", "car_int_color":"' + car_int_color + '", "car_ext_color":"' + car_ext_color + '", "make_fil" : "' + make_fil + '","model_fil" : "' + model_fil + '","style_fil" : "' + style_fil + '","fuel_fil" : "' + fuel_fil + '","transmission_fil" : "' + transmission_fil + '","loan_fil" : "' + loan_fil + '", "price_fil" : "' + price_fil + '","year_fil" : "' + year_fil + '","first":"' + firstData + '", "second":"' + secondData + '"';
 
     $.ajax({
@@ -409,8 +409,9 @@ function getAdvanceCarDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -418,13 +419,15 @@ function getAdvanceCarDetail() {
 
 function getCarDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -438,8 +441,9 @@ function getCarDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -452,8 +456,9 @@ function gotopage(car_id) {
 
 function carListtData(data) {
     if (data.carlist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
         if (secondData > 10) {
             secondData = secondData - 10;
         }
@@ -610,19 +615,22 @@ function carListtData(data) {
             $("#allCarData").append('<li><a onclick="gotopage(' + car_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + car_model_name + ' (' + car_year + ')' + '</h4><h3>' + car_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + city_name + ', ' + state_name + ', ' + country_name + '</h6><div class="icon-area"><div class="rating-area"><div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + '/10</div> </div><div class="clearfix"> </div><div align="right">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div></div></a></li>');
         }
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 //Other Filter
 function getCarMakeList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -636,8 +644,9 @@ function getCarMakeList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -645,8 +654,9 @@ function getCarMakeList() {
 
 function OtherCatFilterData(data) {
     if (data.makefilter.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
     } else {
 
         // $("#allCarData").children().remove();
@@ -660,20 +670,22 @@ function OtherCatFilterData(data) {
                 $("#makefilter").append('<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + car_make_name + '</div><div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span><input type="checkbox" name="make_fil" onchange="gotofilter(' + car_make_id + ')"></span></div><div class="clearfix"></div>');
             }
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
 //Make
 function gotofilterNew(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -687,8 +699,9 @@ function gotofilterNew(str) {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -716,13 +729,14 @@ function gotofilter(str) {
         }
     }
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -736,8 +750,9 @@ function gotofilter(str) {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -753,8 +768,10 @@ function gotofilter(str) {
 }
 function OtherModelFilterData(data) {
     if (data.filtermodel.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
     } else {
 
         $("#modelfilter").children().remove();
@@ -768,20 +785,22 @@ function OtherModelFilterData(data) {
                 $("#modelfilter").append('<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + car_model_name + '</div><div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span><input type="checkbox" name="model_fil" onchange="getModel(' + car_model_id + ')"></span></div><div class="clearfix"></div>');
             }
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
 //Model
 function getModelNew(str) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -795,8 +814,9 @@ function getModelNew(str) {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -824,13 +844,15 @@ function getModel(str) {
         }
     }
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -844,8 +866,9 @@ function getModel(str) {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -861,8 +884,10 @@ function getModel(str) {
 }
 function OtherStyleFilterData(data) {
     if (data.filterstyle.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
+
     } else {
         $("#stylefilter").children().remove();
         for (var i = 0; i < data.filterstyle.length; i++) {
@@ -874,7 +899,8 @@ function OtherStyleFilterData(data) {
                 $("#stylefilter").append('<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + car_style_name + '</div><div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span><input type="checkbox" name="style_fil" onchange="getStyle(' + car_style_id + ')"></span></div><div class="clearfix"></div>');
             }
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }

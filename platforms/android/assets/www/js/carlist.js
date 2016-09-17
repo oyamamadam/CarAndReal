@@ -208,6 +208,11 @@ function goToOtherList() {
 function goToMore() {
     window.location.href = "more.html";
 }
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var gdc_uid = window.localStorage.getItem("gdc_uid");
 var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
@@ -269,13 +274,17 @@ function goToPrv() {
 function getAllCarDetail() {
     //{"method":"AllCarDetail", "first":"0", "second":"10"}
     //alert("First: " + firstData + "Second: " + secondData);
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+
+
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -325,11 +334,12 @@ function carListtData(data) {
 
             var car_year = data.carlist[i].car_year;
             var car_price_type = data.carlist[i].car_price_type;
-            if (car_price_type == "Dollares") {
-                var car_price = "$ " + data.carlist[i].car_price;
-            } else {
-                var car_price = "₡ " + data.carlist[i].car_price;
-            }
+            var car_price =numberWithCommas(data.carlist[i].car_price);
+            //if (car_price_type == "Dollares") {
+            //    var car_price = "$ " + data.carlist[i].car_price;
+            //} else {
+            //    var car_price = "₡ " + data.carlist[i].car_price;
+            //}
 
             //New Code
             var fuel = data.carlist[i].car_fuel;
@@ -451,10 +461,57 @@ function carListtData(data) {
             var image1 = file_img[0];
             //console.log("Size" + file_img.size);
             //alert("Size"+file_img.length);
-            $("#allCarData").append('<li><a onclick="gotopage(' + car_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + car_model_name + ' (' + car_year + ')' + '</h4><h3>' + car_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + city_name + ', ' + state_name + ', ' + country_name + '</h6><div class="icon-area"><div class="rating-area"><div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + '/10</div> </div><div class="clearfix"> </div><div align="right">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div></div></a></li>');
+
+
+            if (car_price_type == "Dollares") {
+                $("#allCarData").append('<li><a onclick="gotopage(' + car_id + ')">' +
+                '<div class="img_for_listing">' +
+                '<img src=' + image1 + '>' +
+                '</div><div class="txt_for_listing">' +
+                '<h4>' + car_model_name + ' (' + car_year + ')' + '</h4>' +
+                '<h3>' +'$' +car_price +' '+ ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h6>' + city_name + ', ' + state_name + ', ' + country_name + '</h6>' +
+                '<div class="icon-area">' +
+                '<div class="rating-area">' +
+                '<div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + '/10</div> ' +
+                '</div>' +
+                '<div class="clearfix"> </div>' +
+                    //'<div align="right">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div>' +
+                '</div>' +
+                '</a>' +
+                '</div>' +
+                '</div>' +
+
+                '<div align="right" class="icon-mark">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div>' +
+                '</li>');
+            }else {
+
+                $("#allCarData").append('<li><a onclick="gotopage(' + car_id + ')">' +
+                '<div class="img_for_listing">' +
+                '<img src=' + image1 + '>' +
+                '</div><div class="txt_for_listing">' +
+                '<h4>' + car_model_name + ' (' + car_year + ')' + '</h4>' +
+                '<h3 style="color: blue;">' +'₡'+ car_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h6>' + city_name + ', ' + state_name + ', ' + country_name + '</h6>' +
+                '<div class="icon-area">' +
+                '<div class="rating-area">' +
+                '<div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + '/10</div> ' +
+                '</div>' +
+                '<div class="clearfix"> </div>' +
+                    //'<div align="right">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div>' +
+                '</div>' +
+                '</a>' +
+                '</div>' +
+                '</div>' +
+
+                '<div align="right" class="icon-mark">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div>' +
+                '</li>');
+            }
         }
     }
-    cordova.plugin.pDialog.dismiss();
+
+    $("#preloader").css('display','none');
+    //cordova.plugin.pDialog.dismiss();
 }
 //$(document).ready(function () {
 //    $.ajax({

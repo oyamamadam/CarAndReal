@@ -45,14 +45,15 @@ var app = {
 app.initialize();
 
 function getHelpData() {
-
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
 
     $.ajax({
@@ -67,16 +68,20 @@ function getHelpData() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
+
             return false;
         }
     });
 }
 function AllHelpAndFAQ(data) {
     if (data.allhelpfaq.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert("No Data Found!");
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert('No Data Found!',null,'Alert','Ok');
+        $("#preloader").css('display','none');
+
     } else {
         for (var i = 0; i < data.allhelpfaq.length; i++) {
             var help_id = data.allhelpfaq[i].help_id;
@@ -85,7 +90,8 @@ function AllHelpAndFAQ(data) {
             var help_status = data.allhelpfaq[i].help_status;
             $("#helpdata").append('<h2 class="bg-col-a padtblr10">' + help_title + '</h2><p>' + help_descrip + '</p>');
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }

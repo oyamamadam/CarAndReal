@@ -209,13 +209,14 @@ function goToPrv() {
 
 function getAdvanceRealDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -228,21 +229,24 @@ function getAdvanceRealDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
 }
 function getRealDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -256,8 +260,9 @@ function getRealDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -268,8 +273,9 @@ function gotopage(real_id) {
 }
 function realListData(data) {
     if (data.reallist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
         if (secondData > 10) {
             secondData = secondData - 10;
         }
@@ -351,7 +357,8 @@ function realListData(data) {
             var image1 = real_img[0];
             $("#allRealData").append('<li><a onclick="gotopage(' + real_id + ')"><div class="img_for_listing"><img src=' + image1 + '></div><div class="txt_for_listing"><h4>' + real_room + ' BHK ' + real_pro_type + ' (' + real_property + ')' + '</h4><h3>' + real_price + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3><h6>' + real_location + ', ' + real_city + ', ' + real_state + ', ' + real_country + '</h6><div class="icon-area"><div class="rating-area"><img src="images/star.png" class="star-img"><div class="rating-txt">' + rating + ' /10</div> </div><div class="clearfix"> </div><div align="right">' + exchangeli + loanli + electricityli + waterli + '</div></div></a></li>');
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
@@ -359,13 +366,14 @@ function realListData(data) {
 //Other Filter
 function getRealProList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -379,16 +387,18 @@ function getRealProList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
 }
 function OtherCatFilterData(data) {
     if (data.realfilter.length == 0) {
-        cordova.plugin.pDialog.dismiss();
-        alert(msg_no);
+        //cordova.plugin.pDialog.dismiss();
+        navigator.notification.alert(msg_no,null,'Alert','Ok');
+        $("#preloader").css('display','none');
     } else {
 
         // $("#allCarData").children().remove();
@@ -401,7 +411,8 @@ function OtherCatFilterData(data) {
                 $("#catfilter").append('<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + other_cat_name + '</div><div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span><input type="checkbox" onclick="gotofilter(' + other_cat_id + ')"></span></div><div class="clearfix"></div>');
             }
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }

@@ -59,7 +59,7 @@ function ready_eng() {
     oCondition = "Condition";
     oRating = "Rating";
     ouploadpic = "Upload Pics";
-    extraInfo = "Extra Info";
+    extraInfo = "Extras";
     oAceept = "Accept Old As Payment";
     oFlexible = "Flexible Price";
     loan = "Loan";
@@ -89,7 +89,7 @@ function ready_spa() {
     oCondition = "Condición";
     oRating = "Clasificación";
     ouploadpic = "Subir fotos";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     oAceept = "Acepta el oro como medio de pago";
     oFlexible = "Precio Flexible";
     loan = "Préstamo";
@@ -183,6 +183,11 @@ function goToRealList() {
 function goToOtherList() {
     window.location.href = "others-listing.html";
 }
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 var gdc_uid = window.localStorage.getItem("gdc_uid");
 var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
@@ -252,13 +257,14 @@ $(document).ready(function () {
 function getOtherDetail(oid) {
     //{"method":"SelectOtherDetail", "other_id":"2"}
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -273,7 +279,8 @@ function getOtherDetail(oid) {
         },
         error: function (result) {
             //alert("Error");
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -300,16 +307,29 @@ function otherDetailData(data) {
         var other_rating = data.otherlist[i].other_rating;
         document.getElementById('realRating').innerHTML = other_rating + "/10";
         var other_pri_type = data.otherlist[i].other_pri_type;
-        var other_price = data.otherlist[i].other_price;
+
+        var other_price = numberWithCommas(data.otherlist[i].other_price);
         if (other_pri_type == "Dollares") {
-            document.getElementById('realPrice').innerHTML = "&#36; " + other_price;
+            document.getElementById('realPrice').innerHTML = "&#36;" + other_price+' ';
         } else {
-            document.getElementById('realPrice').innerHTML = "&#128; " + other_price;
+            document.getElementById('realPrice').innerHTML = "&#128;" + other_price+' ';
         }
         var other_visitor = data.otherlist[i].other_visitor;
         document.getElementById('otherVisitorCount').innerHTML = other_visitor;
-        var other_created = data.otherlist[i].other_created;
-        document.getElementById('realPublish').innerHTML = other_created;
+        var date = data.otherlist[i].other_created;
+
+        var m_names = new Array("Jan", "Feb", "Mar", "Apl", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+
+
+        var kk = date.split(" ");
+        var year = kk[0].split("-");
+        var time = kk[1];
+
+        var cc = parseInt(year[1]);
+        var other_created =m_names[cc]+'/'+ year[2]+'/'+year[0];
+
+        document.getElementById('realPublish').innerHTML = other_created +" "+ time;
         var other_cont_name = data.otherlist[i].other_cont_name;
         document.getElementById('realPublishUname').innerHTML = other_cont_name;
         var other_email = data.otherlist[i].other_email;
@@ -322,6 +342,7 @@ function otherDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realLoan").src = string;
+            $('.ul-left li:nth-child(1)').css("display",'none');
         }
 
         var other_exchange = data.otherlist[i].other_exchange;
@@ -331,6 +352,7 @@ function otherDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realExchange").src = string;
+            $('.ul-left li:nth-child(2)').css("display",'none');
         }
 
         var other_flex_pri = data.otherlist[i].other_flex_pri;
@@ -340,6 +362,7 @@ function otherDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("realFlexible").src = string;
+            $('.ul-right li:nth-child(1)').css("display",'none');
         }
         var other_comment = data.otherlist[i].other_comment;
         document.getElementById('realComment').innerHTML = other_comment;
@@ -351,6 +374,7 @@ function otherDetailData(data) {
             $("#owl-demo2").append('<div class="item"><img src="' + other_img[j] + '"></div>');
         }
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }

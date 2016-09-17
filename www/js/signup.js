@@ -12,7 +12,7 @@ function successCallback(result) {
 }
 
 function errorCallback(error) {
-    alert(error);
+    navigator.notification.alert(error,null,'Alert','Ok');
 }
 function onBackKeyDown() {
     //alert('back');
@@ -46,30 +46,30 @@ function goToSignUp() {
         var gender = document.getElementById('female').value;
     }
     if ($.trim(firstname).length == 0) {
-        alert('Please enter first name.');
+        navigator.notification.alert('Please enter first name.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(lastname).length == 0) {
-        alert('Please enter last name.');
+        navigator.notification.alert('Please enter last name.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(contactno).length == 0) {
-        alert('Please enter contact no.');
+        navigator.notification.alert('Please enter contact no.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(contactno).length < 10) {
-        alert('Please enter valid contact no.');
+        navigator.notification.alert('Please enter valid contact no.',null,'Alert','Ok');
         return false;
     }
     if ($.trim(email_id).length == 0) {
-        alert('Please enter valid email address.');
+        navigator.notification.alert('Please enter valid email address.',null,'Alert','Ok');
         return false;
     }
 
     if (validateEmail(email_id)) {
         if (validatePassword(password)) {
             if (document.getElementById('tccheck').checked == false) {
-                alert('You must agree to the terms first.');
+                navigator.notification.alert('You must agree to the terms first.',null,'Alert','Ok');
                 return false;
             }
             else {
@@ -93,7 +93,8 @@ function goToSignUp() {
         }
     }
     else {
-        alert('Invalid Email Address');
+        navigator.notification.alert('Invalid Email Address',null,'Alert','Ok');
+
         return false;
     }
 
@@ -101,13 +102,14 @@ function goToSignUp() {
 
 function signUp(firstname, lastname, gender, contactno, email_id, password) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','none');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -116,9 +118,10 @@ function signUp(firstname, lastname, gender, contactno, email_id, password) {
         contentType: "application/json",
         data: '{"method":"SingUp", "first_name":"' + firstname + '","last_name":"' + lastname + '", "gender":"' + gender + '", "contact_no":"' + contactno + '", "email_id":"' + email_id + '", "password":"' + password + '"}',
         success: function (data) {
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             if (data.success == 0) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
             if (data.success == 1) {
@@ -135,12 +138,12 @@ function signUp(firstname, lastname, gender, contactno, email_id, password) {
                 window.localStorage.setItem("gdc_lang", "en");
             }
             if (data.success == 2) {
-                alert(data.message);
+                navigator.notification.alert(data.message,null,'Alert','Ok');
                 return false;
             }
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Error',null,'Alert','Ok');
             return false;
         }
     });
@@ -158,30 +161,30 @@ function validateEmail(sEmail) {
 function validatePassword(password) {
     if (password != "") {
         if (password.length < 6) {
-            alert("Error: Password must contain at least six characters!");
+            navigator.notification.alert('Error: Password must contain at least six characters!',null,'Alert','Ok');
             //password.focus();
             return false;
         }
         re = /[0-9]/;
         if (!re.test(password)) {
-            alert("Error: password must contain at least one number (0-9)!");
+            navigator.notification.alert('Error: password must contain at least one number (0-9)!',null,'Alert','Ok');
             //form.pwd1.focus();
             return false;
         }
         re = /[a-z]/;
         if (!re.test(password)) {
-            alert("Error: password must contain at least one lowercase letter (a-z)!");
+            navigator.notification.alert('Error: password must contain at least one lowercase letter (a-z)!',null,'Alert','Ok');
             //form.pwd1.focus();
             return false;
         }
         re = /[A-Z]/;
         if (!re.test(password)) {
-            alert("Error: password must contain at least one uppercase letter (A-Z)!");
+            navigator.notification.alert('Error: password must contain at least one uppercase letter (A-Z)!',null,'Alert','Ok');
             //form.pwd1.focus();
             return false;
         }
     } else {
-        alert("Please enter password!");
+        navigator.notification.alert('Please enter password!',null,'Alert','Ok');
         //form.pwd1.focus();
         return false;
     }

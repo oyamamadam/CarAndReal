@@ -140,7 +140,7 @@ function ready_eng() {
     cUploadpic = "Upload Pics";
     cCondition = "Condition";
     cRating = "Rating";
-    extraInfo = "Extra Info";
+    extraInfo = "Extra";
     withPlate = "With Plates";
     cPlate = "Plate Number";
     loan = "Loan";
@@ -560,13 +560,16 @@ function selectCountry12(str) {
 
 function selectState12(real_country, real_state) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?ecountry_id=" + real_country + "&st_id=" + real_state;
     jQuery.ajax({
@@ -575,18 +578,20 @@ function selectState12(real_country, real_state) {
         }
     });
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectCity12(real_state, real_city) {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?estate_id=" + real_state + "&ci_id=" + real_city;
     jQuery.ajax({
@@ -594,8 +599,8 @@ function selectCity12(real_state, real_city) {
             jQuery("#div6").html(result);
         }
     });
-
-    cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
+    //cordova.plugin.pDialog.dismiss();
 }
 
 function selectDoors(str) {
@@ -697,15 +702,16 @@ app.initialize();
 function getCarDetail(cid) {
     //{"method":"SelectCarDetail", "car_id":"3"}
     //alert("Cid: " + cid);
+    //
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
-
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -717,7 +723,7 @@ function getCarDetail(cid) {
             return true;
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Server Error',null,'Error','Ok');
             return false;
         }
     });
@@ -1167,7 +1173,8 @@ function carDetailData(data) {
         }
     }
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 
     return true;
 }
@@ -1241,7 +1248,8 @@ function getPhoto(source) {
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Error','Ok');
+
 }
 
 var removecar_img = "";
@@ -1271,13 +1279,13 @@ function reBuildArray(str) {
 
 function selectModel12(str) {
     model = str;
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
     var url = BASE_URL + APP_API + "?model_id=" + model;
     jQuery.ajax({
@@ -1285,7 +1293,8 @@ function selectModel12(str) {
             jQuery("#divModel").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectStyle(str) {
@@ -1338,56 +1347,56 @@ function updateCarDetail() {
     var regi_id = gdc_uid;
     var car_type = document.getElementById('proType').value;
     if ($.trim(car_type) == "") {
-        alert(selectMsg);
+        //alert(selectMsg);
         $('#proType').focus();
         document.getElementById('errfn').innerHTML = selectMsg;
         return false;
     }
     var car_make = document.getElementById('car_make').value;
     if ($.trim(car_make) == "") {
-        alert(selectCarMakMsg);
+        //alert(selectCarMakMsg);
         $('#car_make').focus();
         document.getElementById('errfn1').innerHTML = selectCarMakMsg;
         return false;
     }
     var car_model = document.getElementById('selectModel').value;
     if ($.trim(car_model) == "") {
-        alert(insertModelMsg);
+        //alert(insertModelMsg);
         $('#selectModel').focus();
         document.getElementById('errfnModel').innerHTML = insertModelMsg;
         return false;
     }
     var car_style = document.getElementById('selectStyle').value;
     if ($.trim(car_style) == "") {
-        alert(insertStyleMsg);
+        //alert(insertStyleMsg);
         $('#selectStyle').focus();
         document.getElementById('errfnStyle').innerHTML = insertStyleMsg;
         return false;
     }
     var car_fuel = document.getElementById('car_fuel').value;
     if ($.trim(car_fuel) == "") {
-        alert(insertFuelMsg);
+        //alert(insertFuelMsg);
         $('#car_fuel').focus();
         document.getElementById('errfnFuel').innerHTML = insertFuelMsg;
         return false;
     }
     var car_transmission = document.getElementById('car_transmission').value;
     if ($.trim(car_transmission) == "") {
-        alert(insertTrasMsg);
+        //alert(insertTrasMsg);
         $('#car_transmission').focus();
         document.getElementById('errfnTrans').innerHTML = insertTrasMsg;
         return false;
     }
     var car_engine = document.getElementById('car_engine').value;
     if ($.trim(car_engine).length == 0) {
-        alert(insertCarEngMsg);
+        //alert(insertCarEngMsg);
         $('#car_engine').focus();
         document.getElementById('errfn16').innerHTML = insertCarEngMsg;
         return false;
     }
     var car_year = document.getElementById('car_year').value;
     if ($.trim(car_year).length == 0) {
-        alert(insertYearMsg);
+        //alert(insertYearMsg);
         $('#car_year').focus();
         document.getElementById('errfn17').innerHTML = insertYearMsg;
         return false;
@@ -1407,56 +1416,56 @@ function updateCarDetail() {
     //alert(car_odometer);
     var car_price = document.getElementById('car_price').value;
     if ($.trim(car_price).length == 0) {
-        alert(insertPriceMsg);
+        //alert(insertPriceMsg);
         $('#car_price').focus();
         document.getElementById('errfn88').innerHTML = insertPriceMsg;
         return false;
     }
     var car_int_color = document.getElementById('car_int_color').value;
     if ($.trim(car_int_color).length == 0) {
-        alert(insertIntCol);
+        //alert(insertIntCol);
         $('#car_int_color').focus();
         document.getElementById('errfn9').innerHTML = insertIntCol;
         return false;
     }
     var car_ext_color = document.getElementById('car_ext_color').value;
     if ($.trim(car_ext_color).length == 0) {
-        alert(insertExtCol);
+        //alert(insertExtCol);
         $('#car_ext_color').focus();
         document.getElementById('errfn10').innerHTML = insertExtCol;
         return false;
     }
     var car_km = document.getElementById('car_km').value;
     if ($.trim(car_km).length == 0) {
-        alert(insertKiloMsg);
+        //alert(insertKiloMsg);
         $('#car_km').focus();
         document.getElementById('errfn11').innerHTML = insertKiloMsg;
         return false;
     }
     var car_country = document.getElementById('selectCountry').value;
     if ($.trim(car_country) == "") {
-        alert(insertCountryMsg);
+        //alert(insertCountryMsg);
         $('#selectCountry').focus();
         document.getElementById('errfn3').innerHTML = insertCountryMsg;
         return false;
     }
     var car_state = document.getElementById('selectState').value;
     if ($.trim(car_state) == "") {
-        alert(insertStateMsg);
+       // alert(insertStateMsg);
         $('#selectState').focus();
         document.getElementById('errfn4').innerHTML = insertStateMsg;
         return false;
     }
     var car_city = document.getElementById('selectCity').value;
     if ($.trim(car_city) == "") {
-        alert(insertCityMsg);
+        //alert(insertCityMsg);
         $('#selectCity').focus();
         document.getElementById('errfn5').innerHTML = insertCityMsg;
         return false;
     }
     var car_doors = document.getElementById('car_doors').value;
     if ($.trim(car_doors) == "") {
-        alert(insertCarDorMsg);
+        //alert(insertCarDorMsg);
         $('#car_doors').focus();
         document.getElementById('errfn15').innerHTML = insertCarDorMsg;
         return false;
@@ -1464,7 +1473,7 @@ function updateCarDetail() {
 
     var car_rating = document.getElementById('real_rating').value;
     if ($.trim(car_rating) == "") {
-        alert(selectRatingMsg);
+        //alert(selectRatingMsg);
         $('#car_rating').focus();
         document.getElementById('errfn6').innerHTML = selectRatingMsg;
         return false;
@@ -1472,7 +1481,7 @@ function updateCarDetail() {
 
     var car_condition = document.getElementById('real_condition').value;
     if ($.trim(car_condition) == "") {
-        alert(selectConditionMsg);
+        //alert(selectConditionMsg);
         $('#car_condition').focus();
         document.getElementById('errfn7').innerHTML = selectConditionMsg;
         return false;
@@ -1486,7 +1495,7 @@ function updateCarDetail() {
 
     var car_plate = document.getElementById('car_plate').value;
     if ($.trim(car_with_plate) == "Yes" && $.trim(car_plate).length == 0) {
-        alert(insertCarPlatNoMsg);
+        //alert(insertCarPlatNoMsg);
         $('#car_plate').focus();
         document.getElementById('errfnCarPlate').innerHTML = insertCarPlatNoMsg;
         return false;
@@ -1835,14 +1844,14 @@ function updateCarDetail() {
     var car_comment = document.getElementById('car_comment').value;
     var name = document.getElementById('u_name').value;
     if ($.trim(name).length == 0) {
-        alert(insertNameMsg);
+        //alert(insertNameMsg);
         $('#u_name').focus();
         document.getElementById('errfn19').innerHTML = insertNameMsg;
         return false;
     }
     var u_phone = document.getElementById('u_phone').value;
     if ($.trim(u_phone).length == 0) {
-        alert(insertContactMsg);
+        //alert(insertContactMsg);
         $('#u_phone').focus();
         document.getElementById('errfn20').innerHTML = insertContactMsg;
         return false;
@@ -1866,13 +1875,14 @@ function updateCarDetail() {
     }
     //console.log(car_detail);
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -1882,24 +1892,32 @@ function updateCarDetail() {
         data: car_detail,
         success: function (data) {
             if (data.success == 0) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
+                //alert(data.message);
                 return false;
             }
             if (data.success == 1) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
+                //alert(data.message);
                 window.location.href = "userpost.html?type=carmenu";
             }
             if (data.success == 2) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
+                //alert(data.message);
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Data not update, please try again.");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Data not update, please try again.',null,'Alert','Ok');
+            $("#preloader").css('display','none');
+            //alert("Data not update, please try again.");
             return false;
         }
     });

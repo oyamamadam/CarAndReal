@@ -28,7 +28,7 @@
 .onoffswitch-inner.price:after {
     content: "$";
     padding-right: 10px;
-    background-color: #EEEEEE; color: #999999;
+    background-color: #ee2131; color: #ffffff;
     text-align: right;
 }
 .onoffswitch-inner.meter {

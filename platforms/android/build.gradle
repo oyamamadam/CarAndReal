@@ -251,6 +251,7 @@ dependencies {
     releaseCompile project(path: "CordovaLib", configuration: "release")
     compile "com.facebook.android:facebook-android-sdk:4.8.+"
     compile "com.android.support:support-v4:+"
+    compile "com.google.android.gms:play-services-ads:+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

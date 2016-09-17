@@ -21,9 +21,6 @@
             "APP_NAME": "CarAndReal",
             "PACKAGE_NAME": "com.carandreal"
         },
-        "cordova-plugin-pdialog": {
-            "PACKAGE_NAME": "com.carandreal"
-        },
         "cordova-plugin-sim": {
             "PACKAGE_NAME": "com.carandreal"
         },
@@ -32,10 +29,22 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.carandreal"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-extension": {
             "PACKAGE_NAME": "com.carandreal"
         }
     }

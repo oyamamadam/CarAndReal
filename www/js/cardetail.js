@@ -122,14 +122,15 @@ function ready_eng() {
     cUploadpic = "Upload Pics";
     cCondition = "Condition";
     cRating = "Rating";
-    extraInfo = "Extra Info";
+    extraInfo = "Extras";
+    //extraInfo = "Extra Info";
     withPlate = "With Plates";
     cPlate = "Car Plate No.";
     loan = "Loan";
     cAccept = "Accept Old Car";
     trade = "Trade";
     exchange = "Exchange";
-    cComment = "Comment";
+    //cComment = "Comment";
     cPublishBy = "Published By";
     cContact = "Contact No.";
     cEmail = "Email";
@@ -205,7 +206,7 @@ function ready_spa() {
     doors = "Puertas";
     cCondition = "Condición";
     cRating = "Clasificación";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     withPlate = "Con Las Placas";
     cPlate = "Placa auto No.";
     loan = "Préstamo";
@@ -213,7 +214,7 @@ function ready_spa() {
     cUploadpic = "Subir fotos";
     trade = "Comercio";
     exchange = "Intercambiar";
-    cComment = "Comentario";
+    //cComment = "Comentario";
     cPublishBy = "Publicado por";
     cContact = "Contacto No.";
     cEmail = "Email";
@@ -399,6 +400,12 @@ function goToRealList() {
 function goToOtherList() {
     window.location.href = "others-listing.html";
 }
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+
 var gdc_uid = window.localStorage.getItem("gdc_uid");
 var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
@@ -470,13 +477,15 @@ function getCarDetail(cid) {
     //{"method":"SelectCarDetail", "car_id":"3"}
     //alert("Cid: " + cid);
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -494,7 +503,8 @@ function getCarDetail(cid) {
         },
         error: function (result) {
             //alert("Error");
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -520,12 +530,12 @@ function carDetailData(data) {
         document.getElementById('carTransmission').innerHTML = car_transmission;
         var car_engine = data.carlist[i].car_engine;
         document.getElementById('carMoter').innerHTML = car_engine + " CC";
-        var car_price = data.carlist[i].car_price;
+        var car_price = numberWithCommas(data.carlist[i].car_price);
         var car_price_type = data.carlist[i].car_price_type;
         if (car_price_type == "Dollares") {
-            document.getElementById('carPrice').innerHTML = "&#36; " + car_price;
+            document.getElementById('carPrice').innerHTML = "&#36;" + car_price+' ';
         } else {
-            document.getElementById('carPrice').innerHTML = "&#128; " + car_price;
+            document.getElementById('carPrice').innerHTML = "&#128;" + car_price+' ';
         }
         var car_int_color = data.carlist[i].car_int_color;
         document.getElementById('carInteriorColor').innerHTML = car_int_color;
@@ -541,7 +551,18 @@ function carDetailData(data) {
         document.getElementById('carCondition').innerHTML = car_condition;
         var car_rating = data.carlist[i].car_rating;
         document.getElementById('carRating').innerHTML = car_rating + "/10";
-        var car_lising_create = data.carlist[i].car_lising_create;
+        var date = data.carlist[i].car_lising_create;
+        //var car_lising_create = data.carlist[i].car_lising_create;
+        var m_names = new Array("Jan", "Feb", "Mar", "Apl", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+
+        var aa = date.split("-");
+        var cc = parseInt(aa[1]);
+        var car_lising_create = m_names[cc] + '/'+aa[2]+'/'+aa[0];
+
+
+
+
         document.getElementById('carPublish').innerHTML = car_lising_create;
         var name = data.carlist[i].name;
         document.getElementById('carPublishUname').innerHTML = name;
@@ -549,7 +570,7 @@ function carDetailData(data) {
         //document.getElementById('carPublishUemail').innerHTML = u_email;
         var car_with_plate = data.carlist[i].car_with_plate;
         var car_plate = data.carlist[i].car_plate;
-        var lastDigit = car_plate % 10.
+        var lastDigit = car_plate % 10.;
         if (car_with_plate == "Yes") {
             var string = 'images/right-icon.png';
             document.getElementById("carPlate").src = string;
@@ -558,6 +579,7 @@ function carDetailData(data) {
             var string = 'images/wrong-icon.png';
             document.getElementById("carPlate").src = string;
             document.getElementById('carPlateNumber').innerHTML = "No " + cPlate;
+            $('.ul-left li:nth-child(1)').css("display",'none');
         }
 
         var car_loan = data.carlist[i].car_loan;
@@ -567,6 +589,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carLoan").src = string;
+            $('.ul-left li:nth-child(2)').css("display",'none');
         }
         var car_acpt_old = data.carlist[i].car_acpt_old;
         //if (car_acpt_old == "Yes") {
@@ -583,6 +606,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carExchange").src = string;
+            $('.ul-left li:nth-child(3)').css("display",'none');
         }
         var car_listing = data.carlist[i].car_listing;
         document.getElementById('carVisitorCount').innerHTML = car_listing;
@@ -600,7 +624,9 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carPowerLock").src = string;
+            $('.ul-left li:nth-child(4)').css("display",'none');
         }
+
         var car_ele_seat = data.carlist[i].car_ele_seat;
         if (car_ele_seat == "Yes") {
             var string = 'images/right-icon.png';
@@ -608,7 +634,9 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carElecAdSeat").src = string;
+            $('.ul-left li:nth-child(14)').css("display",'none');
         }
+
         var car_tint_win = data.carlist[i].car_tint_win;
         if (car_tint_win == "Yes") {
             var string = 'images/right-icon.png';
@@ -616,7 +644,9 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carTintWin").src = string;
+            $('.ul-left li:nth-child(5)').css("display",'none');
         }
+
         var car_air_bag = data.carlist[i].car_air_bag;
         if (car_air_bag == "Yes") {
             var string = 'images/right-icon.png';
@@ -624,6 +654,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carAirBag").src = string;
+            $('.ul-left li:nth-child(15)').css("display",'none');
         }
         var car_pow_win = data.carlist[i].car_pow_win;
         if (car_pow_win == "Yes") {
@@ -632,6 +663,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carpowerWin").src = string;
+            $('.ul-left li:nth-child(6)').css("display",'none');
         }
         var car_ele_mir = data.carlist[i].car_ele_mir;
         if (car_ele_mir == "Yes") {
@@ -640,6 +672,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carElecMir").src = string;
+            $('.ul-left li:nth-child(16)').css("display",'none');
         }
         var car_alarm = data.carlist[i].car_alarm;
         if (car_alarm == "Yes") {
@@ -648,6 +681,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carAlarm").src = string;
+            $('.ul-left li:nth-child(7)').css("display",'none');
         }
         var car_abs = data.carlist[i].car_abs;
         if (car_abs == "Yes") {
@@ -656,6 +690,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carABS").src = string;
+            $('.ul-left li:nth-child(17)').css("display",'none');
         }
         var car_ac = data.carlist[i].car_ac;
         if (car_ac == "Yes") {
@@ -664,6 +699,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carAC").src = string;
+            $('.ul-left li:nth-child(18)').css("display",'none');
         }
         var car_win_difo = data.carlist[i].car_win_difo;
         if (car_win_difo == "Yes") {
@@ -672,6 +708,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carWinDff").src = string;
+            $('.ul-left li:nth-child(19)').css("display",'none');
         }
         var car_sunroof = data.carlist[i].car_sunroof;
         if (car_sunroof == "Yes") {
@@ -680,6 +717,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carSunRoof").src = string;
+            $('.ul-left li:nth-child(9)').css("display",'none');
         }
         var car_rims = data.carlist[i].car_rims;
         if (car_rims == "Yes") {
@@ -688,6 +726,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRims").src = string;
+            $('.ul-left li:nth-child(20)').css("display",'none');
         }
         var car_turbo = data.carlist[i].car_turbo;
         if (car_turbo == "Yes") {
@@ -696,6 +735,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carTurbo").src = string;
+            $('.ul-left li:nth-child(10)').css("display",'none');
         }
         var car_lea_seat = data.carlist[i].car_lea_seat;
         if (car_lea_seat == "Yes") {
@@ -704,6 +744,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carLeatherSeat").src = string;
+            $('.ul-left li:nth-child(21)').css("display",'none');
         }
         var car_halo = data.carlist[i].car_halo;
         if (car_halo == "Yes") {
@@ -712,6 +753,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carHalogen").src = string;
+            $('.ul-left li:nth-child(11)').css("display",'none');
         }
         var car_cas = data.carlist[i].car_cas;
         if (car_cas == "Yes") {
@@ -720,6 +762,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carCassette").src = string;
+            $('.ul-left li:nth-child(22)').css("display",'none');
         }
         var car_dvd = data.carlist[i].car_dvd;
         if (car_dvd == "Yes") {
@@ -728,6 +771,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carDisco").src = string;
+            $('.ul-left li:nth-child(12)').css("display",'none');
         }
         var car_cru_con = data.carlist[i].car_cru_con;
         if (car_cru_con == "Yes") {
@@ -736,6 +780,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carCruise").src = string;
+            $('.ul-left li:nth-child(23)').css("display",'none');
         }
         var car_usb = data.carlist[i].car_usb;
         if (car_usb == "Yes") {
@@ -744,6 +789,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRadioConUSB").src = string;
+            $('.ul-right li:nth-child(17)').css("display",'none');
         }
         var car_rtv = data.carlist[i].car_rtv;
         if (car_rtv == "Yes") {
@@ -752,14 +798,17 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRTV").src = string;
+            $('.ul-left li:nth-child(24)').css("display",'none');
         }
         var car_cont_elect = data.carlist[i].car_cont_elect;
         if (car_cont_elect == "Yes") {
             var string = 'images/right-icon.png';
             document.getElementById("carControl").src = string;
+
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carControl").src = string;
+            $('.ul-left li:nth-child(25)').css("display",'none');
         }
         var car_cont_desce = data.carlist[i].car_cont_desce;
         if (car_cont_desce == "Yes") {
@@ -768,6 +817,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carDescentControl").src = string;
+            $('.ul-left li:nth-child(13)').css("display",'none');
         }
         var car_triptonic = data.carlist[i].car_triptonic;
         if (car_triptonic == "Yes") {
@@ -776,6 +826,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carChangesDual").src = string;
+            $('.ul-right li:nth-child(5)').css("display",'none');
         }
         var car_rear_cam = data.carlist[i].car_rear_cam;
         if (car_rear_cam == "Yes") {
@@ -784,6 +835,8 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRearViewCam").src = string;
+            $('.ul-right li:nth-child(1)').css("display",'none');
+
         }
         var car_rear_sen = data.carlist[i].car_rear_sen;
         if (car_rear_sen == "Yes") {
@@ -792,6 +845,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRearSensor").src = string;
+            $('.ul-right li:nth-child(4)').css("display",'none');
         }
         var car_front_sen = data.carlist[i].car_front_sen;
         if (car_front_sen == "Yes") {
@@ -800,6 +854,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carFrontSensor").src = string;
+            $('.ul-right li:nth-child(2)').css("display",'none');
         }
         var car_radio_string = data.carlist[i].car_radio_string;
         if (car_radio_string == "Yes") {
@@ -808,6 +863,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRadio").src = string;
+            $('.ul-right li:nth-child(6)').css("display",'none');
         }
         var car_vol_multi = data.carlist[i].car_vol_multi;
         if (car_vol_multi == "Yes") {
@@ -816,6 +872,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carMulStrWheel").src = string;
+            $('.ul-right li:nth-child(3)').css("display",'none');
         }
         var car_ac_climate = data.carlist[i].car_ac_climate;
         if (car_ac_climate == "Yes") {
@@ -824,6 +881,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carACClimatized").src = string;
+            $('.ul-left li:nth-child(8)').css("display",'none');
         }
         var car_mem_seat = data.carlist[i].car_mem_seat;
         if (car_mem_seat == "Yes") {
@@ -832,6 +890,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carMemorySeat").src = string;
+            $('.ul-right li:nth-child(7)').css("display",'none');
         }
         var car_auto_fold_mir = data.carlist[i].car_auto_fold_mir;
         if (car_auto_fold_mir == "Yes") {
@@ -840,6 +899,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carAutoFoldable").src = string;
+            $('.ul-right li:nth-child(8)').css("display",'none');
         }
         var car_xenon = data.carlist[i].car_xenon;
         if (car_xenon == "Yes") {
@@ -848,6 +908,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carXenon").src = string;
+            $('.ul-right li:nth-child(9)').css("display",'none');
         }
         var car_xenon_led = data.carlist[i].car_xenon_led;
         if (car_xenon_led == "Yes") {
@@ -856,6 +917,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carXenonLed").src = string;
+            $('.ul-right li:nth-child(10)').css("display",'none');
         }
         var car_rain_sen = data.carlist[i].car_rain_sen;
         if (car_rain_sen == "Yes") {
@@ -864,6 +926,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carRainSensor").src = string;
+            $('.ul-right li:nth-child(11)').css("display",'none');
         }
         var car_smt_keyof = data.carlist[i].car_smt_keyof;
         if (car_smt_keyof == "Yes") {
@@ -872,6 +935,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carSmartKey").src = string;
+            $('.ul-right li:nth-child(12)').css("display",'none');
         }
         var car_tire_pressure = data.carlist[i].car_tire_pressure;
         if (car_tire_pressure == "Yes") {
@@ -880,6 +944,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carTireMoni").src = string;
+            $('.ul-right li:nth-child(13)').css("display",'none');
         }
         var car_cru_cont = data.carlist[i].car_cru_cont;
         if (car_cru_cont == "Yes") {
@@ -888,6 +953,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carCruseControl").src = string;
+            $('.ul-right li:nth-child(14)').css("display",'none');
         }
         var car_ad_ster = data.carlist[i].car_ad_ster;
         if (car_ad_ster == "Yes") {
@@ -896,6 +962,9 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carAdjustSteering").src = string;
+
+            $('.ul-right li:nth-child(15)').css("display",'none');
+
         }
         var car_blue = data.carlist[i].car_blue;
         if (car_blue == "Yes") {
@@ -904,6 +973,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carBluetooth").src = string;
+            $('.ul-right li:nth-child(16)').css("display",'none');
         }
         var car_trade = data.carlist[i].car_trade;
         //if (car_trade == "Yes") {
@@ -921,6 +991,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carHydraulicSteering").src = string;
+            $('.ul-right li:nth-child(18)').css("display",'none');
         }
         var car_cen_lock = data.carlist[i].car_cen_lock;
         if (car_cen_lock == "Yes") {
@@ -929,6 +1000,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carCentralLocking").src = string;
+            $('.ul-right li:nth-child(19)').css("display",'none');
         }
         var car_pow_seat = data.carlist[i].car_pow_seat;
         if (car_pow_seat == "Yes") {
@@ -937,6 +1009,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carPowerSeats").src = string;
+            $('.ul-right li:nth-child(20)').css("display",'none');
         }
         var car_tint_glass = data.carlist[i].car_tint_glass;
         if (car_tint_glass == "Yes") {
@@ -945,6 +1018,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carTintedGlasses").src = string;
+            $('.ul-right li:nth-child(21)').css("display",'none');
         }
 
         var car_ele_glass = data.carlist[i].car_ele_glass;
@@ -954,6 +1028,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carElectricGlasses").src = string;
+            $('.ul-right li:nth-child(22)').css("display",'none');
         }
 
         var car_brake = data.carlist[i].car_brake;
@@ -963,6 +1038,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carBrakes").src = string;
+            $('.ul-right li:nth-child(23)').css("display",'none');
         }
 
         var car_trip_com = data.carlist[i].car_trip_com;
@@ -972,6 +1048,7 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carTripComputer").src = string;
+            $('.ul-right li:nth-child(24)').css("display",'none');
         }
 
         var car_strt_btn = data.carlist[i].car_strt_btn;
@@ -981,9 +1058,11 @@ function carDetailData(data) {
         } else {
             var string = 'images/wrong-icon.png';
             document.getElementById("carStartButtonKey").src = string;
+            $('.ul-right li:nth-child(25)').css("display",'none');
         }
         var car_comment = data.carlist[i].car_comment;
         document.getElementById('carComment').innerHTML = car_comment;
+       // document.getElementById('carComment1').innerHTML = car_comment;
 
         var u_phone = data.carlist[i].u_phone;
         $("#callPerson").append('<span style="font-weight:bold; width:40%; float:left;"></span><a href="tel:' + u_phone + '"><img src="images/contact-icon.png"></a><a href="sms:' + u_phone + '"><img src="images/sms-icon.png"></a>');
@@ -997,7 +1076,7 @@ function carDetailData(data) {
             $("#owl-demo2").append('<div class="item"><img src="' + file_img[j] + '"></div>');
         }
     }
-
-    cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
+    //cordova.plugin.pDialog.dismiss();
     return true;
 }

@@ -23,7 +23,8 @@ function onPhotoDataSuccess(imageData) {
     smallImage.style.display = 'block';
     smallImage.src = "data:image/jpeg;base64," + imageData;
     $.post("http://ctinfotech.com.md-in-37.webhostbox.net/car_admin/upload.php", {imageData: imageData}, function (data) {
-        alert("Image uploaded!");
+        navigator.notification.alert('Image uploaded!',null,'Alert','Ok');
+
     });
 }
 // Called when a photo is successfully retrieved
@@ -38,7 +39,8 @@ function onPhotoURISuccess(imageURI) {
     if (image_counter == 4) {
         $("p").hide();
     }
-    alert(image_counter);
+    navigator.notification.alert(image_counter,null,'Alert','Ok');
+
     if (image_counter == 1) {
         car_image[image_counter] = imageURI;
         car_img1 = imageURI;
@@ -105,7 +107,8 @@ function getPhoto(source) {
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Alert','Ok');
+
 }
 $(document).ready(function () {
 //        $("button").click(function(){
@@ -117,7 +120,8 @@ $(document).ready(function () {
     });
 });
 function removeDiv(str) {
-    alert(str);
+    navigator.notification.alert(str,null,'Alert','Ok');
+
     image_counter = str;
     if (image_counter <= 4) {
         $("p").show();

@@ -105,7 +105,6 @@ var insertNameMsg = "";
 var insertContactMsg = "";
 var insertEmailMsg = "";
 
-
 var oldnewblank = "";
 var oldtv = "";
 var newtv = "";
@@ -126,6 +125,8 @@ var selCountry = "";
 var selDoor = "";
 var selRating = "";
 var selCondition = "";
+var selCity = "";
+var selState = "";
 
 var opExce = "";
 var opVerygood = "";
@@ -153,12 +154,12 @@ function ready_eng() {
     transmission = "Transmission";
     engine = "Car Engine in CC";
     year = "Year";
-    pricetype = "Price Type";
-    odometerType = "Odometer";
+    pricetype = "";
+    odometerType = "";
     price = "Price";
     icolor = "Interior Color";
     ecolor = "Exterior Color";
-    kilometar = "Kilometer / Miles"
+    kilometar = "Odometer"
     carcountry = "Country";
     carstate = "State";
     carcity = "City";
@@ -166,7 +167,7 @@ function ready_eng() {
     cUploadpic = "Upload Pics";
     cCondition = "Condition";
     cRating = "Rating";
-    extraInfo = "Extra Info";
+    extraInfo = "Extra";
     withPlate = "With Plates";
     cPlate = "Plate Number";
     loan = "Loan";
@@ -265,6 +266,8 @@ function ready_eng() {
     selTrns = "Select Transmission";
     automatic = "Automatic";
     selCountry = "Select Country";
+    selState = "Select State";
+    selCity = "Select City";
     selDoor = "Select Door";
     selRating = "Select Rating";
     selCondition = "Select Condition";
@@ -283,8 +286,8 @@ function ready_spa() {
     transmission = "Transmisión";
     engine = "Motor de coche de CC";
     year = "Año";
-    pricetype = "Tipo Precio";
-    odometerType = "Cuentakilómetros";
+    pricetype = "";
+    odometerType = "";
     price = "Precio";
     icolor = "Color Interior";
     ecolor = "Color Exterior";
@@ -295,7 +298,7 @@ function ready_spa() {
     doors = "Puertas";
     cCondition = "Condición";
     cRating = "Clasificación";
-    extraInfo = "Información Extra";
+    extraInfo = "Extras";
     withPlate = "Con Las Placas";
     cPlate = "Número de placa";
     loan = "Préstamo";
@@ -395,6 +398,8 @@ function ready_spa() {
     selTrns = "Seleccione una Transmisión";
     automatic = "Automático";
     selCountry = "Seleccionar país";
+    selState = "Seleccionar Estado";
+    selCity = "Seleccionar Ciudad";
     selDoor = "Seleccione puerta";
     selRating = "Seleccione el grado";
     selCondition = "Seleccionar condición";
@@ -487,31 +492,45 @@ function display() {
         document.getElementById('cTintedGla').innerHTML = cTintedGla;
         document.getElementById('cBreaks').innerHTML = cBreaks;
         document.getElementById('cIntelligent').innerHTML = cIntelligent;
+        $('#car_type-button span').html(oldnewblank);
         document.getElementById('oldnewblank').innerHTML = oldnewblank;
         document.getElementById('oldtv').innerHTML = oldtv;
         document.getElementById('newtv').innerHTML = newtv;
+        $('#car_make-button span').html(selMake);
         document.getElementById('selMake').innerHTML = selMake;
+        $('#selectModel-button span').html(selModel);
         document.getElementById('selModel').innerHTML = selModel;
+        $('#selectStyle-button span').html(selStyle);
         document.getElementById('selStyle').innerHTML = selStyle;
         document.getElementById('hybrid').innerHTML = hybrid;
         document.getElementById('luxury').innerHTML = luxury;
         document.getElementById('suv').innerHTML = suv;
         document.getElementById('sedans').innerHTML = sedans;
+        $('#car_fuel-button span').html(selFuel);
         document.getElementById('selFuel').innerHTML = selFuel;
         document.getElementById('petrol').innerHTML = petrol;
         document.getElementById('electric').innerHTML = electric;
         document.getElementById('hydrogen').innerHTML = hydrogen;
+        $('#car_transmission-button span').html(selTrns);
         document.getElementById('selTrns').innerHTML = selTrns;
         document.getElementById('automatic').innerHTML = automatic;
+        $('#selectCountry-button span').html(selCountry);
         document.getElementById('selCountry').innerHTML = selCountry;
+        $('#car_doors-button span').html(selDoor);
         document.getElementById('selDoor').innerHTML = selDoor;
+        $('#car_rating-button span').html(selRating);
         document.getElementById('selRating').innerHTML = selRating;
+        $('#car_condition-button span').html(selCondition);
         document.getElementById('selCondition').innerHTML = selCondition;
         document.getElementById('opExce').innerHTML = opExce;
         document.getElementById('opVerygood').innerHTML = opVerygood;
         document.getElementById('opOkey').innerHTML = opOkey;
         document.getElementById('opReg').innerHTML = opReg;
 
+        $('#selectCity-button span').html(selCity);
+        document.getElementById('selCity').innerHTML = selCity;
+        $('#selectState-button span').html(selState);
+        document.getElementById('selState').innerHTML = selState;
 
     })
 }
@@ -615,6 +634,8 @@ function onDeviceReady() {
     destinationType = navigator.camera.DestinationType;
 }
 
+
+
 var addIndex = 0;
 var addcar_img = "";
 function onPhotoURISuccess(imageURI) {
@@ -646,12 +667,14 @@ function getPhoto(source) {
     navigator.camera.getPicture(onPhotoURISuccess, onFail, {
         quality: 50,
         destinationType: destinationType.DATA_URL,
-        sourceType: source
+        sourceType: source,
+        targetWidth: 200
     });
 }
 
 function onFail(message) {
-    alert('Failed because: ' + message);
+    navigator.notification.alert('Failed because: ' + message,null,'Alert','Ok');
+
 }
 
 var removecar_img = "";
@@ -666,7 +689,12 @@ function reBuildArray(str) {
 
     for (var j = 0; j < carArray.length; j++) {
         removecar_img = carArray[j];
-        $("#carImages").append('<li id="uploadPreviewLi' + j + '"><div align="center"><img id="uploadPreview' + j + '" name="uploadPreview' + j + '" width="300px" height="200px" style="margin:10px 0px"/> <a onclick="reBuildArray(' + j + ');" class="remove"><img src="images/deletepic.png"/></a></div></li>');
+        $("#carImages").append('<li id="uploadPreviewLi' + j + '">' +
+        '<div align="center"><img id="uploadPreview' + j + '" name="uploadPreview' + j + '" width="300px" height="200px" style="margin:10px 0px"/>' +
+        ' <a onclick="reBuildArray(' + j + ');" class="remove"><img src="images/deletepic.png"/></a>' +
+        '</div>' +
+        '</li>');
+
         var liId = "uploadPreview" + j;
         liId = document.getElementById(liId);
         liId.style.display = 'block';
@@ -701,13 +729,15 @@ app.initialize();
 
 function getCarMakeList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -721,8 +751,10 @@ function getCarMakeList() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Server Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
+
             return false;
         }
     });
@@ -730,13 +762,15 @@ function getCarMakeList() {
 
 function getCountryList() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     $.ajax({
         url: BASE_URL + APP_API,
@@ -751,7 +785,8 @@ function getCountryList() {
         },
         error: function (result) {
             //alert("Error");
-            cordova.plugin.pDialog.dismiss();
+            //cordova.plugin.pDialog.dismiss();
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -762,19 +797,22 @@ function carMakeData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#car_make').append($('<option>').text(obj[i].car_make_name).attr('value', obj[i].car_make_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 var model = 0;
 function selectModel12(str) {
     model = str;
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?model_id=" + model;
     jQuery.ajax({
@@ -783,7 +821,8 @@ function selectModel12(str) {
         }
     });
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 var style = 0;
 //function selectStyle(str) {
@@ -801,7 +840,8 @@ function countryData(data) {
     for (var i = 0; i < obj.length; i++) {
         $('#selectCountry').append($('<option>').text(obj[i].counry_name).attr('value', obj[i].counry_id));
     }
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
     return true;
 }
 
@@ -809,13 +849,14 @@ var state = 0;
 function selectState12(str) {
     state = str;
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var url = BASE_URL + APP_API + "?country_id=" + state;
     jQuery.ajax({
@@ -823,21 +864,23 @@ function selectState12(str) {
             jQuery("#div5").html(result);
         }
     });
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 var state = 0;
 function selectCity12(str) {
 
-    city = str;
+    var city = str;
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
+    $("#preloader").css('display','block');
     var url = BASE_URL + APP_API + "?state_id=" + city;
     jQuery.ajax({
         url: url, success: function (result) {
@@ -845,7 +888,8 @@ function selectCity12(str) {
         }
     });
 
-    cordova.plugin.pDialog.dismiss();
+    //cordova.plugin.pDialog.dismiss();
+    $("#preloader").css('display','none');
 }
 
 function selectClear(str) {
@@ -890,129 +934,195 @@ function setPlaceHolderContact() {
 
 function insertCarDetail() {
 
+
     var regi_id = gdc_uid;
+    var car_price_type;
+    var car_odometer;
+
+
+
+    var car_loan;
+    var car_exchange;
+    var car_pow_lock;
+    var car_tint_win;
+    var car_with_plate;
+    var car_ele_seat;
+    var car_air_bag;
+    var car_pow_win;
+    var car_ele_mir;
+    var car_alarm;
+    var car_abs;
+    var car_ac;
+    var car_win_difo;
+    var car_sunroof;
+    var car_rims;
+    var car_turbo;
+    var car_lea_seat;
+    var car_halo;
+    var car_cas;
+    var car_dvd;
+    var car_cru_con;
+    var car_usb;
+    var car_rtv;
+    var car_cont_elect;
+    var car_cont_desce;
+    var car_triptonic;
+    var car_rear_cam;
+    var car_rear_sen;
+    var car_front_sen;
+    var car_radio_string;
+    var car_vol_multi;
+    var car_ac_climate;
+    var car_mem_seat;
+    var car_auto_fold_mir;
+    var car_xenon;
+    var car_xenon_led;
+    var car_rain_sen;
+    var car_smt_keyof;
+    var car_tire_pressure;
+    var car_cru_cont;
+    var car_ad_ster;
+    var car_blue;
+    var car_hydo_ster;
+    var car_cen_lock;
+    var car_pow_seat;
+    var car_tint_glass;
+    var car_ele_glass;
+    var car_brake;
+    var car_trip_com;
+    var car_strt_btn;
+    var car_detail;
     var car_type = document.getElementById('car_type').value;
+
     if ($.trim(car_type) == "") {
-        alert(selectMsg);
+        navigator.notification.alert(selectMsg,null,'Alert','Ok');
+
         $('#car_type').focus();
         document.getElementById('errfn').innerHTML = selectMsg;
         return false;
     }
     var car_make = document.getElementById('car_make').value;
     if ($.trim(car_make) == "") {
-        alert(selectCarMakMsg);
+        navigator.notification.alert(selectCarMakMsg,null,'Alert','Ok');
+
         $('#car_make').focus();
         document.getElementById('errfn1').innerHTML = selectCarMakMsg;
         return false;
     }
     var car_model = document.getElementById('selectModel').value;
     if ($.trim(car_model) == "") {
-        alert(insertModelMsg);
+        navigator.notification.alert(insertModelMsg,null,'Alert','Ok');
         $('#selectModel').focus();
         document.getElementById('errfnModel').innerHTML = insertModelMsg;
         return false;
     }
     var car_style = document.getElementById('selectStyle').value;
     if ($.trim(car_style) == "") {
-        alert(insertStyleMsg);
+        navigator.notification.alert(insertStyleMsg,null,'Alert','Ok');
         $('#selectStyle').focus();
         document.getElementById('errfnStyle').innerHTML = insertStyleMsg;
         return false;
     }
     var car_fuel = document.getElementById('car_fuel').value;
     if ($.trim(car_fuel) == "") {
-        alert(insertFuelMsg);
+        navigator.notification.alert(insertFuelMsg,null,'Alert','Ok');
+
         $('#car_fuel').focus();
         document.getElementById('errfnFuel').innerHTML = insertFuelMsg;
         return false;
     }
     var car_transmission = document.getElementById('car_transmission').value;
     if ($.trim(car_transmission) == "") {
-        alert(insertTrasMsg);
+        navigator.notification.alert(insertTrasMsg,null,'Alert','Ok');
         $('#car_transmission').focus();
         document.getElementById('errfnTrans').innerHTML = insertTrasMsg;
         return false;
     }
     var car_engine = document.getElementById('car_engine').value;
     if ($.trim(car_engine).length == 0) {
-        alert(insertCarEngMsg);
+        navigator.notification.alert(insertCarEngMsg,null,'Alert','Ok');
         $('#car_engine').focus();
         document.getElementById('errfn16').innerHTML = insertCarEngMsg;
         return false;
     }
     var car_year = document.getElementById('car_year').value;
     if ($.trim(car_year).length == 0) {
-        alert(insertYearMsg);
+        navigator.notification.alert(insertYearMsg,null,'Alert','Ok');
         $('#car_year').focus();
         document.getElementById('errfn17').innerHTML = insertYearMsg;
         return false;
     }
     //var car_price_type = document.getElementById('car_price_type').value;
+
+
     if (document.getElementById("car_price_type").checked) {
-        var car_price_type = "Colones";
+         car_price_type = "Colones";
     } else {
-        var car_price_type = "Dollares";
+         car_price_type = "Dollares";
     }
 
+
     if (document.getElementById("car_odometer").checked) {
-        var car_odometer = "Km";
+         car_odometer = "Km";
     } else {
-        var car_odometer = "Mile";
+         car_odometer = "Mile";
     }
 
     //alert(car_odometer);
     var car_price = document.getElementById('car_price').value;
+
     if ($.trim(car_price).length == 0) {
-        alert(insertPriceMsg);
+        navigator.notification.alert(insertPriceMsg,null,'Alert','Ok');
         $('#car_price').focus();
         document.getElementById('errfn88').innerHTML = insertPriceMsg;
         return false;
     }
     var car_int_color = document.getElementById('car_int_color').value;
     if ($.trim(car_int_color).length == 0) {
-        alert(insertIntCol);
+        navigator.notification.alert(insertIntCol,null,'Alert','Ok');
         $('#car_int_color').focus();
         document.getElementById('errfn9').innerHTML = insertIntCol;
         return false;
     }
     var car_ext_color = document.getElementById('car_ext_color').value;
     if ($.trim(car_ext_color).length == 0) {
-        alert(insertExtCol);
+        navigator.notification.alert(insertExtCol,null,'Alert','Ok');
         $('#car_ext_color').focus();
         document.getElementById('errfn10').innerHTML = insertExtCol;
         return false;
     }
     var car_km = document.getElementById('car_km').value;
     if ($.trim(car_km).length == 0) {
-        alert(insertKiloMsg);
+        navigator.notification.alert(insertKiloMsg,null,'Alert','Ok');
         $('#car_km').focus();
         document.getElementById('errfn11').innerHTML = insertKiloMsg;
         return false;
     }
     var car_country = document.getElementById('selectCountry').value;
     if ($.trim(car_country) == "") {
-        alert(insertCountryMsg);
+        navigator.notification.alert(insertCountryMsg,null,'Alert','Ok');
         $('#selectCountry').focus();
         document.getElementById('errfn6').innerHTML = insertCountryMsg;
         return false;
     }
     var car_state = document.getElementById('selectState').value;
     if ($.trim(car_state) == "") {
-        alert(insertStateMsg);
+        navigator.notification.alert(insertStateMsg,null,'Alert','Ok');
         $('#selectState').focus();
+        $('#selectState-button span').html(selectState);
         document.getElementById('errfn7').innerHTML = insertStateMsg;
         return false;
     }
     var car_city = document.getElementById('selectCity').value;
     if ($.trim(car_city) == "") {
-        alert(insertCityMsg);
+        //alert(insertCityMsg);
         $('#selectCity').focus();
         document.getElementById('errfn8').innerHTML = insertCityMsg;
         return false;
     }
     var car_doors = document.getElementById('car_doors').value;
     if ($.trim(car_doors) == "") {
-        alert(insertCarDorMsg);
+        navigator.notification.alert(insertCarDorMsg,null,'Alert','Ok');
         $('#car_doors').focus();
         document.getElementById('errfn15').innerHTML = insertCarDorMsg;
         return false;
@@ -1020,7 +1130,7 @@ function insertCarDetail() {
 
     var car_rating = document.getElementById('car_rating').value;
     if ($.trim(car_rating) == "") {
-        alert(selectRatingMsg);
+        navigator.notification.alert(selectRatingMsg,null,'Alert','Ok');
         $('#car_rating').focus();
         document.getElementById('errfnCarRating').innerHTML = selectRatingMsg;
         return false;
@@ -1028,56 +1138,54 @@ function insertCarDetail() {
 
     var car_condition = document.getElementById('car_condition').value;
     if ($.trim(car_condition) == "") {
-        alert(selectConditionMsg);
+        navigator.notification.alert(selectConditionMsg,null,'Alert','Ok');
         $('#car_condition').focus();
         document.getElementById('errfnCarCondition').innerHTML = selectConditionMsg;
         return false;
     }
 
-
     if (document.getElementById("car_loan").checked) {
-        var car_loan = "Yes";
+         car_loan = "Yes";
     } else {
-        var car_loan = "No";
+         car_loan = "No";
     }
 
     if (document.getElementById("car_exchange").checked) {
-        var car_exchange = "Yes";
+        car_exchange = "Yes";
     } else {
-        var car_exchange = "No";
+        car_exchange = "No";
     }
 
     if (document.getElementById("car_pow_lock").checked) {
-        var car_pow_lock = "Yes";
+         car_pow_lock = "Yes";
     } else {
-        var car_pow_lock = "No";
+         car_pow_lock = "No";
     }
 
     if (document.getElementById("car_tint_win").checked) {
-        var car_tint_win = "Yes";
+         car_tint_win = "Yes";
     } else {
-        var car_tint_win = "No";
+         car_tint_win = "No";
     }
 
     if (document.getElementById("car_with_plate").checked) {
-        var car_with_plate = "Yes";
+         car_with_plate = "Yes";
     } else {
-        var car_with_plate = "No";
+         car_with_plate = "No";
     }
 
     car_plate = document.getElementById('car_plate').value;
     if ($.trim(car_with_plate) == "Yes" && $.trim(car_plate).length == 0) {
-        alert(insertCarPlatNoMsg);
+        navigator.notification.alert(insertCarPlatNoMsg,null,'Alert','Ok');
         $('#car_plate').focus();
         document.getElementById('errfnCarPlate').innerHTML = insertCarPlatNoMsg;
         return false;
     }
 
-    var car_acpt_old = "";
     if (document.getElementById("car_ele_seat").checked) {
-        var car_ele_seat = "Yes";
+        car_ele_seat = "Yes";
     } else {
-        var car_ele_seat = "No";
+        car_ele_seat = "No";
     }
 
     //var car_tint_win = document.getElementById('car_tint_win').value;
@@ -1085,313 +1193,313 @@ function insertCarDetail() {
 
     //var car_air_bag = document.getElementById('car_air_bag').value;
     if (document.getElementById("car_air_bag").checked) {
-        var car_air_bag = "Yes";
+        car_air_bag = "Yes";
     } else {
-        var car_air_bag = "No";
+        car_air_bag = "No";
     }
 
     //var car_pow_win = document.getElementById('car_pow_win').value;
     if (document.getElementById("car_pow_win").checked) {
-        var car_pow_win = "Yes";
+        car_pow_win = "Yes";
     } else {
-        var car_pow_win = "No";
+        car_pow_win = "No";
     }
 
     //var car_ele_mir = document.getElementById('car_ele_mir').value;
     if (document.getElementById("car_ele_mir").checked) {
-        var car_ele_mir = "Yes";
+        car_ele_mir = "Yes";
     } else {
-        var car_ele_mir = "No";
+        car_ele_mir = "No";
     }
 
     //var car_alarm = document.getElementById('car_alarm').value;
     if (document.getElementById("car_alarm").checked) {
-        var car_alarm = "Yes";
+        car_alarm = "Yes";
     } else {
-        var car_alarm = "No";
+        car_alarm = "No";
     }
 
     //var car_abs = document.getElementById('car_abs').value;
     if (document.getElementById("car_abs").checked) {
-        var car_abs = "Yes";
+        car_abs = "Yes";
     } else {
-        var car_abs = "No";
+        car_abs = "No";
     }
 
     //var car_ac = document.getElementById('car_ac').value;
     if (document.getElementById("car_ac").checked) {
-        var car_ac = "Yes";
+        car_ac = "Yes";
     } else {
-        var car_ac = "No";
+        car_ac = "No";
     }
 
     //var car_win_difo = document.getElementById('car_win_difo').value;
     if (document.getElementById("car_win_difo").checked) {
-        var car_win_difo = "Yes";
+        car_win_difo = "Yes";
     } else {
-        var car_win_difo = "No";
+        car_win_difo = "No";
     }
 
     //var car_sunroof = document.getElementById('car_sunroof').value;
     if (document.getElementById("car_sunroof").checked) {
-        var car_sunroof = "Yes";
+        car_sunroof = "Yes";
     } else {
-        var car_sunroof = "No";
+        car_sunroof = "No";
     }
 
     //var car_rims = document.getElementById('car_rims').value;
     if (document.getElementById("car_rims").checked) {
-        var car_rims = "Yes";
+        car_rims = "Yes";
     } else {
-        var car_rims = "No";
+        car_rims = "No";
     }
 
     //var car_turbo = document.getElementById('car_turbo').value;
     if (document.getElementById("car_turbo").checked) {
-        var car_turbo = "Yes";
+        car_turbo = "Yes";
     } else {
-        var car_turbo = "No";
+        car_turbo = "No";
     }
 
     //var car_lea_seat = document.getElementById('car_lea_seat').value;
     if (document.getElementById("car_lea_seat").checked) {
-        var car_lea_seat = "Yes";
+        car_lea_seat = "Yes";
     } else {
-        var car_lea_seat = "No";
+        car_lea_seat = "No";
     }
 
     //var car_halo = document.getElementById('car_halo').value;
     if (document.getElementById("car_halo").checked) {
-        var car_halo = "Yes";
+        car_halo = "Yes";
     } else {
-        var car_halo = "No";
+        car_halo = "No";
     }
 
     //var car_cas = document.getElementById('car_cas').value;
     if (document.getElementById("car_cas").checked) {
-        var car_cas = "Yes";
+        car_cas = "Yes";
     } else {
-        var car_cas = "No";
+        car_cas = "No";
     }
 
     //var car_dvd = document.getElementById('car_dvd').value;
     if (document.getElementById("car_dvd").checked) {
-        var car_dvd = "Yes";
+        car_dvd = "Yes";
     } else {
-        var car_dvd = "No";
+        car_dvd = "No";
     }
 
     //var car_cru_con = document.getElementById('car_cru_con').value;
     if (document.getElementById("car_cru_con").checked) {
-        var car_cru_con = "Yes";
+        car_cru_con = "Yes";
     } else {
-        var car_cru_con = "No";
+        car_cru_con = "No";
     }
 
     //var car_usb = document.getElementById('car_usb').value;
     if (document.getElementById("car_usb").checked) {
-        var car_usb = "Yes";
+        car_usb = "Yes";
     } else {
-        var car_usb = "No";
+        car_usb = "No";
     }
 
     //var car_rtv = document.getElementById('car_rtv').value;
     if (document.getElementById("car_rtv").checked) {
-        var car_rtv = "Yes";
+        car_rtv = "Yes";
     } else {
-        var car_rtv = "No";
+        car_rtv = "No";
     }
 
     //var car_cont_elect = document.getElementById('car_cont_elect').value;
     if (document.getElementById("car_cont_elect").checked) {
-        var car_cont_elect = "Yes";
+        car_cont_elect = "Yes";
     } else {
-        var car_cont_elect = "No";
+        car_cont_elect = "No";
     }
 
     //var car_cont_desce = document.getElementById('car_cont_desce').value;
     if (document.getElementById("car_cont_desce").checked) {
-        var car_cont_desce = "Yes";
+        car_cont_desce = "Yes";
     } else {
-        var car_cont_desce = "No";
+        car_cont_desce = "No";
     }
 
     //var car_triptonic = document.getElementById('car_triptonic').value;
     if (document.getElementById("car_triptonic").checked) {
-        var car_triptonic = "Yes";
+        car_triptonic = "Yes";
     } else {
-        var car_triptonic = "No";
+        car_triptonic = "No";
     }
 
     //var car_rear_cam = document.getElementById('car_rear_cam').value;
     if (document.getElementById("car_rear_cam").checked) {
-        var car_rear_cam = "Yes";
+        car_rear_cam = "Yes";
     } else {
-        var car_rear_cam = "No";
+        car_rear_cam = "No";
     }
 
     //var car_rear_sen = document.getElementById('car_rear_sen').value;
     if (document.getElementById("car_rear_sen").checked) {
-        var car_rear_sen = "Yes";
+        car_rear_sen = "Yes";
     } else {
-        var car_rear_sen = "No";
+        car_rear_sen = "No";
     }
 
     //var car_front_sen = document.getElementById('car_front_sen').value;
     if (document.getElementById("car_front_sen").checked) {
-        var car_front_sen = "Yes";
+        car_front_sen = "Yes";
     } else {
-        var car_front_sen = "No";
+        car_front_sen = "No";
     }
 
     //var car_radio_string = document.getElementById('car_radio_string').value;
     if (document.getElementById("car_radio_string").checked) {
-        var car_radio_string = "Yes";
+        car_radio_string = "Yes";
     } else {
-        var car_radio_string = "No";
+        car_radio_string = "No";
     }
 
     //var car_vol_multi = document.getElementById('car_vol_multi').value;
     if (document.getElementById("car_vol_multi").checked) {
-        var car_vol_multi = "Yes";
+        car_vol_multi = "Yes";
     } else {
-        var car_vol_multi = "No";
+        car_vol_multi = "No";
     }
 
     //var car_ac_climate = document.getElementById('car_ac_climate').value;
     if (document.getElementById("car_ac_climate").checked) {
-        var car_ac_climate = "Yes";
+        car_ac_climate = "Yes";
     } else {
-        var car_ac_climate = "No";
+        car_ac_climate = "No";
     }
 
     //var car_mem_seat = document.getElementById('car_mem_seat').value;
     if (document.getElementById("car_mem_seat").checked) {
-        var car_mem_seat = "Yes";
+        car_mem_seat = "Yes";
     } else {
-        var car_mem_seat = "No";
+        car_mem_seat = "No";
     }
 
     //var car_auto_fold_mir = document.getElementById('car_auto_fold_mir').value;
     if (document.getElementById("car_auto_fold_mir").checked) {
-        var car_auto_fold_mir = "Yes";
+        car_auto_fold_mir = "Yes";
     } else {
-        var car_auto_fold_mir = "No";
+        car_auto_fold_mir = "No";
     }
 
     //var car_xenon = document.getElementById('car_xenon').value;
     if (document.getElementById("car_xenon").checked) {
-        var car_xenon = "Yes";
+        car_xenon = "Yes";
     } else {
-        var car_xenon = "No";
+        car_xenon = "No";
     }
 
     //var car_xenon_led = document.getElementById('car_xenon_led').value;
     if (document.getElementById("car_xenon_led").checked) {
-        var car_xenon_led = "Yes";
+        car_xenon_led = "Yes";
     } else {
-        var car_xenon_led = "No";
+        car_xenon_led = "No";
     }
 
     //var car_rain_sen = document.getElementById('car_rain_sen').value;
     if (document.getElementById("car_rain_sen").checked) {
-        var car_rain_sen = "Yes";
+        car_rain_sen = "Yes";
     } else {
-        var car_rain_sen = "No";
+        car_rain_sen = "No";
     }
 
     //var car_smt_keyof = document.getElementById('car_smt_keyof').value;
     if (document.getElementById("car_smt_keyof").checked) {
-        var car_smt_keyof = "Yes";
+        car_smt_keyof = "Yes";
     } else {
-        var car_smt_keyof = "No";
+        car_smt_keyof = "No";
     }
 
     //var car_tire_pressure = document.getElementById('car_tire_pressure').value;
     if (document.getElementById("car_tire_pressure").checked) {
-        var car_tire_pressure = "Yes";
+        car_tire_pressure = "Yes";
     } else {
-        var car_tire_pressure = "No";
+        car_tire_pressure = "No";
     }
 
     //var car_cru_cont = document.getElementById('car_cru_cont').value;
     if (document.getElementById("car_cru_cont").checked) {
-        var car_cru_cont = "Yes";
+        car_cru_cont = "Yes";
     } else {
-        var car_cru_cont = "No";
+        car_cru_cont = "No";
     }
 
     //var car_ad_ster = document.getElementById('car_ad_ster').value;
     if (document.getElementById("car_ad_ster").checked) {
-        var car_ad_ster = "Yes";
+        car_ad_ster = "Yes";
     } else {
-        var car_ad_ster = "No";
+        car_ad_ster = "No";
     }
 
     //var car_blue = document.getElementById('car_blue').value;
     if (document.getElementById("car_blue").checked) {
-        var car_blue = "Yes";
+        car_blue = "Yes";
     } else {
-        var car_blue = "No";
+        car_blue = "No";
     }
 
     //var car_hydo_ster = document.getElementById('car_hydo_ster').value;
     if (document.getElementById("car_hydo_ster").checked) {
-        var car_hydo_ster = "Yes";
+        car_hydo_ster = "Yes";
     } else {
-        var car_hydo_ster = "No";
+        car_hydo_ster = "No";
     }
 
     //var car_cen_lock = document.getElementById('car_cen_lock').value;
     if (document.getElementById("car_cen_lock").checked) {
-        var car_cen_lock = "Yes";
+        car_cen_lock = "Yes";
     } else {
-        var car_cen_lock = "No";
+        car_cen_lock = "No";
     }
 
     //var car_pow_seat = document.getElementById('car_pow_seat').value;
     if (document.getElementById("car_pow_seat").checked) {
-        var car_pow_seat = "Yes";
+        car_pow_seat = "Yes";
     } else {
-        var car_pow_seat = "No";
+        car_pow_seat = "No";
     }
 
     //var car_tint_glass = document.getElementById('car_tint_glass').value;
     if (document.getElementById("car_tint_glass").checked) {
-        var car_tint_glass = "Yes";
+        car_tint_glass = "Yes";
     } else {
-        var car_tint_glass = "No";
+        car_tint_glass = "No";
     }
 
     //var car_ele_glass = document.getElementById('car_ele_glass').value;
     if (document.getElementById("car_ele_glass").checked) {
-        var car_ele_glass = "Yes";
+        car_ele_glass = "Yes";
     } else {
-        var car_ele_glass = "No";
+        car_ele_glass = "No";
     }
 
     //var car_brake = document.getElementById('car_brake').value;
     if (document.getElementById("car_brake").checked) {
-        var car_brake = "Yes";
+        car_brake = "Yes";
     } else {
-        var car_brake = "No";
+        car_brake = "No";
     }
 
     //var car_trip_com = document.getElementById('car_trip_com').value;
     if (document.getElementById("car_trip_com").checked) {
-        var car_trip_com = "Yes";
+        car_trip_com = "Yes";
     } else {
-        var car_trip_com = "No";
+        car_trip_com = "No";
     }
 
     //var car_strt_btn = document.getElementById('car_strt_btn').value;
     if (document.getElementById("car_strt_btn").checked) {
-        var car_strt_btn = "Yes";
+        car_strt_btn = "Yes";
     } else {
-        var car_strt_btn = "No";
+        car_strt_btn = "No";
     }
 
-    var car_trade = "";
+    //var car_trade = "";
     //if (document.getElementById("car_trade").checked) {
     //    var car_trade = "Yes";
     //} else {
@@ -1401,14 +1509,14 @@ function insertCarDetail() {
     var name = document.getElementById('u_name').value;
     //alert(name);
     if ($.trim(name).length == 0) {
-        alert(insertNameMsg);
+        navigator.notification.alert(insertNameMsg,null,'Alert','Ok');
         $('#u_name').focus();
         document.getElementById('errfn19').innerHTML = insertNameMsg;
         return false;
     }
     var u_phone = document.getElementById('u_phone').value;
     if ($.trim(u_phone).length == 0) {
-        alert(insertContactMsg);
+        navigator.notification.alert(insertContactMsg,null,'Alert','Ok');
         $('#u_phone').focus();
         document.getElementById('errfn20').innerHTML = insertContactMsg;
         return false;
@@ -1424,20 +1532,20 @@ function insertCarDetail() {
     }
     //console.log(JSON.stringify(image));
     if (carArray.length == 0) {
-        var car_detail = '{"method":"InsertCarDetail", "regi_id":"' + regi_id + '", "car_type": "' + car_type + '", "car_make": "' + car_make + '", "car_model": "' + car_model + '", "car_style": "' + car_style + '", "car_fuel": "' + car_fuel + '", "car_transmission": "' + car_transmission + '", "car_engine": "' + car_engine + '", "car_loan": "' + car_loan + '", "car_exchange": "' + car_exchange + '", "car_year": "' + car_year + '", "car_price_type": "' + car_price_type + '", "car_price": "' + car_price + '","car_int_color": "' + car_int_color + '","car_ext_color": "' + car_ext_color + '","car_km": "' + car_km + '","car_odometer": "' + car_odometer + '", "car_country":"' + car_country + '", "car_state":"' + car_state + '", "car_city":"' + car_city + '","car_doors": "' + car_doors + '","car_condition": "' + car_condition + '","car_rating": "' + car_rating + '","car_with_plate": "' + car_with_plate + '","car_plate": "' + car_plate + '","car_pow_lock": "' + car_pow_lock + '","car_ele_seat": "' + car_ele_seat + '","car_tint_win": "' + car_tint_win + '","car_air_bag": "' + car_air_bag + '","car_pow_win": "' + car_pow_win + '","car_ele_mir": "' + car_ele_mir + '","car_alarm": "' + car_alarm + '","car_abs": "' + car_abs + '","car_ac": "' + car_ac + '","car_win_difo": "' + car_win_difo + '","car_sunroof": "' + car_sunroof + '","car_rims": "' + car_rims + '","car_turbo": "' + car_turbo + '","car_lea_seat": "' + car_lea_seat + '","car_halo": "' + car_halo + '","car_cas": "' + car_cas + '","car_dvd": "' + car_dvd + '","car_cru_con": "' + car_cru_con + '","car_usb": "' + car_usb + '","car_rtv": "' + car_rtv + '","car_cont_elect": "' + car_cont_elect + '","car_cont_desce": "' + car_cont_desce + '","car_triptonic": "' + car_triptonic + '","car_rear_cam": "' + car_rear_cam + '","car_rear_sen": "' + car_rear_sen + '","car_front_sen": "' + car_front_sen + '","car_radio_string": "' + car_radio_string + '","car_vol_multi": "' + car_vol_multi + '","car_ac_climate": "' + car_ac_climate + '","car_mem_seat": "' + car_mem_seat + '","car_auto_fold_mir": "' + car_auto_fold_mir + '","car_xenon": "' + car_xenon + '","car_xenon_led": "' + car_xenon_led + '", "car_rain_sen": "' + car_rain_sen + '", "car_smt_keyof": "' + car_smt_keyof + '", "car_tire_pressure": "' + car_tire_pressure + '", "car_cru_cont": "' + car_cru_cont + '", "car_ad_ster": "' + car_ad_ster + '", "car_blue": "' + car_blue + '", "car_hydo_ster": "' + car_hydo_ster + '", "car_cen_lock": "' + car_cen_lock + '", "car_pow_seat": "' + car_pow_seat + '", "car_tint_glass": "' + car_tint_glass + '", "car_ele_glass": "' + car_ele_glass + '", "car_brake": "' + car_brake + '", "car_trip_com": "' + car_trip_com + '", "car_strt_btn": "' + car_strt_btn + '", "car_comment": "' + car_comment + '", "car_user_name":"' + name + '", "u_phone": "' + u_phone + '", "u_email": "' + u_email + '", "car_image": ""}';
+        car_detail = '{"method":"InsertCarDetail", "regi_id":"' + regi_id + '", "car_type": "' + car_type + '", "car_make": "' + car_make + '", "car_model": "' + car_model + '", "car_style": "' + car_style + '", "car_fuel": "' + car_fuel + '", "car_transmission": "' + car_transmission + '", "car_engine": "' + car_engine + '", "car_loan": "' + car_loan + '", "car_exchange": "' + car_exchange + '", "car_year": "' + car_year + '", "car_price_type": "' + car_price_type + '", "car_price": "' + car_price + '","car_int_color": "' + car_int_color + '","car_ext_color": "' + car_ext_color + '","car_km": "' + car_km + '","car_odometer": "' + car_odometer + '", "car_country":"' + car_country + '", "car_state":"' + car_state + '", "car_city":"' + car_city + '","car_doors": "' + car_doors + '","car_condition": "' + car_condition + '","car_rating": "' + car_rating + '","car_with_plate": "' + car_with_plate + '","car_plate": "' + car_plate + '","car_pow_lock": "' + car_pow_lock + '","car_ele_seat": "' + car_ele_seat + '","car_tint_win": "' + car_tint_win + '","car_air_bag": "' + car_air_bag + '","car_pow_win": "' + car_pow_win + '","car_ele_mir": "' + car_ele_mir + '","car_alarm": "' + car_alarm + '","car_abs": "' + car_abs + '","car_ac": "' + car_ac + '","car_win_difo": "' + car_win_difo + '","car_sunroof": "' + car_sunroof + '","car_rims": "' + car_rims + '","car_turbo": "' + car_turbo + '","car_lea_seat": "' + car_lea_seat + '","car_halo": "' + car_halo + '","car_cas": "' + car_cas + '","car_dvd": "' + car_dvd + '","car_cru_con": "' + car_cru_con + '","car_usb": "' + car_usb + '","car_rtv": "' + car_rtv + '","car_cont_elect": "' + car_cont_elect + '","car_cont_desce": "' + car_cont_desce + '","car_triptonic": "' + car_triptonic + '","car_rear_cam": "' + car_rear_cam + '","car_rear_sen": "' + car_rear_sen + '","car_front_sen": "' + car_front_sen + '","car_radio_string": "' + car_radio_string + '","car_vol_multi": "' + car_vol_multi + '","car_ac_climate": "' + car_ac_climate + '","car_mem_seat": "' + car_mem_seat + '","car_auto_fold_mir": "' + car_auto_fold_mir + '","car_xenon": "' + car_xenon + '","car_xenon_led": "' + car_xenon_led + '", "car_rain_sen": "' + car_rain_sen + '", "car_smt_keyof": "' + car_smt_keyof + '", "car_tire_pressure": "' + car_tire_pressure + '", "car_cru_cont": "' + car_cru_cont + '", "car_ad_ster": "' + car_ad_ster + '", "car_blue": "' + car_blue + '", "car_hydo_ster": "' + car_hydo_ster + '", "car_cen_lock": "' + car_cen_lock + '", "car_pow_seat": "' + car_pow_seat + '", "car_tint_glass": "' + car_tint_glass + '", "car_ele_glass": "' + car_ele_glass + '", "car_brake": "' + car_brake + '", "car_trip_com": "' + car_trip_com + '", "car_strt_btn": "' + car_strt_btn + '", "car_comment": "' + car_comment + '", "car_user_name":"' + name + '", "u_phone": "' + u_phone + '", "u_email": "' + u_email + '", "car_image": ""}';
     } else {
-        var car_detail = '{"method":"InsertCarDetail", "regi_id":"' + regi_id + '", "car_type": "' + car_type + '", "car_make": "' + car_make + '", "car_model": "' + car_model + '", "car_style": "' + car_style + '", "car_fuel": "' + car_fuel + '", "car_transmission": "' + car_transmission + '", "car_engine": "' + car_engine + '", "car_loan": "' + car_loan + '", "car_exchange": "' + car_exchange + '", "car_year": "' + car_year + '", "car_price_type": "' + car_price_type + '", "car_price": "' + car_price + '","car_int_color": "' + car_int_color + '","car_ext_color": "' + car_ext_color + '","car_km": "' + car_km + '","car_odometer": "' + car_odometer + '", "car_country":"' + car_country + '", "car_state":"' + car_state + '", "car_city":"' + car_city + '","car_doors": "' + car_doors + '","car_condition": "' + car_condition + '","car_rating": "' + car_rating + '","car_with_plate": "' + car_with_plate + '","car_plate": "' + car_plate + '","car_pow_lock": "' + car_pow_lock + '","car_ele_seat": "' + car_ele_seat + '","car_tint_win": "' + car_tint_win + '","car_air_bag": "' + car_air_bag + '","car_pow_win": "' + car_pow_win + '","car_ele_mir": "' + car_ele_mir + '","car_alarm": "' + car_alarm + '","car_abs": "' + car_abs + '","car_ac": "' + car_ac + '","car_win_difo": "' + car_win_difo + '","car_sunroof": "' + car_sunroof + '","car_rims": "' + car_rims + '","car_turbo": "' + car_turbo + '","car_lea_seat": "' + car_lea_seat + '","car_halo": "' + car_halo + '","car_cas": "' + car_cas + '","car_dvd": "' + car_dvd + '","car_cru_con": "' + car_cru_con + '","car_usb": "' + car_usb + '","car_rtv": "' + car_rtv + '","car_cont_elect": "' + car_cont_elect + '","car_cont_desce": "' + car_cont_desce + '","car_triptonic": "' + car_triptonic + '","car_rear_cam": "' + car_rear_cam + '","car_rear_sen": "' + car_rear_sen + '","car_front_sen": "' + car_front_sen + '","car_radio_string": "' + car_radio_string + '","car_vol_multi": "' + car_vol_multi + '","car_ac_climate": "' + car_ac_climate + '","car_mem_seat": "' + car_mem_seat + '","car_auto_fold_mir": "' + car_auto_fold_mir + '","car_xenon": "' + car_xenon + '","car_xenon_led": "' + car_xenon_led + '", "car_rain_sen": "' + car_rain_sen + '", "car_smt_keyof": "' + car_smt_keyof + '", "car_tire_pressure": "' + car_tire_pressure + '", "car_cru_cont": "' + car_cru_cont + '", "car_ad_ster": "' + car_ad_ster + '", "car_blue": "' + car_blue + '", "car_hydo_ster": "' + car_hydo_ster + '", "car_cen_lock": "' + car_cen_lock + '", "car_pow_seat": "' + car_pow_seat + '", "car_tint_glass": "' + car_tint_glass + '", "car_ele_glass": "' + car_ele_glass + '", "car_brake": "' + car_brake + '", "car_trip_com": "' + car_trip_com + '", "car_strt_btn": "' + car_strt_btn + '", "car_comment": "' + car_comment + '", "car_user_name":"' + name + '", "u_phone": "' + u_phone + '", "u_email": "' + u_email + '", "car_image": ' + JSON.stringify(image) + '}';
+        car_detail = '{"method":"InsertCarDetail", "regi_id":"' + regi_id + '", "car_type": "' + car_type + '", "car_make": "' + car_make + '", "car_model": "' + car_model + '", "car_style": "' + car_style + '", "car_fuel": "' + car_fuel + '", "car_transmission": "' + car_transmission + '", "car_engine": "' + car_engine + '", "car_loan": "' + car_loan + '", "car_exchange": "' + car_exchange + '", "car_year": "' + car_year + '", "car_price_type": "' + car_price_type + '", "car_price": "' + car_price + '","car_int_color": "' + car_int_color + '","car_ext_color": "' + car_ext_color + '","car_km": "' + car_km + '","car_odometer": "' + car_odometer + '", "car_country":"' + car_country + '", "car_state":"' + car_state + '", "car_city":"' + car_city + '","car_doors": "' + car_doors + '","car_condition": "' + car_condition + '","car_rating": "' + car_rating + '","car_with_plate": "' + car_with_plate + '","car_plate": "' + car_plate + '","car_pow_lock": "' + car_pow_lock + '","car_ele_seat": "' + car_ele_seat + '","car_tint_win": "' + car_tint_win + '","car_air_bag": "' + car_air_bag + '","car_pow_win": "' + car_pow_win + '","car_ele_mir": "' + car_ele_mir + '","car_alarm": "' + car_alarm + '","car_abs": "' + car_abs + '","car_ac": "' + car_ac + '","car_win_difo": "' + car_win_difo + '","car_sunroof": "' + car_sunroof + '","car_rims": "' + car_rims + '","car_turbo": "' + car_turbo + '","car_lea_seat": "' + car_lea_seat + '","car_halo": "' + car_halo + '","car_cas": "' + car_cas + '","car_dvd": "' + car_dvd + '","car_cru_con": "' + car_cru_con + '","car_usb": "' + car_usb + '","car_rtv": "' + car_rtv + '","car_cont_elect": "' + car_cont_elect + '","car_cont_desce": "' + car_cont_desce + '","car_triptonic": "' + car_triptonic + '","car_rear_cam": "' + car_rear_cam + '","car_rear_sen": "' + car_rear_sen + '","car_front_sen": "' + car_front_sen + '","car_radio_string": "' + car_radio_string + '","car_vol_multi": "' + car_vol_multi + '","car_ac_climate": "' + car_ac_climate + '","car_mem_seat": "' + car_mem_seat + '","car_auto_fold_mir": "' + car_auto_fold_mir + '","car_xenon": "' + car_xenon + '","car_xenon_led": "' + car_xenon_led + '", "car_rain_sen": "' + car_rain_sen + '", "car_smt_keyof": "' + car_smt_keyof + '", "car_tire_pressure": "' + car_tire_pressure + '", "car_cru_cont": "' + car_cru_cont + '", "car_ad_ster": "' + car_ad_ster + '", "car_blue": "' + car_blue + '", "car_hydo_ster": "' + car_hydo_ster + '", "car_cen_lock": "' + car_cen_lock + '", "car_pow_seat": "' + car_pow_seat + '", "car_tint_glass": "' + car_tint_glass + '", "car_ele_glass": "' + car_ele_glass + '", "car_brake": "' + car_brake + '", "car_trip_com": "' + car_trip_com + '", "car_strt_btn": "' + car_strt_btn + '", "car_comment": "' + car_comment + '", "car_user_name":"' + name + '", "u_phone": "' + u_phone + '", "u_email": "' + u_email + '", "car_image": ' + JSON.stringify(image) + '}';
     }
-    //console.log(car_detail);
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
 
+    $("#preloader").css('display','block');
     $.ajax({
         url: BASE_URL + APP_API,
         type: 'POST',
@@ -1445,25 +1553,30 @@ function insertCarDetail() {
         contentType: "application/json",
         data: car_detail,
         success: function (data) {
+
             if (data.success == 0) {
-                alert(data.message);
-                cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                //cordova.plugin.pDialog.dismiss();
+                $("#preloader").css('display','none');
                 return false;
             }
             if (data.success == 1) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 window.location.href = "userpost.html?type=carmenu";
             }
             if (data.success == 2) {
-                cordova.plugin.pDialog.dismiss();
-                alert(data.message);
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert(data.message,null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Not iserted, please try again.");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Not iserted, please try again.',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });

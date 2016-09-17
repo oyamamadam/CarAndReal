@@ -65,14 +65,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-pdialog.PDialog",
-        "file": "plugins/cordova-plugin-pdialog/www/plugins.PDialog.js",
-        "pluginId": "cordova-plugin-pdialog",
-        "clobbers": [
-            "cordova.plugin.pDialog"
-        ]
-    },
-    {
         "id": "cordova-plugin-sim.Sim",
         "file": "plugins/cordova-plugin-sim/www/sim.js",
         "pluginId": "cordova-plugin-sim",
@@ -87,6 +79,30 @@ module.exports = [
         "clobbers": [
             "navigator.splashscreen"
         ]
+    },
+    {
+        "id": "cordova-plugin-admobpro.AdMob",
+        "file": "plugins/cordova-plugin-admobpro/www/AdMob.js",
+        "pluginId": "cordova-plugin-admobpro",
+        "clobbers": [
+            "window.AdMob"
+        ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "id": "cordova-plugin-dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -96,11 +112,14 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.3",
     "cordova-plugin-device": "1.1.2",
     "cordova-plugin-facebook4": "1.7.1",
-    "cordova-plugin-pdialog": "2.0.1",
     "cordova-plugin-sim": "1.2.1",
     "cordova-plugin-splashscreen": "3.2.2",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-compat": "1.0.0"
+    "cordova-plugin-compat": "1.0.0",
+    "cordova-plugin-extension": "1.5.1",
+    "cordova-plugin-admobpro": "2.19.1",
+    "cordova-plugin-statusbar": "2.1.3",
+    "cordova-plugin-dialogs": "1.2.1"
 };
 // BOTTOM OF METADATA
 });

@@ -173,13 +173,14 @@ function gotoCarActionPage(car_id) {
     var r = confirm(msg_delete);
     if (r == true) {
 
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+        $("#preloader").css('display','none');
 
         $.ajax({
             url: BASE_URL + APP_API,
@@ -188,13 +189,15 @@ function gotoCarActionPage(car_id) {
             contentType: "application/json",
             data: '{"method":"CarDetailsDelete", "car_id":"' + car_id + '"}',
             success: function (data) {
-                cordova.plugin.pDialog.dismiss();
+                //cordova.plugin.pDialog.dismiss();
+                $("#preloader").css('display','none');
                 goToMyPost();
                 return true;
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });
@@ -232,13 +235,14 @@ function goToPrvCar() {
 
 function getUserAllCarDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','none');
 
     var method = '{"method":"AllCarDetailUser", "regi_id":"' + gdc_uid + '", "first":"' + firstCarData + '", "second":"' + secondCarData + '"}';
     $.ajax({
@@ -252,14 +256,16 @@ function getUserAllCarDetail() {
             return true;
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
 }
 function carListtData(data) {
     if (data.carlist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         //alert("No Data Found!");
         if (secondCarData > 10) {
             secondCarData = secondCarData - 10;
@@ -360,7 +366,8 @@ function carListtData(data) {
 
         }
 
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
 
         return true;
     }
@@ -380,13 +387,14 @@ function gotoActionPage(real_id) {
     var r = confirm(msg_delete);
     if (r == true) {
 
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+        $("#preloader").css('display','block');
 
         $.ajax({
             url: BASE_URL + APP_API,
@@ -395,13 +403,15 @@ function gotoActionPage(real_id) {
             contentType: "application/json",
             data: '{"method":"RealEstateDetailsDelete", "real_id":"' + real_id + '"}',
             success: function (data) {
-                cordova.plugin.pDialog.dismiss();
+                //cordova.plugin.pDialog.dismiss();
+                $("#preloader").css('display','none');
                 goToMyPost();
                 return true;
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });
@@ -440,13 +450,14 @@ function getUserAllRealDetailB() {
 function getUserAllRealDetail() {
     //alert('realmenu');
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var method = '{"method":"AllRealDetailUser", "regi_id":"' + gdc_uid + '", "first":"' + firstData + '", "second":"' + secondData + '"}';
     $.ajax({
@@ -460,7 +471,8 @@ function getUserAllRealDetail() {
             return true;
         },
         error: function (result) {
-            alert("Error");
+            navigator.notification.alert('Error',null,'Alert','Ok');
+            $("#preloader").css('display','none');
             return false;
         }
     });
@@ -469,7 +481,8 @@ function realEstatData(data) {
     //alert('realmenu data');
     //$("#userallrealData").children().remove();
     if (data.reallist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         //alert("No Data Found!");
         if (secondData > 10) {
             secondData = secondData - 10;
@@ -529,7 +542,8 @@ function realEstatData(data) {
             document.getElementById('datarealedit' + i + '').innerHTML = dataedit;
             document.getElementById('datarealdelete' + i + '').innerHTML = datadelete;
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
@@ -547,14 +561,15 @@ function gotoOtherEditPage(other_id) {
 function gotoOtherActionPage(other_id) {
     var r = confirm(msg_delete);
     if (r == true) {
-
-        cordova.plugin.pDialog.init({
-            theme: 'HOLO_LIGHT',
-            progressStyle: 'SPINNER',
-            cancelable: false,
-            title: 'Please Wait...',
-            message: 'Loading ...'
-        });
+        //
+        //cordova.plugin.pDialog.init({
+        //    theme: 'HOLO_LIGHT',
+        //    progressStyle: 'SPINNER',
+        //    cancelable: false,
+        //    title: 'Please Wait...',
+        //    message: 'Loading ...'
+        //});
+        $("#preloader").css('display','block');
 
         $.ajax({
             url: BASE_URL + APP_API,
@@ -563,13 +578,15 @@ function gotoOtherActionPage(other_id) {
             contentType: "application/json",
             data: '{"method":"OtherDetailsDelete", "other_id":"' + other_id + '"}',
             success: function (data) {
-                cordova.plugin.pDialog.dismiss();
+                //cordova.plugin.pDialog.dismiss();
+                $("#preloader").css('display','none');
                 goToMyPost();
                 return true;
             },
             error: function (result) {
-                cordova.plugin.pDialog.dismiss();
-                alert("Error");
+                //cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert('Error',null,'Alert','Ok');
+                $("#preloader").css('display','none');
                 return false;
             }
         });
@@ -608,13 +625,14 @@ function getUserAllOtherDetailB() {
 
 function getUserAllOtherDetail() {
 
-    cordova.plugin.pDialog.init({
-        theme: 'HOLO_LIGHT',
-        progressStyle: 'SPINNER',
-        cancelable: false,
-        title: 'Please Wait...',
-        message: 'Loading ...'
-    });
+    //cordova.plugin.pDialog.init({
+    //    theme: 'HOLO_LIGHT',
+    //    progressStyle: 'SPINNER',
+    //    cancelable: false,
+    //    title: 'Please Wait...',
+    //    message: 'Loading ...'
+    //});
+    $("#preloader").css('display','block');
 
     var method = '{"method":"AllOtherDetailUser", "regi_id":"' + gdc_uid + '", "first":"' + firstOtherData + '", "second":"' + secondOtherData + '"}';
     $.ajax({
@@ -628,15 +646,16 @@ function getUserAllOtherDetail() {
             return true;
         },
         error: function (result) {
-            cordova.plugin.pDialog.dismiss();
-            alert("Error");
+            //cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert('Error',null,'Alert','Ok');
             return false;
         }
     });
 }
 function otherListData(data) {
     if (data.otherlist.length == 0) {
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         //alert("No Data Found!");
         if (secondOtherData > 10) {
             secondOtherData = secondOtherData - 10;
@@ -691,7 +710,8 @@ function otherListData(data) {
             document.getElementById('dataotheredit' + i + '').innerHTML = dataedit;
             document.getElementById('dataotherdelete' + i + '').innerHTML = datadelete;
         }
-        cordova.plugin.pDialog.dismiss();
+        //cordova.plugin.pDialog.dismiss();
+        $("#preloader").css('display','none');
         return true;
     }
 }
