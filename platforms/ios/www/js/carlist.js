@@ -228,15 +228,14 @@ $(document).ready(
             //user_name.innerHTML = gdc_username;
             document.getElementById('profilename').innerHTML = gdc_username;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                //alert(gdc_gender);
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );
@@ -272,17 +271,7 @@ function goToPrv() {
 }
 
 function getAllCarDetail() {
-    //{"method":"AllCarDetail", "first":"0", "second":"10"}
-    //alert("First: " + firstData + "Second: " + secondData);
 
-
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
 
     $("#preloader").css('display','block');
 
@@ -291,8 +280,6 @@ function getAllCarDetail() {
         type: 'POST',
         dataType: 'json',
         contentType: "application/json",
-        //data: '{"method":"AllCarDetail", "first":"' + firstData + '", "second":"' + secondData + '"}',
-        //data: '{"method":"AllCarDetail", "make_fil" : "' + make_fil + '","model_fil" : "' + model_fil + '","style_fil" : "' + style_fil + '","fuel_fil" : "' + fuel_fil + '","transmission_fil" : "' + transmission_fil + '","loan_fil" : "' + loan_fil + '","trade_fil" : "' + trade_fil + '","price_fil" : "' + price_fil + '","year_fil" : "' + year_fil + '","first":"' + firstData + '", "second":"' + secondData + '"}',
         data: '{"method":"AllCarDetail", "make_fil" : "' + make_fil + '","model_fil" : "' + model_fil + '","style_fil" : "' + style_fil + '","fuel_fil" : "' + fuel_fil + '","transmission_fil" : "' + transmission_fil + '","loan_fil" : "' + loan_fil + '","trade_fil" : "' + trade_fil + '","price_fil" : "' + price_fil + '", "first":"' + firstData + '", "second":"' + secondData + '"}',
         success: function (data) {
             carListtData(data);
@@ -304,6 +291,20 @@ function getAllCarDetail() {
         }
     });
 }
+
+function getSorteddate(array){
+
+    return array.sort(function (a, b){
+        //console.log(a.other_created);
+        var a_s= a.car_lising_create;
+        var aaa= new Date(a_s);
+        var b_s= b.car_lising_create.split(' ');
+        var bbb= new Date(b_s);
+        console.log("adfasdfsdf="+ aaa.getDate());
+        return bbb - aaa;
+    });
+}
+
 function carListtData(data) {
     if (data.carlist.length == 0) {
         //alert(msg_no);
@@ -321,28 +322,19 @@ function carListtData(data) {
         document.getElementById('pageno').innerHTML = pageno;
 
         $("#allCarData").children().remove();
+
+
+        var insteadlist = getSorteddate(data.carlist);
+
         for (var i = 0; i < data.carlist.length; i++) {
 
-            var car_id = data.carlist[i].car_id;
-            var car_type = data.carlist[i].car_type;
-            var car_make_name = data.carlist[i].car_make_name;
-            var car_model_name = data.carlist[i].car_model_name;
-            var car_style_name = data.carlist[i].car_style_name;
-            var car_engine = data.carlist[i].car_engine;
-
-            var car_acpt_old = data.carlist[i].car_acpt_old;
-
-            var car_year = data.carlist[i].car_year;
-            var car_price_type = data.carlist[i].car_price_type;
-            var car_price =numberWithCommas(data.carlist[i].car_price);
-            //if (car_price_type == "Dollares") {
-            //    var car_price = "$ " + data.carlist[i].car_price;
-            //} else {
-            //    var car_price = "₡ " + data.carlist[i].car_price;
-            //}
-
-            //New Code
-            var fuel = data.carlist[i].car_fuel;
+            var car_id = insteadlist[i].car_id;
+            var car_model_name = insteadlist[i].car_model_name;
+            var car_year = insteadlist[i].car_year;
+            var car_price_type = insteadlist[i].car_price_type;
+            var car_price =numberWithCommas(insteadlist[i].car_price);
+                        //New Code
+            var fuel = insteadlist[i].car_fuel;
             if (fuel == "Petrol") {
                 var fuelli = '<img src="images/petrol.png" class="icon-img" title="Petrol Fuel">';
             }
@@ -361,7 +353,7 @@ function carListtData(data) {
             if (fuel == "") {
                 var fuelli = "";
             }
-            var transmission = data.carlist[i].car_transmission;
+            var transmission = insteadlist[i].car_transmission;
             if (transmission == "Manual") {
                 var transmissionli = '  <img src="images/manual.png" class="icon-img" title="Manual Transmission">  ';
             }
@@ -371,94 +363,44 @@ function carListtData(data) {
             if (transmission == "Tiptronic") {
                 var transmissionli = '  <img src="images/tiptronic.png" class="icon-img" title="Tiptronic Transmission">  ';
             }
-            var abs = data.carlist[i].car_abs;
+            var abs = insteadlist[i].car_abs;
             if (abs == "Yes") {
                 var absli = '  <img src="images/abs.png" class="icon-img" title="ABS Breaks">  ';
             } else {
                 var absli = "";
             }
-            var rtv = data.carlist[i].car_rtv;
+            var rtv = insteadlist[i].car_rtv;
             if (rtv == "Yes") {
                 var rtvli = '  <img src="images/rtv.png" class="icon-img" title="RTV">  ';
             } else {
                 var rtvli = "";
             }
-            var xenon_led = data.carlist[i].car_xenon_led;
+            var xenon_led = insteadlist[i].car_xenon_led;
             if (xenon_led == "Yes") {
                 var xenon_ledli = '  <img src="images/led.png" class="icon-img" title="Xe-Led">  ';
             } else {
                 var xenon_ledli = "";
             }
-            var rating = data.carlist[i].car_rating;
-            var exchange = data.carlist[i].car_exchange;
+            var rating = insteadlist[i].car_rating;
+            var exchange = insteadlist[i].car_exchange;
             if (exchange == "Yes") {
                 var exchangeli = '  <img src="images/exchange.png" class="icon-img" title="Exchange">  ';
             } else {
                 var exchangeli = "";
             }
-            var loan = data.carlist[i].car_loan;
+            var loan = insteadlist[i].car_loan;
             if (loan == "Yes") {
                 var loanli = '  <img src="images/loan.png" class="icon-img" title="Loan">  ';
             } else {
                 var loanli = "";
             }
             //New Code
-            var car_color = data.carlist[i].car_color;
-            var country_name = data.carlist[i].country_name;
-            var state_name = data.carlist[i].state_name;
-            var city_name = data.carlist[i].city_name;
-            var car_doors = data.carlist[i].car_doors;
-            var car_telphone = data.carlist[i].car_telphone;
-            var car_listing = data.carlist[i].car_listing;
-            var car_condition = data.carlist[i].car_condition;
-            var car_lising_create = data.carlist[i].car_lising_create;
-            var car_pow_lock = data.carlist[i].car_pow_lock;
-            var car_ele_seat = data.carlist[i].car_ele_seat;
-            var car_tint_win = data.carlist[i].car_tint_win;
-            var car_air_bag = data.carlist[i].car_air_bag;
-            var car_pow_win = data.carlist[i].car_pow_win;
-            var car_ele_mir = data.carlist[i].car_ele_mir;
-            var car_alarm = data.carlist[i].car_alarm;
-
-            var car_ac = data.carlist[i].car_ac;
-            var car_win_difo = data.carlist[i].car_win_difo;
-            var car_sunroof = data.carlist[i].car_sunroof;
-            var car_rims = data.carlist[i].car_rims;
-            var car_turbo = data.carlist[i].car_turbo;
-            var car_lea_seat = data.carlist[i].car_lea_seat;
-            var car_halo = data.carlist[i].car_halo;
-            var car_cas = data.carlist[i].car_cas;
-            var car_dvd = data.carlist[i].car_dvd;
-            var car_cru_con = data.carlist[i].car_cru_con;
-            var car_usb = data.carlist[i].car_usb;
-
-            var car_cont_elect = data.carlist[i].car_cont_elect;
-            var car_cont_desce = data.carlist[i].car_cont_desce;
-            var car_triptonic = data.carlist[i].car_triptonic;
-            var car_rear_cam = data.carlist[i].car_rear_cam;
-            var car_rear_sen = data.carlist[i].car_rear_sen;
-            var car_front_sen = data.carlist[i].car_front_sen;
-            var car_radio_string = data.carlist[i].car_radio_string;
-            var car_vol_multi = data.carlist[i].car_vol_multi;
-            var car_ac_climate = data.carlist[i].car_ac_climate;
-            var car_mem_seat = data.carlist[i].car_mem_seat;
-            var car_auto_fold_mir = data.carlist[i].car_auto_fold_mir;
-            var car_xenon = data.carlist[i].car_xenon;
-
-            var car_rain_sen = data.carlist[i].car_rain_sen;
-            var car_smt_keyof = data.carlist[i].car_smt_keyof;
-            var car_tire_pressure = data.carlist[i].car_tire_pressure;
-            var car_cru_cont = data.carlist[i].car_cru_cont;
-            var car_ad_ster = data.carlist[i].car_ad_ster;
-            var car_blue = data.carlist[i].car_blue;
-            var car_comment = data.carlist[i].car_comment;
-            var u_first_name = data.carlist[i].u_first_name;
-            var u_last_name = data.carlist[i].u_last_name;
-            var u_phone = data.carlist[i].u_phone;
-            var u_email = data.carlist[i].u_email;
-            var car_trade = data.carlist[i].car_trade;
-            var file_img = data.carlist[i].file_img;
+            var country_name = insteadlist[i].country_name;
+            var state_name = insteadlist[i].state_name;
+            var city_name = insteadlist[i].city_name;
+            var file_img = insteadlist[i].file_img;
             var image1 = file_img[0];
+
             //console.log("Size" + file_img.size);
             //alert("Size"+file_img.length);
 
@@ -473,7 +415,7 @@ function carListtData(data) {
                 '<h6>' + city_name + ', ' + state_name + ', ' + country_name + '</h6>' +
                 '<div class="icon-area">' +
                 '<div class="rating-area">' +
-                '<div class="rating-txt"><img src="images/star.png" class="star-img"> ' + rating + '/10</div> ' +
+                '<div class="rating-txt"><img src="images/star.png" class="star-img"> '  + rating + '/10</div> ' +
                 '</div>' +
                 '<div class="clearfix"> </div>' +
                     //'<div align="right">' + fuelli + exchangeli + loanli + transmissionli + absli + '<img src="images/fourwheel.png" class="icon-img" title="Four-Wheel-Drive">' + rtvli + xenon_ledli + '</div>' +
@@ -508,10 +450,11 @@ function carListtData(data) {
                 '</li>');
             }
         }
+
     }
 
     $("#preloader").css('display','none');
-    //cordova.plugin.pDialog.dismiss();
+
 }
 //$(document).ready(function () {
 //    $.ajax({

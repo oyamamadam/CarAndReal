@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-admobpro": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.carandreal"
         },
@@ -14,6 +17,9 @@
             "PACKAGE_NAME": "com.carandreal"
         },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.carandreal"
+        },
+        "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.carandreal"
         },
         "cordova-plugin-facebook4": {
@@ -27,24 +33,18 @@
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.carandreal"
         },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.carandreal"
-        },
-        "cordova-plugin-admobpro": {
-            "PACKAGE_NAME": "com.carandreal"
-        },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.carandreal"
         },
-        "cordova-plugin-dialogs": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.carandreal"
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-compat": {
+        "cordova-plugin-extension": {
             "PACKAGE_NAME": "com.carandreal"
         },
-        "cordova-plugin-extension": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.carandreal"
         }
     }

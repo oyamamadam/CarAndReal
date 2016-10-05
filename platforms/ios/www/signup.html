@@ -21,7 +21,7 @@
 
     <div id="preloader">
         <div id="status">
-            <h3 class="center-text">Please Waiting</h3>
+            <h3 class="center-text">Please Waiting...</h3>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
                                 </div>
                                 <div data-role="fieldcontain">
                                     <input type="tel" name="contactno" id="contactno" value=""
-                                           placeholder="Contact Number"/>
+                                           placeholder="eg. 70741771"/>
                                 </div>
                                 <div data-role="fieldcontain">
                                     <input type="email" name="emailid" id="emailid" value="" placeholder="E-mail"/>
@@ -69,9 +69,11 @@
                                     <input type="checkbox" name="tccheck" id="tccheck" checked="checked"
                                            class="mar_top"><a href="termsconditions.html">Terms & Conditions</a>
                                     <br/>
-                                    <a onClick="return goToSignUp();" class="button ui-btn ui-btn-inline my_login">Sign
-                                        up</a> <br/>
+                                    <a onClick="return goToSignUp();" class="button ui-btn ui-btn-inline my_login">Sign up</a> <br/>
                                     <!--<a onclick="iwilldolater();">I'll do later</a>-->
+                                </div>
+                                <div class="go_signin">
+                                    <a onclick="goToHome();" class=""> If already you have account,<span class="signin"> Sign in</span> </a>
                                 </div>
                             </div>
                         </form>

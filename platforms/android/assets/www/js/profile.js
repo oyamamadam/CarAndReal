@@ -20,7 +20,7 @@ $(document).ready(
 
     function () {
 
-        $("#preloader").css('display','none');
+        $("#preloader").css('display', 'none');
 
         if (gdc_username == null) {
             document.getElementById('username').innerHTML = "Profile";
@@ -30,21 +30,16 @@ $(document).ready(
             document.getElementById('username').innerHTML = gdc_username;
             document.getElementById('usermobile').innerHTML = gdc_mobile;
             document.getElementById('useremail').innerHTML = gdc_email;
-            $('#profilepic').attr('src',profile_image);
-        }
-        if (gdc_gender == null) {
-            document.getElementById('username').innerHTML = "Profile";
-        } else {
-            if (!gdc_gender) {
-                document.getElementById("profilepic").src = "";
-            } else {
-                if(!profile_image)
-                {
-                    //alert("empty");
-                    document.getElementById("profilepic").src = "images/g_male.png";
-                }else {
-                    document.getElementById("profilepic").src = profile_image;
-                }
+            $('#profilepic').attr('src', profile_image);
+
+            if (!profile_image && gdc_gender == "male") {
+                document.getElementById("profilepic").src = "images/g_male.png";
+            } else if (!profile_image && gdc_gender == "female") {
+                //alert(profile_image);
+                document.getElementById("profilepic").src = "images/g_female.png";
+            }
+            else {
+                document.getElementById("profilepic").src = profile_image;
             }
         }
     }

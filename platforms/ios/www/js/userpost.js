@@ -170,16 +170,11 @@ function gotoCarEditPage(car_id) {
 }
 
 function gotoCarActionPage(car_id) {
+
+
     var r = confirm(msg_delete);
     if (r == true) {
 
-        //cordova.plugin.pDialog.init({
-        //    theme: 'HOLO_LIGHT',
-        //    progressStyle: 'SPINNER',
-        //    cancelable: false,
-        //    title: 'Please Wait...',
-        //    message: 'Loading ...'
-        //});
         $("#preloader").css('display','none');
 
         $.ajax({
@@ -235,13 +230,6 @@ function goToPrvCar() {
 
 function getUserAllCarDetail() {
 
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
     $("#preloader").css('display','none');
 
     var method = '{"method":"AllCarDetailUser", "regi_id":"' + gdc_uid + '", "first":"' + firstCarData + '", "second":"' + secondCarData + '"}';
@@ -448,15 +436,7 @@ function getUserAllRealDetailB() {
     getUserAllRealDetail();
 }
 function getUserAllRealDetail() {
-    //alert('realmenu');
 
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
     $("#preloader").css('display','block');
 
     var method = '{"method":"AllRealDetailUser", "regi_id":"' + gdc_uid + '", "first":"' + firstData + '", "second":"' + secondData + '"}';

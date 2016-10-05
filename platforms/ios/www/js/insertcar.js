@@ -498,7 +498,7 @@ function display() {
         document.getElementById('newtv').innerHTML = newtv;
         $('#car_make-button span').html(selMake);
         document.getElementById('selMake').innerHTML = selMake;
-        $('#selectModel-button span').html(selModel);
+        //$('#selectModel-button span').html(selModel);
         document.getElementById('selModel').innerHTML = selModel;
         $('#selectStyle-button span').html(selStyle);
         document.getElementById('selStyle').innerHTML = selStyle;
@@ -547,6 +547,7 @@ $(document).ready(
         $("#car_comment").attr("placeholder", cComment);
         $("#u_name").attr("placeholder", cPublishBy);
         $("#u_phone").attr("placeholder", cContact);
+        $("#selModel").attr("placeholder", carmodel);
         //$("#u_email").attr("placeholder", cEmail);
         //$("#u_email").attr("placeholder", cEmail);
 
@@ -613,13 +614,14 @@ $(document).ready(
             //document.getElementById("u_email").value = gdc_email;
             document.getElementById("u_phone").value = gdc_mobile;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-            } else {
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );
@@ -784,8 +786,7 @@ function getCountryList() {
             return true;
         },
         error: function (result) {
-            //alert("Error");
-            //cordova.plugin.pDialog.dismiss();
+
             $("#preloader").css('display','none');
             return false;
         }
@@ -801,16 +802,11 @@ function carMakeData(data) {
     $("#preloader").css('display','none');
     return true;
 }
+/*
 var model = 0;
 function selectModel12(str) {
     model = str;
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
+
 
     $("#preloader").css('display','block');
 
@@ -824,6 +820,7 @@ function selectModel12(str) {
     //cordova.plugin.pDialog.dismiss();
     $("#preloader").css('display','none');
 }
+*/
 var style = 0;
 //function selectStyle(str) {
 //    style = str;
@@ -906,6 +903,9 @@ function setPlaceHolderEngine() {
 }
 function setPlaceHolderYear() {
     $("#car_year").attr("placeholder", year);
+}
+function setPlaceHolderModel() {
+    $("#car_Model").attr("placeholder", Model);
 }
 function setPlaceHolderPrice() {
     $("#car_price").attr("placeholder", price);
@@ -1009,10 +1009,17 @@ function insertCarDetail() {
         document.getElementById('errfn1').innerHTML = selectCarMakMsg;
         return false;
     }
-    var car_model = document.getElementById('selectModel').value;
+    //var car_model = document.getElementById('selectModel').value;
+    //if ($.trim(car_model) == "") {
+    //    navigator.notification.alert(insertModelMsg,null,'Alert','Ok');
+    //    $('#selectModel').focus();
+    //    document.getElementById('errfnModel').innerHTML = insertModelMsg;
+    //    return false;
+    //}
+    var car_model = document.getElementById('selModel').value;
     if ($.trim(car_model) == "") {
         navigator.notification.alert(insertModelMsg,null,'Alert','Ok');
-        $('#selectModel').focus();
+        $('#selModel').focus();
         document.getElementById('errfnModel').innerHTML = insertModelMsg;
         return false;
     }
@@ -1537,13 +1544,6 @@ function insertCarDetail() {
         car_detail = '{"method":"InsertCarDetail", "regi_id":"' + regi_id + '", "car_type": "' + car_type + '", "car_make": "' + car_make + '", "car_model": "' + car_model + '", "car_style": "' + car_style + '", "car_fuel": "' + car_fuel + '", "car_transmission": "' + car_transmission + '", "car_engine": "' + car_engine + '", "car_loan": "' + car_loan + '", "car_exchange": "' + car_exchange + '", "car_year": "' + car_year + '", "car_price_type": "' + car_price_type + '", "car_price": "' + car_price + '","car_int_color": "' + car_int_color + '","car_ext_color": "' + car_ext_color + '","car_km": "' + car_km + '","car_odometer": "' + car_odometer + '", "car_country":"' + car_country + '", "car_state":"' + car_state + '", "car_city":"' + car_city + '","car_doors": "' + car_doors + '","car_condition": "' + car_condition + '","car_rating": "' + car_rating + '","car_with_plate": "' + car_with_plate + '","car_plate": "' + car_plate + '","car_pow_lock": "' + car_pow_lock + '","car_ele_seat": "' + car_ele_seat + '","car_tint_win": "' + car_tint_win + '","car_air_bag": "' + car_air_bag + '","car_pow_win": "' + car_pow_win + '","car_ele_mir": "' + car_ele_mir + '","car_alarm": "' + car_alarm + '","car_abs": "' + car_abs + '","car_ac": "' + car_ac + '","car_win_difo": "' + car_win_difo + '","car_sunroof": "' + car_sunroof + '","car_rims": "' + car_rims + '","car_turbo": "' + car_turbo + '","car_lea_seat": "' + car_lea_seat + '","car_halo": "' + car_halo + '","car_cas": "' + car_cas + '","car_dvd": "' + car_dvd + '","car_cru_con": "' + car_cru_con + '","car_usb": "' + car_usb + '","car_rtv": "' + car_rtv + '","car_cont_elect": "' + car_cont_elect + '","car_cont_desce": "' + car_cont_desce + '","car_triptonic": "' + car_triptonic + '","car_rear_cam": "' + car_rear_cam + '","car_rear_sen": "' + car_rear_sen + '","car_front_sen": "' + car_front_sen + '","car_radio_string": "' + car_radio_string + '","car_vol_multi": "' + car_vol_multi + '","car_ac_climate": "' + car_ac_climate + '","car_mem_seat": "' + car_mem_seat + '","car_auto_fold_mir": "' + car_auto_fold_mir + '","car_xenon": "' + car_xenon + '","car_xenon_led": "' + car_xenon_led + '", "car_rain_sen": "' + car_rain_sen + '", "car_smt_keyof": "' + car_smt_keyof + '", "car_tire_pressure": "' + car_tire_pressure + '", "car_cru_cont": "' + car_cru_cont + '", "car_ad_ster": "' + car_ad_ster + '", "car_blue": "' + car_blue + '", "car_hydo_ster": "' + car_hydo_ster + '", "car_cen_lock": "' + car_cen_lock + '", "car_pow_seat": "' + car_pow_seat + '", "car_tint_glass": "' + car_tint_glass + '", "car_ele_glass": "' + car_ele_glass + '", "car_brake": "' + car_brake + '", "car_trip_com": "' + car_trip_com + '", "car_strt_btn": "' + car_strt_btn + '", "car_comment": "' + car_comment + '", "car_user_name":"' + name + '", "u_phone": "' + u_phone + '", "u_email": "' + u_email + '", "car_image": ' + JSON.stringify(image) + '}';
     }
 
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
 
     $("#preloader").css('display','block');
     $.ajax({

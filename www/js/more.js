@@ -101,14 +101,14 @@ $(document).ready(
         } else {
             document.getElementById('profilename').innerHTML = gdc_username;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );
@@ -154,14 +154,6 @@ function getTotalCat() {
 }
 
 function getUserCatList() {
-    //
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
 
     $("#preloader").css('display','block');
 
@@ -209,18 +201,12 @@ function catListtData(data) {
 function goAddCategory() {
     var other_cat_name = document.getElementById('other_cat_name').value;
     if ($.trim(other_cat_name).length == 0) {
-        navigator.notification.alert(err_msg,null,'Error','Ok');
+        navigator.notification.alert(err_msg,null,'Alert','Ok');
         //alert(err_msg);
         return false;
     } else {
 
-        //cordova.plugin.pDialog.init({
-        //    theme: 'HOLO_LIGHT',
-        //    progressStyle: 'SPINNER',
-        //    cancelable: false,
-        //    title: 'Please Wait...',
-        //    message: 'Loading ...'
-        //});
+
         $("#preloader").css('display','block');
 
         var userAddCat = '{"method":"AddOtherCat", "regi_id":"' + gdc_uid + '", "other_cat_name":"' + other_cat_name + '"}';
@@ -238,7 +224,7 @@ function goAddCategory() {
                     return false;
                 }
                 if (data.success == 1) {
-                    navigator.notification.alert(data.message,null,'Error','Ok');
+                    navigator.notification.alert(data.message,null,'Alert','Ok');
                     $("#preloader").css('display','none');
                     //cordova.plugin.pDialog.dismiss();
                     window.location.href = "more.html";

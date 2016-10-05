@@ -140,15 +140,14 @@ $(document).ready(
             //user_name.innerHTML = gdc_username;
             document.getElementById('profilename').innerHTML = gdc_username;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                //alert(gdc_gender);
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );
@@ -197,14 +196,6 @@ function goToPrv() {
     getAllRealDetail();
 }
 function getAllRealDetail() {
-    //
-    //cordova.plugin.pDialog.init({
-    //    theme: 'HOLO_LIGHT',
-    //    progressStyle: 'SPINNER',
-    //    cancelable: false,
-    //    title: 'Please Wait...',
-    //    message: 'Loading ...'
-    //});
 
     $("#preloader").css('display','block');
     $.ajax({
@@ -225,24 +216,22 @@ function getAllRealDetail() {
         }
     });
 }
-//$(document).ready(function () {
-//    $.ajax({
-//        url: BASE_URL + APP_API,
-//        type: 'POST',
-//        dataType: 'json',
-//        contentType: "application/json",
-//        data: '{"method":"Tot_Real"}',
-//        success: function (data) {
-//            var obj = data.data;
-//            document.getElementById('totalrealadv').innerHTML = obj+" Results";
-//            return true;
-//        },
-//        error: function (result) {
-//            alert("Error");
-//            return false;
-//        }
-//    });
-//});
+
+function getSorteddate(array){
+
+    return array.sort(function (a, b){
+        //console.log(a.other_created);
+        var a_s= a.real_publish.split(' ');
+        var a_date= a_s[0] + "T"+a_s[1];
+        var aaa= new Date(a_date);
+        var b_s= b.real_publish.split(' ');
+        var b_date= b_s[0] + "T"+b_s[1];
+        var bbb= new Date(b_date);
+        console.log("adfasdfsdf="+ aaa.getDate());
+        return bbb - aaa;
+    });
+}
+
 function realListData(data) {
 
     if (data.reallist.length == 0) {
@@ -261,75 +250,54 @@ function realListData(data) {
         document.getElementById('pageno').innerHTML = pageno;
         //var aa = data.reallist;
         //alert(JSON.stringify(aa));
+
         $("#allRealData").children().remove();
-        for (var i = 0; i < data.reallist.length; i++) {
-            var real_id = data.reallist[i].real_id;
-            var real_property = data.reallist[i].real_property;
-            var real_title_lis = data.reallist[i].real_title_lis;
-            var real_pro_type = data.reallist[i].real_pro_type;
-            var real_location = data.reallist[i].real_location;
-            var real_near_by_loc = data.reallist[i].real_near_by_loc;
-            var real_country = data.reallist[i].real_country;
-            var real_state = data.reallist[i].real_state;
-            var real_city = data.reallist[i].real_city;
-            var real_room = data.reallist[i].real_room;
-            var real_baths = data.reallist[i].real_baths;
-            var real_condition = data.reallist[i].real_condition;
 
-            //var real_loan = data.reallist[i].real_loan;
-            //var real_rec = data.reallist[i].real_rec;
-            var real_size_pro = data.reallist[i].real_size_pro;
-            var real_size_con = data.reallist[i].real_size_con;
-            //var real_electricity = data.reallist[i].real_electricity;
-            //var real_water = data.reallist[i].real_water;
-            var real_morgage = data.reallist[i].real_morgage;
-            var real_three = data.reallist[i].real_three;
-            var real_acc_flex = data.reallist[i].real_acc_flex;
-            var real_comment = data.reallist[i].real_comment;
-            var name = data.reallist[i].name;
-            var u_phone = data.reallist[i].u_phone;
-            var u_email = data.reallist[i].u_email;
-            var real_trade = data.reallist[i].real_trade;
 
-            //var real_rating = data.reallist[i].real_rating;
-            var rating = data.reallist[i].real_rating;
-            var exchange = data.reallist[i].real_rec;
+        var insteadlist = getSorteddate(data.reallist);
+
+        for (var i = 0; i < insteadlist.length; i++) {
+            var real_id = insteadlist[i].real_id;
+            var real_title_lis = insteadlist[i].real_title_lis;
+
+            var real_country = insteadlist[i].real_country;
+            var real_state = insteadlist[i].real_state;
+            var real_city = insteadlist[i].real_city;
+
+            var rating = insteadlist[i].real_rating;
+            var exchange = insteadlist[i].real_rec;
             if (exchange == "Yes") {
                 var exchangeli = '<img src="images/exchange.png" class="icon-img" title="Exchange">';
             } else {
                 var exchangeli = "";
             }
-            var loan = data.reallist[i].real_loan;
+            var loan = insteadlist[i].real_loan;
             if (loan == "Yes") {
                 var loanli = '<img src="images/loan.png" class="icon-img" title="Loan">';
             } else {
                 var loanli = "";
             }
 
-            var electricity = data.reallist[i].real_electricity;
+            var electricity = insteadlist[i].real_electricity;
             if (electricity == "Yes") {
                 var electricityli = '<img src="images/electric.png" class="icon-img" title="">';
             } else {
                 var electricityli = "";
             }
 
-            var water = data.reallist[i].real_water;
+            var water = insteadlist[i].real_water;
             if (water == "Yes") {
                 var waterli = '<img src="images/water.png" class="icon-img" title="">';
             } else {
                 var waterli = "";
             }
 
-            var real_price_type = data.reallist[i].real_price_type;
-            var real_price =numberWithCommas(data.reallist[i].real_price);
-            //if (real_price_type == "Dollares") {
-            //    var real_price = "$ " + data.reallist[i].real_price;
-            //} else {
-            //    var real_price = "₡ " + data.reallist[i].real_price;
-            //}
-            var real_publish = data.reallist[i].real_publish;
-            var real_status = data.reallist[i].real_status;
-            var real_img = data.reallist[i].real_img;
+            var real_price_type = insteadlist[i].real_price_type;
+            var real_price = numberWithCommas(insteadlist[i].real_price);
+
+            //var date = insteadlist[i].real_publish;
+
+            var real_img = insteadlist[i].real_img;
             var image1 = real_img[0];
             //alert(image1);
             if (real_price_type == "Dollares") {
@@ -340,7 +308,7 @@ function realListData(data) {
                 '</div>' +
                 '<div class="txt_for_listing">' +
                 '<h4>' + real_title_lis + '</h4>' +
-                '<h3>' +'$'+ real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h3>' + '$' + real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
                 '<h6>' + real_city + ', ' + real_state + ', ' + real_country + '</h6>' +
                 '<div class="icon-area">' +
                 '<div class="rating-area">' +
@@ -352,12 +320,11 @@ function realListData(data) {
                 '</div>' +
                 '</a>' +
                 '<div align="right" class="realestate">' + exchangeli + loanli + electricityli + waterli +
-                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">'+
-                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">'+
+                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">' +
+                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">' +
                 '</div>' +
                 '</li>');
-            }else
-            {
+            } else {
                 $("#allRealData").append('<li>' +
                 '<a onclick="gotopage(' + real_id + ')">' +
                 '<div class="img_for_listing">' +
@@ -365,7 +332,7 @@ function realListData(data) {
                 '</div>' +
                 '<div class="txt_for_listing">' +
                 '<h4>' + real_title_lis + '</h4>' +
-                '<h3 style="color: blue;">' +'₡'+ real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
+                '<h3 style="color: blue;">' + '₡' + real_price + ' ' + ' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span></h3>' +
                 '<h6>' + real_city + ', ' + real_state + ', ' + real_country + '</h6>' +
                 '<div class="icon-area">' +
                 '<div class="rating-area">' +
@@ -377,20 +344,14 @@ function realListData(data) {
                 '</div>' +
                 '</a>' +
                 '<div align="right" class="realestate">' + exchangeli + loanli + electricityli + waterli +
-                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">'+
-                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">'+
+                '<img src="images/bedroom.png" class="icon-img" style="padding-left: 3px;" title="Exchange">' +
+                '<img src="images/bathroom.png" class="icon-img" style="padding-left: 4px;" title="Exchange">' +
                 '</div>' +
                 '</li>');
             }
         }
 
-        /* setTimeout(function () {
-         $('body').addClass('loaded');
-         $('h1').css('color', '#222222');
-         }, 3000);
-         return true;*/
     }
-    //cordova.plugin.pDialog.dismiss();
     $("#preloader").css('display','none');
 }
 
@@ -437,7 +398,16 @@ function OtherCatFilterData(data) {
         for (var i = 0; i < data.realfilter.length; i++) {
             var other_cat_id = data.realfilter[i].real_pro_id;
             var other_cat_name = data.realfilter[i].real_pro_name;
-            $("#catfilter").append('<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + other_cat_name + '</div><div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><span><input type="checkbox" onclick="gotofilter(' + other_cat_id + ')"></span></div><div class="clearfix"></div>');
+            $("#catfilter").append(
+                '<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">' + other_cat_name +
+                '</div>' +
+                '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">' +
+                '<span>' +
+                '<input type="checkbox" onclick="gotofilter(' + other_cat_id + ')">' +
+                '</span>' +
+                '</div>' +
+                '<div class="clearfix">' +
+                '</div>');
         }
         return true;
     }
@@ -459,6 +429,8 @@ function gotofilter(str) {
     getAllRealDetail();
     //console.log("Cat Array : " + cat_typ_arr);
 }
+
+
 //Loan
 var loan_fil = "";
 function gotoLoanfilter(str) {

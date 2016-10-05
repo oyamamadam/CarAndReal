@@ -2833,3 +2833,13 @@ color: #f00 !important;
     margin-bottom:40px;
 }
 .center-text{text-align:center; display:block;color:#0a2dff; }
+.go_signin
+{
+    text-align: center;
+    margin-top: 15px;
+}
+.signin
+{
+    color: #0a2dff;
+    text-decoration: underline;
+}

@@ -27,25 +27,17 @@ $(document).ready(
             //document.getElementById('useremail').innerHTML = gdc_email;
             document.getElementById("useremail").value = gdc_email;
         }
-        if (gdc_gender == null) {
 
-                document.getElementById("profilepic").src = "images/g_mail.png";
-
-
-        } else {
-            if (!gdc_gender == "male") {
-                document.getElementById("profilepic").src = "images/g_female.png";
-            } else {
-                //document.getElementById("profilepic").src =  "images/g_male.png";
-               if(gdc_gender=="")
-               {
-                   document.getElementById("profilepic").src =  "images/g_male.png";
-               }else
-               {
-                   document.getElementById("profilepic").src = profile_image;
-               }
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilepic').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilepic").src = "images/g_female.png";
         }
+        else {
+            document.getElementById("profilepic").src = profile_image;
+        }
+
     }
 );
 //gdc_gender = "female"

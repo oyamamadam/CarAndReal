@@ -304,14 +304,14 @@ $(document).ready(
         } else {
             document.getElementById('profilename').innerHTML = gdc_username;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );

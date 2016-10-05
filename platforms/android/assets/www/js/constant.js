@@ -1,4 +1,5 @@
-var BASE_URL="http://ctinfotech.com.md-in-37.webhostbox.net/car_admin/";
+//var BASE_URL="http://ctinfotech.com.md-in-37.webhostbox.net/car_admin/";
+var BASE_URL="http://grupodelcambalache.com/app/";
 //var BASE_URL = "http://localhost/phonegap/api/car_admin/";
 var APP_API = "api.php";
 document.addEventListener("deviceready", onDeviceReady, false);
@@ -161,7 +162,7 @@ var gdc_firstname = window.localStorage.getItem("gdc_firstname");
 var gdc_lastname = window.localStorage.getItem("gdc_lastname");
 var gdc_username = gdc_firstname + " " + gdc_lastname;
 //alert(gdc_username);
-//var gdc_gender = window.localStorage.getItem("gdc_gender");
+var gdc_gender = window.localStorage.getItem("gdc_gender");
 var gdc_email = window.localStorage.getItem("gdc_email_id");
 var gdc_mobile = window.localStorage.getItem("gdc_contactno");
 var profile_image = window.localStorage['profile-image'];
@@ -173,21 +174,16 @@ $(document).ready(
         } else {
             document.getElementById('profilename').innerHTML = gdc_username;
 
-        //var profile_image = window.localStorage['profile-image'];
-        //$('#profilegender').attr('src',profile_image);
         }
 
-        if (profile_image == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
             //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
             document.getElementById("profilegender").src = profile_image;
-            //$('#profilegender').attr('src',profile_image);
-            //if (gdc_gender == "male") {
-            //
-            //} else {
-            //document.getElementById("profilegender").src = "images/female.png";
-            //}
         }
     }
 );

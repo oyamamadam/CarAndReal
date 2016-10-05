@@ -140,15 +140,14 @@ $(document).ready(
             //user_name.innerHTML = gdc_username;
             document.getElementById('profilename').innerHTML = gdc_username;
         }
-        if (gdc_gender == null) {
-            document.getElementById('profilename').innerHTML = "Profile";
-        } else {
-            if (gdc_gender == "male") {
-
-            } else {
-                //alert(gdc_gender);
-                document.getElementById("profilegender").src = "images/female.png";
-            }
+        if (profile_image == null && gdc_gender == "male") {
+            document.getElementById('profilegender').innerHTML = "images/g_male.png";
+        } else if(profile_image == null && gdc_gender == "female") {
+            //alert(profile_image);
+            document.getElementById("profilegender").src = "images/g_female.png";
+        }
+        else {
+            document.getElementById("profilegender").src = profile_image;
         }
     }
 );
@@ -227,6 +226,22 @@ function getAllOtherDetail() {
         }
     });
 }
+
+function getSorteddate(array){
+
+    return array.sort(function (a, b){
+        //console.log(a.other_created);
+        var a_s= a.other_created.split(' ');
+        var a_date= a_s[0] + "T"+a_s[1];
+        var aaa= new Date(a_date);
+        var b_s= b.other_created.split(' ');
+        var b_date= b_s[0] + "T"+b_s[1];
+        var bbb= new Date(b_date);
+        console.log("adfasdfsdf="+ aaa.getDate());
+        return bbb - aaa;
+    });
+}
+
 function otherListData(data) {
     if (data.otherlist.length == 0) {
         //alert(msg_no);
@@ -243,45 +258,30 @@ function otherListData(data) {
         document.getElementById('totalotheradv').innerHTML = obj;
         document.getElementById('pageno').innerHTML = pageno;
         $("#allOtherData").children().remove();
-        for (var i = 0; i < data.otherlist.length; i++) {
-            var other_id = data.otherlist[i].other_id;
-            var other_type = data.otherlist[i].other_type;
-            var other_category = data.otherlist[i].other_category;
-            var other_title = data.otherlist[i].other_title;
-            var other_cont_name = data.otherlist[i].other_cont_name;
-            var other_email = data.otherlist[i].other_email;
-            var other_phone = data.otherlist[i].other_phone;
-            var other_country = data.otherlist[i].other_country;
-            var other_state = data.otherlist[i].other_state;
-            var other_city = data.otherlist[i].other_city;
-            var other_color = data.otherlist[i].other_color;
 
-            var other_pri_type = data.otherlist[i].other_pri_type;
+        var insteadlist = getSorteddate(data.otherlist);
 
-            var other_price =numberWithCommas(data.otherlist[i].other_price) ;
-            //if (other_pri_type == "Dollares") {
-            //    var other_price = "$ " + data.otherlist[i].other_price +',';
-            //} else {
-            //    var other_price = "₡ " + data.otherlist[i].other_price +',';
-            //}
-            var other_condition = data.otherlist[i].other_condition;
-            var other_rating = data.otherlist[i].other_rating;
-            var other_exchange = data.otherlist[i].other_exchange;
-            var other_acpt_old = data.otherlist[i].other_acpt_old;
-            var other_flex_pri = data.otherlist[i].other_flex_pri;
-            var other_visitor = data.otherlist[i].other_visitor;
-            var other_comment = data.otherlist[i].other_comment;
-            var other_created = data.otherlist[i].other_created;
-            var other_status = data.otherlist[i].other_status;
+        for (var i = 0; i < insteadlist.length; i++) {
+            var other_id = insteadlist[i].other_id;
+            var other_type = insteadlist[i].other_type;
+            var other_category = insteadlist[i].other_category;
+            var other_title = insteadlist[i].other_title;
+            var other_country = insteadlist[i].other_country;
+            var other_state = insteadlist[i].other_state;
+            var other_city = insteadlist[i].other_city;
 
-            var rating = data.otherlist[i].other_rating;
-            var exchange = data.otherlist[i].other_exchange;
+            var other_pri_type = insteadlist[i].other_pri_type;
+
+            var other_price =numberWithCommas(insteadlist[i].other_price) ;
+
+            var rating = insteadlist[i].other_rating;
+            var exchange = insteadlist[i].other_exchange;
             if (exchange == "Yes") {
                 var exchangeli = '<img src="images/exchange.png" class="icon-img" title="Exchange">';
             } else {
                 var exchangeli = "";
             }
-            var loan = data.otherlist[i].other_loan;
+            var loan = insteadlist[i].other_loan;
             if (loan == "Yes") {
                 var loanli = '<img src="images/loan.png" class="icon-img" title="Loan">';
             } else {
@@ -289,8 +289,7 @@ function otherListData(data) {
             }
 
 
-            var other_img = data.otherlist[i].other_img;
-            var other_location = data.otherlist[i].other_location;
+            var other_img = insteadlist[i].other_img;
             var image1 = other_img[0];
             //alert(image1);
 
@@ -332,7 +331,7 @@ function otherListData(data) {
                 '<div class="icon-area">' +
                 '<div class="rating-area">' +
 
-                '<div class="rating-txt">' + rating + '/10</div> ' +
+                '<div class="rating-txt">'+  rating + '/10</div> ' +
                 '<img src="images/star.png" class="star-img" style="float: right;">' +
                 '</div><div class="clearfix"> </div>' +
                 '</div>' +
@@ -343,6 +342,111 @@ function otherListData(data) {
                 '</li>');
             }
         }
+       // console.log("date" +JSON.stringify(data.otherlist));
+        //for (var i = 0; i < data.otherlist.length; i++) {
+        //    var other_id = data.otherlist[i].other_id;
+        //    var other_type = data.otherlist[i].other_type;
+        //    var other_category = data.otherlist[i].other_category;
+        //    var other_title = data.otherlist[i].other_title;
+        //    var other_cont_name = data.otherlist[i].other_cont_name;
+        //    var other_email = data.otherlist[i].other_email;
+        //    var other_phone = data.otherlist[i].other_phone;
+        //    var other_country = data.otherlist[i].other_country;
+        //    var other_state = data.otherlist[i].other_state;
+        //    var other_city = data.otherlist[i].other_city;
+        //    var other_color = data.otherlist[i].other_color;
+        //
+        //    var date = data.otherlist[i].other_created;
+        //
+        //    var other_pri_type = data.otherlist[i].other_pri_type;
+        //
+        //    var other_price =numberWithCommas(data.otherlist[i].other_price) ;
+        //    //if (other_pri_type == "Dollares") {
+        //    //    var other_price = "$ " + data.otherlist[i].other_price +',';
+        //    //} else {
+        //    //    var other_price = "₡ " + data.otherlist[i].other_price +',';
+        //    //}
+        //    var other_condition = data.otherlist[i].other_condition;
+        //    var other_rating = data.otherlist[i].other_rating;
+        //    var other_exchange = data.otherlist[i].other_exchange;
+        //    var other_acpt_old = data.otherlist[i].other_acpt_old;
+        //    var other_flex_pri = data.otherlist[i].other_flex_pri;
+        //    var other_visitor = data.otherlist[i].other_visitor;
+        //    var other_comment = data.otherlist[i].other_comment;
+        //    var other_created = data.otherlist[i].other_created;
+        //    var other_status = data.otherlist[i].other_status;
+        //
+        //    var rating = data.otherlist[i].other_rating;
+        //    var exchange = data.otherlist[i].other_exchange;
+        //    if (exchange == "Yes") {
+        //        var exchangeli = '<img src="images/exchange.png" class="icon-img" title="Exchange">';
+        //    } else {
+        //        var exchangeli = "";
+        //    }
+        //    var loan = data.otherlist[i].other_loan;
+        //    if (loan == "Yes") {
+        //        var loanli = '<img src="images/loan.png" class="icon-img" title="Loan">';
+        //    } else {
+        //        var loanli = "";
+        //    }
+        //
+        //
+        //    var other_img = data.otherlist[i].other_img;
+        //    var other_location = data.otherlist[i].other_location;
+        //    var image1 = other_img[0];
+        //    //alert(image1);
+        //
+        //    if (other_pri_type == "Dollares") {
+        //        $("#allOtherData").append('<li>' +
+        //        '<a onclick="gotopage(' + other_id + ')">' +
+        //        '<div class="img_for_listing">' +
+        //        '<img src=' + image1 + '>' +
+        //        '</div>' +
+        //        '<div class="txt_for_listing">' +
+        //        '<h4>'+ other_title + ', ' + other_category + ' (' + other_type + ')' + '</h4>' +
+        //        '<h3>' +'$' + other_price + ' '+' <span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span>' +
+        //        '</h3>' +
+        //        '<h6>' + other_city + ', ' + other_state + ', ' + other_country + '</h6>' +
+        //        '<div class="icon-area">' +
+        //        '<div class="rating-area">' +
+        //
+        //        '<div class="rating-txt">' +date + rating + '/10</div> ' +
+        //        '<img src="images/star.png" class="star-img" style="float: right;">' +
+        //        '</div><div class="clearfix"> </div>' +
+        //        '</div>' +
+        //        '</a>' +
+        //        '</div>' +
+        //        '</div>' +
+        //        '<div align="right" class="realestate">' + exchangeli + loanli + '</div>' +
+        //        '</li>');
+        //    }else
+        //    {
+        //        $("#allOtherData").append('<li>' +
+        //        '<a onclick="gotopage(' + other_id + ')">' +
+        //        '<div class="img_for_listing">' +
+        //        '<img src=' + image1 + '>' +
+        //        '</div>' +
+        //        '<div class="txt_for_listing">' +
+        //        '<h4>' + other_title + ', ' + other_category + ' (' + other_type + ')' + '</h4>' +
+        //        '<h3 style="color: blue;">' +'₡'+ other_price +' '+ '<span style="font-size:13px; color:#d50000; padding-left:10px;">NEGOTIABLE</span>' +
+        //        '</h3>' +
+        //        '<h6>' + other_city + ', ' + other_state + ', ' + other_country + '</h6>' +
+        //        '<div class="icon-area">' +
+        //        '<div class="rating-area">' +
+        //
+        //        '<div class="rating-txt">' +date +  rating + '/10</div> ' +
+        //        '<img src="images/star.png" class="star-img" style="float: right;">' +
+        //        '</div><div class="clearfix"> </div>' +
+        //        '</div>' +
+        //        '</a>' +
+        //        '</div>' +
+        //        '</div>' +
+        //        '<div align="right" class="realestate">' + exchangeli + loanli + '</div>' +
+        //        '</li>');
+        //    }
+        //}
+
+
         /*setTimeout(function () {
          $('body').addClass('loaded');
          $('h1').css('color', '#222222');

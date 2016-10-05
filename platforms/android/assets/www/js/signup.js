@@ -8,7 +8,13 @@ function onDeviceReady() {
 
 function successCallback(result) {
     //alert("Ashish : "+result.phoneNumber);
-    document.getElementById('contactno').setAttribute('value', result.phoneNumber);
+    var number =  result.phoneMumber;
+    if (!number)
+    {
+        //document.getElementById('contactno').setAttribute('value', 'eg: 70741771');
+    }else {
+        document.getElementById('contactno').setAttribute('value', result.phoneNumber);
+    }
 }
 
 function errorCallback(error) {

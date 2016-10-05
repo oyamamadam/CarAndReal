@@ -45,7 +45,7 @@
 
 <div id="preloader">
     <div id="status">
-        <h3 class="center-text">Please Waiting</h3>
+        <h3 class="center-text">Please Waiting...</h3>
     </div>
 </div>
 
@@ -54,7 +54,7 @@
     <ul data-role="">
         <div class="profile" onclick="goToProfile();">
             <a data-rel="close">
-                <img id="profilegender" src="images/menu-profile-icon.png"><br>
+                <img id="profilegender" src="images/g_male.png"><br>
                 <h4 id="profilename"><b id="profile">Profile</b></h4>
             </a>
         </div>
@@ -103,6 +103,7 @@
 <ul style="margin-bottom: 0px">
 <div class="panel-group bottom-none"
      id="accordion">
+<!-- Make  -->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
@@ -117,77 +118,30 @@
         </div>
     </div>
 </div>
-<!--------------------------------------------------------->
+<!-- Model -->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
             <a data-toggle="collapse" data-parent="#accordion"
-               href="#collapse3"><span id="fuel">
-                                                            Fuel</span></a>
+               href="#collapse10"><span id="model">
+                                                            Model</span></a>
         </h4>
     </div>
-    <div id="collapse3" class="panel-collapse collapse">
-        <div class="panel-body">
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
-
-                <span id="petrol">Petrol</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                            <span><input type="checkbox" name="fuel_fil"
-                                                                         value="Petrol"
-                                                                         onclick="gotoFuelfilter(this.value)"></span>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
-
-                <span id="gaslpg">Gas LPG</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                            <span><input type="checkbox" name="fuel_fil"
-                                                                         value="Gas LPG"
-                                                                         onclick="gotoFuelfilter(this.value)"></span>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
-                <span id="diesel">Diesel</span>
-
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                            <span><input type="checkbox" name="fuel_fil"
-                                                                         value="Diesel"
-                                                                         onclick="gotoFuelfilter(this.value)"></span>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
-                <span id="electric">Electric</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                            <span><input type="checkbox" name="fuel_fil"
-                                                                         value="Electric"
-                                                                         onclick="gotoFuelfilter(this.value)"></span>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
-                <span id="hydrogen">Hydrogen</span>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                                                            <span><input type="checkbox" name="fuel_fil"
-                                                                         value="Hydrogen"
-                                                                         onclick="gotoFuelfilter(this.value)"></span>
-            </div>
-            <div class="clearfix"></div>
+    <div id="collapse10" class="panel-collapse collapse">
+        <div class="panel-body" id="modelfilter">
 
         </div>
     </div>
 </div>
-<!---------------------------------------------------------------->
+
+
+
 <!-- Style Start-->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
             <a data-toggle="collapse" data-parent="#accordion"
-               href="#collapse2"><span id="filstyle">
-                                                            Style</span></a>
+               href="#collapse2"><span id="filstyle">Style</span></a>
         </h4>
     </div>
     <div id="collapse2" class="panel-collapse collapse">
@@ -278,13 +232,78 @@
     </div>
 </div>
 <!-- Style End-->
+
+<!--- Fuel ------------------------------------------------------>
+<div class="panel panel-default">
+    <div class="panel-heading filter-heading">
+        <h4 class="panel-title filter-title">
+            <a data-toggle="collapse" data-parent="#accordion"
+               href="#collapse3"><span id="fuel">Fuel</span></a>
+        </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
+
+                <span id="petrol">Petrol</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <span><input type="checkbox" name="fuel_fil"
+                                                                         value="Petrol"
+                                                                         onclick="gotoFuelfilter(this.value)"></span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
+
+                <span id="gaslpg">Gas LPG</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <span><input type="checkbox" name="fuel_fil"
+                                                                         value="Gas LPG"
+                                                                         onclick="gotoFuelfilter(this.value)"></span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
+                <span id="diesel">Diesel</span>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <span><input type="checkbox" name="fuel_fil"
+                                                                         value="Diesel"
+                                                                         onclick="gotoFuelfilter(this.value)"></span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
+                <span id="electric">Electric</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <span><input type="checkbox" name="fuel_fil"
+                                                                         value="Electric"
+                                                                         onclick="gotoFuelfilter(this.value)"></span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 gutter-none">
+                <span id="hydrogen">Hydrogen</span>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                                            <span><input type="checkbox" name="fuel_fil"
+                                                                         value="Hydrogen"
+                                                                         onclick="gotoFuelfilter(this.value)"></span>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+    </div>
+</div>
+<!---------------------------------------------------------------->
+
+
 <!-- Transmission-->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
             <a data-toggle="collapse" data-parent="#accordion"
-               href="#collapse4"><span id="transmission">
-                                                            Transmission</span> </a>
+               href="#collapse4"><span id="transmission">Transmission</span> </a>
         </h4>
     </div>
     <div id="collapse4" class="panel-collapse collapse">
@@ -320,23 +339,8 @@
     </div>
 </div>
 <!------------------------------------------------------------------>
-<!------------------------------->
-<div class="panel panel-default">
-    <div class="panel-heading filter-heading">
-        <h4 class="panel-title filter-title">
-            <a data-toggle="collapse" data-parent="#accordion"
-               href="#collapse10"><span id="model">
-                                                            Model</span></a>
-        </h4>
-    </div>
-    <div id="collapse10" class="panel-collapse collapse">
-        <div class="panel-body" id="modelfilter">
 
-        </div>
-    </div>
-</div>
-
-<!-- Model End-->
+<!-- Loan-->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
@@ -370,6 +374,8 @@
     </div>
 </div>
 <!------------------------------------------------------------------>
+
+<!--Trade-->
 <div class="panel panel-default">
     <div class="panel-heading filter-heading">
         <h4 class="panel-title filter-title">
